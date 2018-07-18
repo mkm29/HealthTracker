@@ -18,22 +18,13 @@ extension Urinate {
     }
 
     @NSManaged public var amount: Int16
-    @NSManaged public var date: NSDate?
+    @NSManaged public var date: String
+    @NSManaged public var timestamp: Date
     
-    func timeString(timeStyle: DateFormatter.Style = .short) -> String {
+    func time() -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = timeStyle
-        formatter.locale = Locale(identifier: "en_US")
-        return formatter.string(from: date as! Date)
-    }
-    
-    func dateString() -> String {
-        // EEE MMM d yyyy
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE MMM d"
-        formatter.locale = Locale(identifier: "en_US")
-        return formatter.string(from: date as! Date)
+        formatter.dateFormat = "hh:mm a"
+        return formatter.string(from: timestamp)
     }
 
 }

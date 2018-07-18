@@ -10,8 +10,10 @@ struct Constants {
     
     struct DateFormat  {
         static let Locale = "en_US"
-        static let Short = "MM-dd-yyyy"
+        static let Short = "MM-dd"
+        static let Normal = "MM-dd-yyyy"
         static let Long = "MM-dd-yyyy hh:mm a"
+        static let Time = "hh:mm a"
     }
     
     

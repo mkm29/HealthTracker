@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MedicationTableViewController: UITableViewController {
     
@@ -22,27 +23,48 @@ class MedicationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        coordinator.getMedication()
-        tableView.reloadData()
+    private func fetch() {
+        do {
+            try coordinator.medicationFRC.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to fetch Medication")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        if let sections = coordinator.medicationFRC.sections?.count {
+            return sections
+        }
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return coordinator.medication.count
+        guard let sections = coordinator.medicationFRC.sections else {
+            return 0
+        }
+        
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.backgroundColor = UIColor.lightGray
+        label.text = coordinator.medicationFRC.sections![section].name
+        return label
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MedicationCell", for: indexPath) as? MedicationCell {
             // Configure the cell...
-            let medication = coordinator.medication[indexPath.row]
+            let medication = coordinator.medicationFRC.object(at: indexPath)
             cell.nameLabel.text = medication.name
             
             // 300mg, 3 times daily

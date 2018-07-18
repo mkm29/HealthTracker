@@ -22,6 +22,7 @@ class NewUrinateViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         //dateTextField.text = getDateString()
+        amountTextField.becomeFirstResponder()
     }
     
 
@@ -44,7 +45,7 @@ class NewUrinateViewController: UIViewController {
         }
         
         urinateDict["amount"] = (amountString as NSString).integerValue
-        coordinator.newObject(ofType: .Urinate, objectDict: urinateDict)
+        _ = coordinator.coreDataManager.createNewObject(ofType: .Urinate, objectDictionary: urinateDict)
         navigationController?.dismiss(animated: true, completion: nil)
         
     }

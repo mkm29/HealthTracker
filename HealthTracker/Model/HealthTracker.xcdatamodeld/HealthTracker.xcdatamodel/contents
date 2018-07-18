@@ -42,16 +42,17 @@
     </entity>
     <entity name="Urinate" representedClassName="Urinate" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
         <element name="Appointment" positionX="-18" positionY="27" width="128" height="90"/>
         <element name="Bowel" positionX="-109.0703125" positionY="169.47265625" width="128" height="75"/>
         <element name="Filled" positionX="381.6328125" positionY="574.80078125" width="128" height="90"/>
         <element name="Medication" positionX="36" positionY="297" width="128" height="150"/>
-        <element name="Physician" positionX="307.375" positionY="115.48828125" width="128" height="105"/>
-        <element name="Urinate" positionX="-321.25390625" positionY="93.8515625" width="128" height="75"/>
-        <element name="Supply" positionX="-285.9296875" positionY="432.29296875" width="128" height="105"/>
         <element name="Order" positionX="-480.5234375" positionY="353.23046875" width="128" height="90"/>
+        <element name="Physician" positionX="307.375" positionY="115.48828125" width="128" height="105"/>
+        <element name="Supply" positionX="-285.9296875" positionY="432.29296875" width="128" height="105"/>
+        <element name="Urinate" positionX="-321.25390625" positionY="93.8515625" width="128" height="90"/>
     </elements>
 </model>

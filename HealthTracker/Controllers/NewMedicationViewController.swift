@@ -39,8 +39,8 @@ class NewMedicationViewController: UIViewController {
                 print("All fields must be completed.")
                 return
         }
-        let medicationDict: [String:Any] = ["name" : name, "dosage" : Int(dosage), "frequency" : Int(frequency), "purpose" : purpose, "date" : datePicker.date]
-        coordinator.newObject(ofType: .Medication, objectDict: medicationDict)
+        let medicationDict: [String:Any] = ["name" : name, "dosage" : Int16(dosage), "frequency" : Int16(frequency), "purpose" : purpose, "date" : datePicker.date]
+        _ = coordinator.coreDataManager.createNewObject(ofType: .Medication, objectDictionary: medicationDict)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     /*
