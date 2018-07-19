@@ -23,7 +23,7 @@ class Coordinator {
     
     
     // FetchedResultControllers
-    var bladderFRC: NSFetchedResultsController<Urinate>!
+    var cathFRC: NSFetchedResultsController<Cath>!
     var medicationFRC: NSFetchedResultsController<Medication>!
     var bowelFRC: NSFetchedResultsController<Bowel>!
     var physicianFRV: NSFetchedResultsController<Physician>!
@@ -31,44 +31,57 @@ class Coordinator {
     
     
     init() {
-        //
-        //print(coreDataManager.applicationDocumentsDirectory().absoluteString)
-        setupFetchedResultsControllers()
-        // see if we need to import
-        if bladderFRC.fetchedObjects?.count == 0 {
-            Importer().importSchedule()
-        }
-        if medicationFRC.fetchedObjects?.count == 0 {
-            Importer().importMedication()
-        }
+        //setupFetchedResultsControllers()
+        //fetchCath()
+        //fetchMedication()
     }
     
     func setupFetchedResultsControllers() {
-        setupAndFetchBladderFRC()
-        setupAndFetchMedicationFRC()
+        setupCathFRC()
+        setupMedicationFRC()
     }
     
-    private func setupAndFetchBladderFRC() {
+    private func setupCathFRC() {
         // Initialize Fetch Request
-        let fetchRequest: NSFetchRequest<Urinate> = Urinate.fetchRequest()
+        let fetchRequest: NSFetchRequest<Cath> = Cath.fetchRequest()
         
         // Add Sort Descriptors
-        let sort1 = NSSortDescriptor(key: #keyPath(Urinate.date), ascending: false)
-        let sort2 = NSSortDescriptor(key: #keyPath(Urinate.time), ascending: false)
+        let sort1 = NSSortDescriptor(key: #keyPath(Cath.date), ascending: false)
+        let sort2 = NSSortDescriptor(key: #keyPath(Cath.timestamp), ascending: false)
         fetchRequest.sortDescriptors = [sort1, sort2]
         
         // Initialize Fetched Results Controller
-        bladderFRC = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataManager.context, sectionNameKeyPath: #keyPath(Urinate.date), cacheName: nil)
-        try! bladderFRC.performFetch()
+        cathFRC = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataManager.context, sectionNameKeyPath: #keyPath(Cath.date), cacheName: nil)
     }
     
-    private func setupAndFetchMedicationFRC() {
+    private func setupMedicationFRC() {
         let request: NSFetchRequest = Medication.fetchRequest()
         let sort1 = NSSortDescriptor(key: #keyPath(Medication.purpose), ascending: true)
         let sort2 = NSSortDescriptor(key: #keyPath(Medication.name), ascending: true)
         request.sortDescriptors = [sort1, sort2]
         medicationFRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataManager.context, sectionNameKeyPath: #keyPath(Medication.purpose), cacheName: nil)
-        try! bladderFRC.performFetch()
+    }
+    
+    func fetchCath() {
+        do {
+            try cathFRC.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Fetch Urinate")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+    }
+    
+    func fetchMedication() {
+        do {
+            try medicationFRC.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Fetch Urinate")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
     }
     
     

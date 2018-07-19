@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class UrinateTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class CathTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     let coordinator = Coordinator.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator.bladderFRC.delegate = self
+        //coordinator.cathFRC.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,24 +23,12 @@ class UrinateTableViewController: UITableViewController, NSFetchedResultsControl
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    private func fetch() {
-        do {
-            try coordinator.bladderFRC.performFetch()
-            
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to Fetch Urinate")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-    }
-
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if let sections = coordinator.bladderFRC.sections?.count {
+        if let sections = coordinator.cathFRC.sections?.count {
             return sections
         }
         return 1
@@ -48,7 +36,7 @@ class UrinateTableViewController: UITableViewController, NSFetchedResultsControl
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let sections = coordinator.bladderFRC.sections else {
+        guard let sections = coordinator.cathFRC.sections else {
             return 0
         }
         
@@ -67,7 +55,7 @@ class UrinateTableViewController: UITableViewController, NSFetchedResultsControl
 //    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return convertDateFormater(coordinator.bladderFRC.sections![section].name)
+        return convertDateFormater(coordinator.cathFRC.sections![section].name)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -89,9 +77,9 @@ class UrinateTableViewController: UITableViewController, NSFetchedResultsControl
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "UrinateCell") as? UrinateCell {
             // get urinate object
-            let urinate = coordinator.bladderFRC.object(at: indexPath)
-            cell.amountLabel.text = "\(urinate.amount)"
-            cell.timeLabel.text = urinate.time
+            let cath = coordinator.cathFRC.object(at: indexPath)
+            cell.amountLabel.text = "\(cath.amount)"
+            cell.timeLabel.text = cath.timestamp?.timeString()
             return cell
         }
         return UITableViewCell()

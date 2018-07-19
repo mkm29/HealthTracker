@@ -11,7 +11,7 @@ import CoreData
 class CoreDataManager {
     
     enum EntityType {
-        case Urinate
+        case Cath
         case Medication
     }
     
@@ -48,11 +48,12 @@ class CoreDataManager {
         return container
     }()
     
-    func applicationDocumentsDirectory() -> URL {
+    func applicationDocumentsDirectory() -> String {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.bartjacobs.Core_Data" in the application's documents Application Support directory.
         //let urls = FileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        return urls[urls.count-1]
+        let path = urls[urls.count-1].absoluteString.replacingOccurrences(of: "%20", with: "\\ ")
+        return path
     }
     
     // MARK: - Core Data Saving support
@@ -86,29 +87,36 @@ class CoreDataManager {
     func createNewObject(ofType type: EntityType, objectDictionary dict: [String : Any]) -> NSManagedObject? {
         
         switch type {
-        case .Urinate:
-            return createNewUrinate(fromDict: dict)
+        case .Cath:
+            return newCath(fromDict: dict)
         case .Medication:
-            return createNewMedication(fromDictionary: dict)
+            return newMedication(fromDictionary: dict)
         }
         
     }
     
-    private func createNewUrinate(fromDict dict: [String : Any]) -> Urinate? {
+    private func newCath(fromDict dict: [String : Any]) -> Cath? {
         guard let date = dict["date"] as? String,
             let time = dict["time"] as? String,
-            let amount = dict["amount"] as? Int16 else {
+            let amount = dict["amount"] as? Int16, let timestamp = time.dateFromTime() else {
             print("error: unable to get all data from dictionary")
             return nil
         }
-        let newUrinate = Urinate(context: context)
-        newUrinate.date = date
-        newUrinate.time = time
-        newUrinate.amount = amount
-        return newUrinate
+        let newCath = Cath(context: context)
+        newCath.date = date
+        newCath.timestamp = timestamp
+        newCath.amount = amount
+        return newCath
     }
     
-    private func createNewMedication(fromDictionary dict: [String : Any]) -> Medication? {
+//    func getCath(fromTimestamp timestamp: Date) -> Cath? {
+//        
+//        let request: NSFetchRequest<Cath> = Cath.fetchRequest()
+//        request.predicate = NSPredicate(format: "timestamp == %@", timestamp)
+//        
+//    }
+    
+    private func newMedication(fromDictionary dict: [String : Any]) -> Medication? {
         guard let name = dict["name"] as? String,
             let purpose = dict["purpose"] as? String,
             let dosage = dict["dosage"] as? Int16,
@@ -124,13 +132,71 @@ class CoreDataManager {
         return newMedication
     }
     
-    private func date(fromString dateString: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = Constants.DateFormat.Normal
-        return formatter.date(from: dateString)
+    
+    // TODO: add export functionality
+    
+    // MARK: - Import
+    
+    func importCath() {
+        // if let path = Bundle.main.path(forResource: "shoes", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+        if let path = Bundle.main.path(forResource: "cath", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                
+                if let cathDict = json as? [[String : Any]] {
+                    for cath in cathDict {
+                        // create new Cath object
+                        if let dateString = cath["date"] as? String,
+                            let amount = cath["amount"] as? Int16,
+                            let time = cath["time"] as? String,
+                            let timestamp = "\(dateString) \(time)".date() {
+                            
+                            let newCath = Cath(context: context)
+                            newCath.date = dateString
+                            newCath.amount = amount
+                            // concatenate date and time
+                            newCath.timestamp = timestamp
+                            
+                        }
+                    }
+                    saveContext()
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func importMedication() {
+        if let path = Bundle.main.path(forResource: "medication", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                
+                if let medicationDict = json as? [[String:Any]] {
+                    for medDict in medicationDict {
+                        if let name = medDict["name"] as? String,
+                            let dosage = medDict["dosage"] as? Int,
+                            let freq = medDict["frequency"] as? Int,
+                            let purpose = medDict["purpose"] as? String {
+                            let newMedication = Medication(context: context)
+                            newMedication.name = name
+                            newMedication.dosage = Int16(dosage)
+                            newMedication.frequency = Int16(freq)
+                            newMedication.purpose = purpose
+                            newMedication.remaining = 0
+                        }
+                    }
+                    saveContext()
+                }
+                
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     
-    // TODO: add export functionality
+    
     
 }

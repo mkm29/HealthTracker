@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iMk-ai-34c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IgW-1e-gnZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -97,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiM-Pt-iOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="358.4707646176912"/>
+            <point key="canvasLocation" x="3148" y="358.4707646176912"/>
         </scene>
         <!--Bowel Movements-->
         <scene sceneID="blG-zL-SHF">
@@ -133,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqz-I1-PZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="1076.311844077961"/>
+            <point key="canvasLocation" x="3150" y="1123"/>
         </scene>
         <!--New Medication-->
         <scene sceneID="CAN-qi-Mpd">
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Szu-ek-5x2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4029.5999999999999" y="357.57121439280365"/>
+            <point key="canvasLocation" x="4968.8000000000002" y="357.57121439280365"/>
         </scene>
         <!--New Bowel Movement-->
         <scene sceneID="eX3-2q-sZS">
@@ -269,12 +269,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhr-Nu-2dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4028" y="1076.311844077961"/>
+            <point key="canvasLocation" x="4969" y="1123"/>
         </scene>
         <!--Cath Schedule-->
         <scene sceneID="yCH-Ai-aiT">
             <objects>
-                <tableViewController id="ev1-v8-xdx" customClass="UrinateTableViewController" customModule="HealthTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ev1-v8-xdx" customClass="CathTableViewController" customModule="HealthTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k8Z-pJ-z2i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,7 +334,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dw3-RA-YlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="-337.78110944527737"/>
+            <point key="canvasLocation" x="3148" y="-337.78110944527737"/>
         </scene>
         <!--New Urinate View Controller-->
         <scene sceneID="8NV-nc-fpj">
@@ -415,46 +415,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjm-yo-qoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4029.5999999999999" y="-337.78110944527737"/>
+            <point key="canvasLocation" x="4968.8000000000002" y="-337.78110944527737"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="OqS-eI-wHv">
+        <!--HealthTracker-->
+        <scene sceneID="OfQ-tW-AjU">
             <objects>
-                <tabBarController id="iMk-ai-34c" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="T9l-to-tKg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="x9U-jH-Z0d" kind="relationship" relationship="viewControllers" id="MTS-u1-CvF"/>
-                        <segue destination="62B-um-HCq" kind="relationship" relationship="viewControllers" id="8Ol-hZ-shQ"/>
-                        <segue destination="GNP-T7-CGK" kind="relationship" relationship="viewControllers" id="Bh4-09-jy4"/>
-                        <segue destination="Vy8-l2-gI0" kind="relationship" relationship="viewControllers" id="9iu-az-zwM"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vgp-9k-6DA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="sYO-oF-gcH" customClass="HomeViewController" customModule="HealthTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pNZ-sY-SvB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vR2-DO-Ldk">
+                                <rect key="frame" x="2" y="89" width="124" height="306"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk9-1F-xRu">
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
+                                        <state key="normal" title="cath schedule"/>
+                                        <connections>
+                                            <segue destination="ev1-v8-xdx" kind="show" id="tY1-VW-UCt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y92-H9-5Bi">
+                                        <rect key="frame" x="0.0" y="46" width="124" height="30"/>
+                                        <state key="normal" title="bowel movements"/>
+                                        <connections>
+                                            <segue destination="x6d-1e-GiJ" kind="show" id="bwF-fr-DaB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lQ-EM-Y5y">
+                                        <rect key="frame" x="0.0" y="92" width="84" height="30"/>
+                                        <state key="normal" title="medications"/>
+                                        <connections>
+                                            <segue destination="BWP-Jq-wWb" kind="show" id="8NT-Xu-R1Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ins-eJ-PTH">
+                                        <rect key="frame" x="0.0" y="138" width="72" height="30"/>
+                                        <state key="normal" title="physicians"/>
+                                        <connections>
+                                            <segue destination="Oam-D8-lbC" kind="show" id="mXi-Qu-ukN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mz-ja-OQL">
+                                        <rect key="frame" x="0.0" y="184" width="95" height="30"/>
+                                        <state key="normal" title="appointments"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwH-BK-BfK">
+                                        <rect key="frame" x="0.0" y="230" width="45" height="30"/>
+                                        <state key="normal" title="orders"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tff-YW-ar6">
+                                        <rect key="frame" x="0.0" y="276" width="57" height="30"/>
+                                        <state key="normal" title="supplies"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YT-hj-M02" userLabel="Ube View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="meU-vX-5aq" firstAttribute="bottom" secondItem="1YT-hj-M02" secondAttribute="bottom" id="Jkj-bp-nFh"/>
+                            <constraint firstItem="1YT-hj-M02" firstAttribute="leading" secondItem="meU-vX-5aq" secondAttribute="leading" id="TTQ-Em-WE7"/>
+                            <constraint firstItem="1YT-hj-M02" firstAttribute="top" secondItem="meU-vX-5aq" secondAttribute="top" id="bGf-5q-a2K"/>
+                            <constraint firstItem="meU-vX-5aq" firstAttribute="trailing" secondItem="1YT-hj-M02" secondAttribute="trailing" id="mY7-GT-bLD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="meU-vX-5aq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="HealthTracker" id="dmF-YJ-RGe">
+                        <barButtonItem key="leftBarButtonItem" image="hamburger-menu" id="8bP-ws-6QC">
+                            <color key="tintColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8B-b1-Y7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318" y="0.0"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Cck-R1-xCQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x9U-jH-Z0d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="urine-collection" id="IPE-Mw-JVn"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="dNG-8S-nij">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ev1-v8-xdx" kind="relationship" relationship="rootViewController" id="uUO-eE-PT8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nv8-qa-Wxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1269.5999999999999" y="-337.78110944527737"/>
+            <point key="canvasLocation" x="1632.8" y="751.57421289355329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rW2-eB-1Z1">
@@ -472,7 +511,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MO0-hT-jfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3088.8000000000002" y="-338.68065967016497"/>
+            <point key="canvasLocation" x="4028" y="-338.68065967016497"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S5b-Ig-3cA">
@@ -490,45 +529,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yuf-ad-wiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3089" y="358"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rei-Dv-0bt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="62B-um-HCq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="pill-bottle" id="B19-e8-4O9"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="iAk-1n-DaI">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BWP-Jq-wWb" kind="relationship" relationship="rootViewController" id="PU8-p9-q4L"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6c8-qj-DRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1269.5999999999999" y="358.4707646176912"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CBA-zP-oLm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GNP-T7-CGK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="toilet-paper" id="WS2-Jt-qXf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="SxW-Ds-Y9m">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="x6d-1e-GiJ" kind="relationship" relationship="rootViewController" id="9Ik-VD-Lc7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lkp-Kq-EZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1269.5999999999999" y="1075.4122938530736"/>
+            <point key="canvasLocation" x="4028" y="357.57121439280365"/>
         </scene>
         <!--Physicians-->
         <scene sceneID="6hT-Em-C5j">
@@ -564,7 +565,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRS-gb-qhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="1799.5502248875564"/>
+            <point key="canvasLocation" x="3150" y="1846"/>
         </scene>
         <!--New Physician-->
         <scene sceneID="kJK-gX-hYC">
@@ -580,26 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOz-7L-Zff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4028" y="1799.5502248875564"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ulu-1h-mfp">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vy8-l2-gI0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="medical-doctor" id="juf-u9-WNd"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="ljt-iI-3my">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Oam-D8-lbC" kind="relationship" relationship="rootViewController" id="cEf-cT-sEe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R7n-fI-E9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1269.5999999999999" y="1799.5502248875564"/>
+            <point key="canvasLocation" x="4969" y="1846"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tHM-Da-JXy">
@@ -617,7 +599,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gwu-8v-l5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3088.8000000000002" y="1075.4122938530736"/>
+            <point key="canvasLocation" x="4030" y="1122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F7o-27-n3p">
@@ -635,13 +617,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yc5-9q-KOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3088.8000000000002" y="1799.5502248875564"/>
+            <point key="canvasLocation" x="4030" y="1846"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="I9E-BT-CkV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IgW-1e-gnZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hah-Kn-Uoj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sYO-oF-gcH" kind="relationship" relationship="rootViewController" id="LTU-dd-YOo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yTa-nn-DgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="752"/>
         </scene>
     </scenes>
     <resources>
-        <image name="medical-doctor" width="56.842105865478516" height="56.842105865478516"/>
-        <image name="pill-bottle" width="56.842105865478516" height="56.842105865478516"/>
-        <image name="toilet-paper" width="56.842105865478516" height="56.842105865478516"/>
-        <image name="urine-collection" width="56.842105865478516" height="56.842105865478516"/>
+        <image name="hamburger-menu" width="37.5" height="37.5"/>
     </resources>
 </document>

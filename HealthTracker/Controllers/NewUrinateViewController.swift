@@ -35,17 +35,17 @@ class NewUrinateViewController: UIViewController {
             return
         }
         
-        var urinateDict = [String : Any]()
+        var cathDict = [String : Any]()
         if setDateManual, let dateString = dateTextField.text {
             let formatter = DateFormatter()
             formatter.dateFormat = "MM-dd-yyyy hh:mm a"
-            urinateDict["date"] = formatter.date(from: dateString) as! NSDate
+            cathDict["date"] = dateString.date() as! NSDate
         } else {
-            urinateDict["date"] = NSDate()
+            cathDict["date"] = NSDate()
         }
         
-        urinateDict["amount"] = (amountString as NSString).integerValue
-        _ = coordinator.coreDataManager.createNewObject(ofType: .Urinate, objectDictionary: urinateDict)
+        cathDict["amount"] = (amountString as NSString).integerValue
+        _ = coordinator.coreDataManager.createNewObject(ofType: .Cath, objectDictionary: cathDict)
         navigationController?.dismiss(animated: true, completion: nil)
         
     }
