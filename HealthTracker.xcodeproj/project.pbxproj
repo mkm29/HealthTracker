@@ -15,6 +15,7 @@
 		AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B975020FA96D000D89D94 /* MedicationCell.swift */; };
 		AF4B975320FAA3B700D89D94 /* medication.json in Resources */ = {isa = PBXBuildFile; fileRef = AF4B975220FAA3B700D89D94 /* medication.json */; };
 		AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */; };
+		AF622D922100292F00CDC3DE /* schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = AF622D912100292F00CDC3DE /* schedule.json */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
 		AF94AC8820F6DA0500F06A61 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* HomeViewController.swift */; };
@@ -39,6 +40,7 @@
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		AF4B975220FAA3B700D89D94 /* medication.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medication.json; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
+		AF622D912100292F00CDC3DE /* schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schedule.json; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				AF4B975220FAA3B700D89D94 /* medication.json */,
+				AF622D912100292F00CDC3DE /* schedule.json */,
 				AF4714AA20F83A5E00006CA7 /* schedule.json */,
 			);
 			path = Imports;
@@ -228,6 +231,7 @@
 			files = (
 				AF4B975320FAA3B700D89D94 /* medication.json in Resources */,
 				AF4714AB20F83A5E00006CA7 /* schedule.json in Resources */,
+				AF622D922100292F00CDC3DE /* schedule.json in Resources */,
 				AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */,
 				AF94AC9020F6DA0700F06A61 /* Assets.xcassets in Resources */,
 				AF94AC8B20F6DA0500F06A61 /* Main.storyboard in Resources */,
