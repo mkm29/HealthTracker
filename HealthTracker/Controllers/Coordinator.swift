@@ -31,7 +31,7 @@ class Coordinator {
     
     
     init() {
-        //setupFetchedResultsControllers()
+        setupFetchedResultsControllers()
         //fetchCath()
         //fetchMedication()
     }

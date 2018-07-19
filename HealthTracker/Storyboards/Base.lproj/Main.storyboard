@@ -425,49 +425,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imn-ce-782">
+                                <rect key="frame" x="0.0" y="64" width="186" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.95200643176733768" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vR2-DO-Ldk">
-                                <rect key="frame" x="2" y="89" width="124" height="306"/>
+                                <rect key="frame" x="2" y="89" width="140" height="348"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk9-1F-xRu">
-                                        <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
-                                        <state key="normal" title="cath schedule"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="cath schedule">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="ev1-v8-xdx" kind="show" id="tY1-VW-UCt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y92-H9-5Bi">
-                                        <rect key="frame" x="0.0" y="46" width="124" height="30"/>
-                                        <state key="normal" title="bowel movements"/>
+                                        <rect key="frame" x="0.0" y="52" width="140" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="bowel movements">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="x6d-1e-GiJ" kind="show" id="bwF-fr-DaB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lQ-EM-Y5y">
-                                        <rect key="frame" x="0.0" y="92" width="84" height="30"/>
-                                        <state key="normal" title="medications"/>
+                                        <rect key="frame" x="0.0" y="104" width="92" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="medications">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="BWP-Jq-wWb" kind="show" id="8NT-Xu-R1Z"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ins-eJ-PTH">
-                                        <rect key="frame" x="0.0" y="138" width="72" height="30"/>
-                                        <state key="normal" title="physicians"/>
+                                        <rect key="frame" x="0.0" y="156" width="78" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="physicians">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="Oam-D8-lbC" kind="show" id="mXi-Qu-ukN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mz-ja-OQL">
-                                        <rect key="frame" x="0.0" y="184" width="95" height="30"/>
-                                        <state key="normal" title="appointments"/>
+                                        <rect key="frame" x="0.0" y="208" width="106" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="appointments">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwH-BK-BfK">
-                                        <rect key="frame" x="0.0" y="230" width="45" height="30"/>
-                                        <state key="normal" title="orders"/>
+                                        <rect key="frame" x="0.0" y="260" width="49" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="orders">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tff-YW-ar6">
-                                        <rect key="frame" x="0.0" y="276" width="57" height="30"/>
-                                        <state key="normal" title="supplies"/>
+                                        <rect key="frame" x="0.0" y="312" width="63" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="supplies">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -488,8 +514,16 @@
                     <navigationItem key="navigationItem" title="HealthTracker" id="dmF-YJ-RGe">
                         <barButtonItem key="leftBarButtonItem" image="hamburger-menu" id="8bP-ws-6QC">
                             <color key="tintColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="toggleMenu:" destination="sYO-oF-gcH" id="hOq-s0-aTb"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="leadingConstraint" destination="TTQ-Em-WE7" id="JLN-Nm-g7J"/>
+                        <outlet property="trailingConstraint" destination="mY7-GT-bLD" id="xh5-nG-ZLr"/>
+                        <outlet property="ubeView" destination="1YT-hj-M02" id="Feb-MK-rje"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8B-b1-Y7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
