@@ -42,4 +42,16 @@ extension Date {
         return formatter.string(from:self)
     }
     
+    func dayMonth() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = Constants.DateFormat.DayMonth
+        return formatter.string(from: self)
+    }
+    
+    func string(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
 }

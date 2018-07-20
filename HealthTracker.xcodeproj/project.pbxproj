@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */; };
+		AF044AF4210161800061ED36 /* BackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF044AF3210161800061ED36 /* BackTableViewController.swift */; };
+		AF0E9DE1210170520005F8FD /* BowelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E9DE0210170520005F8FD /* BowelTableViewController.swift */; };
+		AF15741521022DE700F4C6E1 /* bm.json in Resources */ = {isa = PBXBuildFile; fileRef = AF15741421022DE700F4C6E1 /* bm.json */; };
+		AF157417210240F400F4C6E1 /* PhysiciansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF157416210240F400F4C6E1 /* PhysiciansTableViewController.swift */; };
+		AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EBAE0210269D900E1A1FF /* Protocols.swift */; };
 		AF3FAC5520F6FB3B00D5ED73 /* NewMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */; };
 		AF45D114210029D300D691C1 /* medication.json in Resources */ = {isa = PBXBuildFile; fileRef = AF45D112210029D300D691C1 /* medication.json */; };
 		AF45D115210029D300D691C1 /* cath.json in Resources */ = {isa = PBXBuildFile; fileRef = AF45D113210029D300D691C1 /* cath.json */; };
@@ -23,11 +29,19 @@
 		AFAF10BB20F6E94700D00312 /* CathTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */; };
 		AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */; };
 		AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */; };
-		AFFB5FE420F6F0BA00B4500E /* NewUrinateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE320F6F0BA00B4500E /* NewUrinateViewController.swift */; };
+		AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */; };
 		AFFB5FE620F6F24400B4500E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE520F6F24400B4500E /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		AF044AF3210161800061ED36 /* BackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableViewController.swift; sourceTree = "<group>"; };
+		AF0E9DE0210170520005F8FD /* BowelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelTableViewController.swift; sourceTree = "<group>"; };
+		AF15741421022DE700F4C6E1 /* bm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bm.json; sourceTree = "<group>"; };
+		AF157416210240F400F4C6E1 /* PhysiciansTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansTableViewController.swift; sourceTree = "<group>"; };
+		AF1EBAE0210269D900E1A1FF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMedicationViewController.swift; sourceTree = "<group>"; };
 		AF45D112210029D300D691C1 /* medication.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medication.json; sourceTree = "<group>"; };
 		AF45D113210029D300D691C1 /* cath.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cath.json; sourceTree = "<group>"; };
@@ -46,7 +60,7 @@
 		AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathTableViewController.swift; sourceTree = "<group>"; };
 		AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
 		AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrinateCell.swift; sourceTree = "<group>"; };
-		AFFB5FE320F6F0BA00B4500E /* NewUrinateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUrinateViewController.swift; sourceTree = "<group>"; };
+		AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCathViewController.swift; sourceTree = "<group>"; };
 		AFFB5FE520F6F24400B4500E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				AF4B974D20FA8E7200D89D94 /* Extensions.swift */,
+				AF1EBAE0210269D900E1A1FF /* Protocols.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -81,8 +96,9 @@
 		AF81551820FFCEDD007F5007 /* Imports */ = {
 			isa = PBXGroup;
 			children = (
-				AF45D112210029D300D691C1 /* medication.json */,
+				AF15741421022DE700F4C6E1 /* bm.json */,
 				AF45D113210029D300D691C1 /* cath.json */,
+				AF45D112210029D300D691C1 /* medication.json */,
 			);
 			path = Imports;
 			sourceTree = "<group>";
@@ -149,12 +165,18 @@
 		AFAF10B720F6E75C00D00312 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF044AF3210161800061ED36 /* BackTableViewController.swift */,
+				AF0E9DE0210170520005F8FD /* BowelTableViewController.swift */,
 				AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */,
 				AFFB5FE520F6F24400B4500E /* Coordinator.swift */,
 				AF94AC8720F6DA0500F06A61 /* HomeViewController.swift */,
 				AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */,
 				AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */,
-				AFFB5FE320F6F0BA00B4500E /* NewUrinateViewController.swift */,
+				AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */,
+				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
+				AF157416210240F400F4C6E1 /* PhysiciansTableViewController.swift */,
+				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
+				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +213,7 @@
 				TargetAttributes = {
 					AF94AC8120F6DA0500F06A61 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -217,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF15741521022DE700F4C6E1 /* bm.json in Resources */,
 				AF45D114210029D300D691C1 /* medication.json in Resources */,
 				AF45D115210029D300D691C1 /* cath.json in Resources */,
 				AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */,
@@ -232,13 +256,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF044AF4210161800061ED36 /* BackTableViewController.swift in Sources */,
+				AF157417210240F400F4C6E1 /* PhysiciansTableViewController.swift in Sources */,
 				AF94AC8820F6DA0500F06A61 /* HomeViewController.swift in Sources */,
+				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
 				AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */,
 				AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */,
-				AFFB5FE420F6F0BA00B4500E /* NewUrinateViewController.swift in Sources */,
+				AF0E9DE1210170520005F8FD /* BowelTableViewController.swift in Sources */,
+				AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */,
 				AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */,
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,
 				AFAF10BB20F6E94700D00312 /* CathTableViewController.swift in Sources */,
+				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
@@ -390,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
@@ -399,6 +429,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthTracker/Controllers/HealthTracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
@@ -417,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthTracker/Controllers/HealthTracker-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

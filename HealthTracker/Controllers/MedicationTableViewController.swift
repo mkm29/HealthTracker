@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
-class MedicationTableViewController: UITableViewController {
+class MedicationTableViewController: UITableViewController, HealthTVC {
     
-    let coordinator = Coordinator.shared
+    var coordinator: Coordinator! // = Coordinator.shared
 
+    @IBOutlet weak var Open: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,17 +23,16 @@ class MedicationTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        coordinator = Coordinator.shared
+        setupReveal()
+        coordinator.fetch(type: .Medication)
     }
     
-    private func fetch() {
-        do {
-            try coordinator.medicationFRC.performFetch()
-            
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to fetch Medication")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
+    func setupReveal() {
+        Open.target = self.revealViewController()
+        Open.action = #selector(SWRevealViewController.revealToggle(_:))
+        
+        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
     }
 
     // MARK: - Table view data source
@@ -54,11 +55,16 @@ class MedicationTableViewController: UITableViewController {
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.backgroundColor = UIColor.lightGray
-        label.text = coordinator.medicationFRC.sections![section].name
-        return label
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = coordinator.medicationFRC.sections {
+            return sections[section].name
+        } else {
+            return "No Medications!"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,50 +81,5 @@ class MedicationTableViewController: UITableViewController {
         }
         return UITableViewCell()
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

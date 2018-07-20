@@ -196,6 +196,29 @@ class CoreDataManager {
         }
     }
     
+    func importBowel() {
+        if let path = Bundle.main.path(forResource: "bm", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                
+                if let bmDict = json as? [[String:String]] {
+                    for dict in bmDict {
+                        if let date = dict["date"], let time = dict["time"], let type = dict["type"], let timestamp = "\(date) \(time)".date() {
+                            let newBowel = Bowel(context: context)
+                            newBowel.date = date
+                            newBowel.timestamp = timestamp
+                            newBowel.type = type
+                        }
+                    }
+                    saveContext()
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     
     
     

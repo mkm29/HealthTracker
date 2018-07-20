@@ -13,11 +13,15 @@ import CoreData
 class Coordinator {
     
     enum HealthType {
-        case Urinate
+        case Cath
         case Medication
+        case Bowel
+        case Physician
     }
     
     static let shared = Coordinator()
+    
+    var isAuthenticated: Bool = false
 
     let coreDataManager = CoreDataManager()
     
@@ -26,19 +30,20 @@ class Coordinator {
     var cathFRC: NSFetchedResultsController<Cath>!
     var medicationFRC: NSFetchedResultsController<Medication>!
     var bowelFRC: NSFetchedResultsController<Bowel>!
-    var physicianFRV: NSFetchedResultsController<Physician>!
+    var physicianFRC: NSFetchedResultsController<Physician>!
     var appointmentsFRC: NSFetchedResultsController<Appointment>!
     
     
     init() {
+        
         setupFetchedResultsControllers()
-        //fetchCath()
-        //fetchMedication()
     }
     
     func setupFetchedResultsControllers() {
         setupCathFRC()
         setupMedicationFRC()
+        setupBowelFRC()
+        setupPhysiciansFRC()
     }
     
     private func setupCathFRC() {
@@ -62,25 +67,32 @@ class Coordinator {
         medicationFRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataManager.context, sectionNameKeyPath: #keyPath(Medication.purpose), cacheName: nil)
     }
     
-    func fetchCath() {
-        do {
-            try cathFRC.performFetch()
-            
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to Fetch Urinate")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
+    private func setupBowelFRC() {
+        let request: NSFetchRequest<Bowel> = Bowel.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Bowel.date), ascending: false)
+        request.sortDescriptors = [sort]
+        bowelFRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
     }
     
-    func fetchMedication() {
-        do {
-            try medicationFRC.performFetch()
-            
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to Fetch Urinate")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+    private func setupPhysiciansFRC() {
+        let request: NSFetchRequest<Physician> = Physician.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Physician.name), ascending: true)
+        request.sortDescriptors = [sort]
+        physicianFRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
+    // Generic fetch function for any FRC
+    func fetch(type frcType: HealthType) {
+        
+        switch frcType {
+        case .Cath:
+            try! cathFRC.performFetch()
+        case .Medication:
+            try! medicationFRC.performFetch()
+        case .Bowel:
+            try! bowelFRC.performFetch()
+        case .Physician:
+            try! physicianFRC.performFetch()
         }
     }
     

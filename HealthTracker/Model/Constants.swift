@@ -10,6 +10,7 @@ struct Constants {
     
     struct DateFormat  {
         static let DayMonth = "EEEE MMM d"
+        static let DayMonthTime = "EEEE MMM d hh:mm a"
         static let Locale = "en_US"
         static let Short = "MM-dd"
         static let Normal = "MM-dd-yyyy"

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewUrinateViewController: UIViewController {
+class NewCathViewController: UIViewController {
     
     let coordinator = Coordinator.shared
 

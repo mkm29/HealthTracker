@@ -7,38 +7,71 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class HomeViewController: UIViewController {
-
-    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var ubeView: UIView!
-    
-    var hamburgerMenuIsVisible = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //print(Coordinator.shared.coreDataManager.applicationDocumentsDirectory())
+        localAuthentication()
     }
-
-    @IBAction func toggleMenu(_ sender: Any) {
-        if !hamburgerMenuIsVisible {
-            leadingConstraint.constant = 150
-            trailingConstraint.constant = -150
-            hamburgerMenuIsVisible = true
+    
+    
+    @IBAction func faceId(_ sender: Any) {
+        localAuthentication()
+    }
+    func localAuthentication() -> Void {
+        
+        let laContext = LAContext()
+        var error: NSError?
+        let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
+        
+        print("Starting FaceID")
+        if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
+            
+            if let laError = error {
+                print("laError - \(laError)")
+                return
+            }
+            
+            var localizedReason = "Unlock device"
+            if #available(iOS 11.0, *) {
+                if (laContext.biometryType == LABiometryType.faceID) {
+                    localizedReason = "Unlock using Face ID"
+                    print("FaceId support")
+                } else if (laContext.biometryType == LABiometryType.touchID) {
+                    localizedReason = "Unlock using Touch ID"
+                    print("TouchId support")
+                } else {
+                    print("No Biometric support")
+                }
+            } else {
+                // Fallback on earlier versions
+                print("WTF")
+            }
+            
+            
+            laContext.evaluatePolicy(biometricsPolicy, localizedReason: localizedReason, reply: { (isSuccess, error) in
+                
+                DispatchQueue.main.async(execute: {
+                    
+                    if let laError = error {
+                        print("laError - \(laError)")
+                    } else {
+                        if isSuccess {
+                            print("sucess")
+                            self.performSegue(withIdentifier: "ShowProtected", sender: nil)
+                        } else {
+                            print("failure")
+                        }
+                    }
+                    
+                })
+            })
         } else {
-            leadingConstraint.constant = 0
-            trailingConstraint.constant = 0
-            hamburgerMenuIsVisible = false
+            print("cant evaluate policy \(error)")
         }
         
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }) { (animationComplete) in
-            //print("The animation is complete!")
-        }
+        
     }
     
 }
