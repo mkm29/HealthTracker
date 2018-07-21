@@ -19,6 +19,8 @@
 		AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B974D20FA8E7200D89D94 /* Extensions.swift */; };
 		AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B975020FA96D000D89D94 /* MedicationCell.swift */; };
 		AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */; };
+		AF69D0F72102D4B600B1716D /* NewBowelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */; };
+		AF69D0F92102DEDC00B1716D /* NewPhysicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69D0F82102DEDC00B1716D /* NewPhysicianViewController.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
 		AF94AC8820F6DA0500F06A61 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* HomeViewController.swift */; };
@@ -48,6 +50,8 @@
 		AF4B974D20FA8E7200D89D94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
+		AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBowelViewController.swift; sourceTree = "<group>"; };
+		AF69D0F82102DEDC00B1716D /* NewPhysicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhysicianViewController.swift; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,8 +175,10 @@
 				AFFB5FE520F6F24400B4500E /* Coordinator.swift */,
 				AF94AC8720F6DA0500F06A61 /* HomeViewController.swift */,
 				AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */,
-				AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */,
+				AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */,
 				AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */,
+				AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */,
+				AF69D0F82102DEDC00B1716D /* NewPhysicianViewController.swift */,
 				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
 				AF157416210240F400F4C6E1 /* PhysiciansTableViewController.swift */,
 				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
@@ -257,12 +263,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF044AF4210161800061ED36 /* BackTableViewController.swift in Sources */,
+				AF69D0F72102D4B600B1716D /* NewBowelViewController.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTableViewController.swift in Sources */,
 				AF94AC8820F6DA0500F06A61 /* HomeViewController.swift in Sources */,
 				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
 				AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */,
 				AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */,
 				AF0E9DE1210170520005F8FD /* BowelTableViewController.swift in Sources */,
+				AF69D0F92102DEDC00B1716D /* NewPhysicianViewController.swift in Sources */,
 				AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */,
 				AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */,
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,

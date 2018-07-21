@@ -8,8 +8,8 @@
     </entity>
     <entity name="Bowel" representedClassName="Bowel" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="String" syncable="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Cath" representedClassName="Cath" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -37,7 +37,7 @@
         <relationship name="supplies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Supply" inverseName="order" inverseEntity="Supply" syncable="YES"/>
     </entity>
     <entity name="Physician" representedClassName="Physician" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="specialty" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="physician" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="medications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Medication" inverseName="prescriber" inverseEntity="Medication" syncable="YES"/>

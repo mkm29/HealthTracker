@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PhysiciansTableViewController: UITableViewController, HealthTVC {
     var coordinator: Coordinator! = Coordinator.shared
@@ -30,6 +31,10 @@ class PhysiciansTableViewController: UITableViewController, HealthTVC {
         Open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     private func fetch() {
@@ -64,6 +69,8 @@ class PhysiciansTableViewController: UITableViewController, HealthTVC {
         cell.detailTextLabel?.text = physician.specialty
         return cell
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

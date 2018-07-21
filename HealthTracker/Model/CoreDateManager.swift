@@ -13,6 +13,8 @@ class CoreDataManager {
     enum EntityType {
         case Cath
         case Medication
+        case Bowel
+        case Physician
     }
     
     
@@ -91,6 +93,10 @@ class CoreDataManager {
             return newCath(fromDict: dict)
         case .Medication:
             return newMedication(fromDictionary: dict)
+        case .Bowel:
+            return newBowel(fromDict: dict)
+        case .Physician:
+            return newPysician(fromDict: dict)
         }
         
     }
@@ -106,6 +112,7 @@ class CoreDataManager {
         newCath.date = date
         newCath.timestamp = timestamp
         newCath.amount = amount
+        saveContext()
         return newCath
     }
     
@@ -129,7 +136,34 @@ class CoreDataManager {
         newMedication.purpose = purpose
         newMedication.frequency = frequency
         newMedication.dosage = dosage
+        saveContext()
         return newMedication
+    }
+    
+    private func newBowel(fromDict dict: [String:Any]) -> Bowel? {
+        guard let timestamp = dict["timestamp"] as? NSDate, let date = dict["date"] as? String, let type = dict["type"] as? String else {
+            print("Error: unable to get all data from dictionary")
+            return nil
+        }
+        
+        let newBowel = Bowel(context: context)
+        newBowel.timestamp = timestamp as Date
+        newBowel.date = date
+        newBowel.type = type
+        saveContext()
+        return newBowel
+    }
+    
+    private func newPysician(fromDict dict: [String:Any]) -> Physician? {
+        guard let name = dict["name"] as? String, let specialty = dict["specialty"] as? String else {
+            print("Error: unable to get all data from dictionary")
+            return nil
+        }
+        let newPhysician = Physician(context: context)
+        newPhysician.name = name
+        newPhysician.specialty = specialty
+        saveContext()
+        return newPhysician
     }
     
     

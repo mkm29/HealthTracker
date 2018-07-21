@@ -11,25 +11,34 @@ import LocalAuthentication
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
-        localAuthentication()
+        
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(localAuthentication(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    
-    @IBAction func faceId(_ sender: Any) {
-        localAuthentication()
+    override func viewDidAppear(_ animated: Bool) {
+        localAuthentication(tapGestureRecognizer: nil)
     }
-    func localAuthentication() -> Void {
+    
+    @objc func localAuthentication(tapGestureRecognizer: UITapGestureRecognizer?) -> Void {
+        // bypass FaceId for testing
+        //self.performSegue(withIdentifier: "ShowProtected", sender: nil)
+        
         
         let laContext = LAContext()
         var error: NSError?
         let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
         
-        print("Starting FaceID")
         if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
             
             if let laError = error {
-                print("laError - \(laError)")
+                showAlert("Auth Error", laError.localizedDescription)
                 return
             }
             
@@ -37,16 +46,17 @@ class HomeViewController: UIViewController {
             if #available(iOS 11.0, *) {
                 if (laContext.biometryType == LABiometryType.faceID) {
                     localizedReason = "Unlock using Face ID"
-                    print("FaceId support")
+                    //print("FaceId support")
                 } else if (laContext.biometryType == LABiometryType.touchID) {
                     localizedReason = "Unlock using Touch ID"
-                    print("TouchId support")
+                    //print("TouchId support")
                 } else {
                     print("No Biometric support")
+                    showAlert("Auth Error", "FaceId not supported")
                 }
             } else {
                 // Fallback on earlier versions
-                print("WTF")
+                showAlert("Error", "Unhandled error")
             }
             
             
@@ -58,7 +68,6 @@ class HomeViewController: UIViewController {
                         print("laError - \(laError)")
                     } else {
                         if isSuccess {
-                            print("sucess")
                             self.performSegue(withIdentifier: "ShowProtected", sender: nil)
                         } else {
                             print("failure")
@@ -68,11 +77,17 @@ class HomeViewController: UIViewController {
                 })
             })
         } else {
-            print("cant evaluate policy \(error)")
+            var errMessage = ""
+            if error != nil {
+                errMessage = error!.localizedDescription
+            }
+            if let err = error?.localizedDescription {
+                showAlert("Auth Error", "Can't evaluate policy: \(err)")
+            } else {
+                errMessage = "Can't evaluate policy"
+            }
+            showAlert("FaceId Error", errMessage)
         }
-        
-        
     }
-    
 }
 
