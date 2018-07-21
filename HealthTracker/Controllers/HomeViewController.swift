@@ -13,23 +13,21 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var leadingContraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
-        
-        
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(localAuthentication(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //localAuthentication(tapGestureRecognizer: nil)
         localAuthentication(tapGestureRecognizer: nil)
     }
     
     @objc func localAuthentication(tapGestureRecognizer: UITapGestureRecognizer?) -> Void {
         // bypass FaceId for testing
-        self.performSegue(withIdentifier: "ShowProtected", sender: nil)
-        
         
         let laContext = LAContext()
         var error: NSError?
@@ -68,7 +66,10 @@ class HomeViewController: UIViewController {
                         print("laError - \(laError)")
                     } else {
                         if isSuccess {
-                            self.performSegue(withIdentifier: "ShowProtected", sender: nil)
+                            // 1. Fade out Anonymous image
+                            if let faceImage = UIImage(named: "Mitch") {
+                                self.fadeInNewImage(newImage: faceImage)
+                            }
                         } else {
                             print("failure")
                         }
@@ -88,6 +89,29 @@ class HomeViewController: UIViewController {
             }
             showAlert("FaceId Error", errMessage)
         }
+    }
+    
+    func fadeInNewImage(newImage: UIImage?) {
+        if newImage == nil {
+            return
+        }
+        
+        
+        let tmpImageView = UIImageView(image: newImage)
+        tmpImageView.contentMode = .scaleAspectFit
+        tmpImageView.frame = imageView.bounds
+        tmpImageView.alpha = 0.0
+        imageView.addSubview(tmpImageView)
+        
+        UIView.animate(withDuration: 1.75, animations: {
+            tmpImageView.alpha = 1.0
+            //self.view.backgroundColor = UIColor.white
+        }, completion: {
+            finished in
+            self.imageView.image = newImage
+            tmpImageView.removeFromSuperview()
+            self.performSegue(withIdentifier: "ShowProtected", sender: nil)
+        })
     }
 }
 

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             coreDataManager.importCath()
             coreDataManager.importBowel()
             coreDataManager.importMedication()
-            print(coreDataManager.applicationDocumentsDirectory())
+            //print(coreDataManager.applicationDocumentsDirectory())
         }
         return true
     }

@@ -10,10 +10,12 @@ import UIKit
 
 class BackTableViewController: UITableViewController {
     
-    var TableArray = [String]()
+    let MenuItems = ["cath schedule", "medications", "bowel movements", "physicians"]
+    let ReusableIdentifiers = ["CathCell", "MedicationsCell", "BowelCell", "PhysiciansCell"]
+    let MenuImageNames = ["urine-collection", "pill-bottle", "toilet-paper", "medical-doctor"]
 
     override func viewDidLoad() {
-        TableArray = ["cath schedule", "medications", "bowel movements", "physicians"]
+        //TableArray = ["cath schedule", "medications", "bowel movements", "physicians"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,16 +28,29 @@ class BackTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return TableArray.count
+        return MenuItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableArray[indexPath.row], for: indexPath)
-
-        // Configure the cell...
-        cell.textLabel?.text = TableArray[indexPath.row]
-
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: TableArray[indexPath.row], for: indexPath)
+//
+//        // Configure the cell...
+//        cell.textLabel?.text = TableArray[indexPath.row]
+//
+//        return cell
+        
+        if let menuCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifiers[indexPath.row]) as? MenuCell {
+            
+            menuCell.title.text = MenuItems[indexPath.row]
+            menuCell.menuImage.image = UIImage(named: MenuImageNames[indexPath.row])
+            return menuCell
+        }
+        return UITableViewCell()
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0;
     }
 
 }

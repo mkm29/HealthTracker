@@ -30,6 +30,7 @@
 		AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC9120F6DA0700F06A61 /* LaunchScreen.storyboard */; };
 		AFAF10BB20F6E94700D00312 /* CathTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */; };
 		AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */; };
+		AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB0EE42103A7BB003B3991 /* MenuCell.swift */; };
 		AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */; };
 		AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */; };
 		AFFB5FE620F6F24400B4500E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE520F6F24400B4500E /* Coordinator.swift */; };
@@ -63,6 +64,7 @@
 		AF94AC9420F6DA0700F06A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathTableViewController.swift; sourceTree = "<group>"; };
 		AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
+		AFDB0EE42103A7BB003B3991 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrinateCell.swift; sourceTree = "<group>"; };
 		AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCathViewController.swift; sourceTree = "<group>"; };
 		AFFB5FE520F6F24400B4500E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */,
 				AF4B975020FA96D000D89D94 /* MedicationCell.swift */,
+				AFDB0EE42103A7BB003B3991 /* MenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,
 				AFAF10BB20F6E94700D00312 /* CathTableViewController.swift in Sources */,
 				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,
+				AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
