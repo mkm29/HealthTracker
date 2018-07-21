@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class BowelTableViewController: UITableViewController, HealthTVC {
+class BowelTableViewController: UITableViewController, HealthTVC, NSFetchedResultsControllerDelegate {
     
     var coordinator: Coordinator! = Coordinator.shared
 
@@ -23,6 +24,7 @@ class BowelTableViewController: UITableViewController, HealthTVC {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         setupReveal()
+        coordinator.bowelFRC.delegate = self
         coordinator.fetch(type: .Bowel)
     }
     
@@ -31,6 +33,36 @@ class BowelTableViewController: UITableViewController, HealthTVC {
         Open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate methods
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        default:
+            print("...")
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            print("...")
+        }
     }
 
     // MARK: - Table view data source

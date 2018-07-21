@@ -102,14 +102,14 @@ class CoreDataManager {
     }
     
     private func newCath(fromDict dict: [String : Any]) -> Cath? {
-        guard let date = dict["date"] as? String,
-            let time = dict["time"] as? String,
-            let amount = dict["amount"] as? Int16, let timestamp = time.dateFromTime() else {
+        guard let datestring = dict["date"] as? String,
+            let timestamp = dict["timestamp"] as? Date,
+            let amount = dict["amount"] as? Int16 else {
             print("error: unable to get all data from dictionary")
             return nil
         }
         let newCath = Cath(context: context)
-        newCath.date = date
+        newCath.date = datestring
         newCath.timestamp = timestamp
         newCath.amount = amount
         saveContext()

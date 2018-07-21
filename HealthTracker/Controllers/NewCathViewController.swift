@@ -12,10 +12,8 @@ class NewCathViewController: UIViewController {
     
     let coordinator = Coordinator.shared
 
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
-    
-    var setDateManual = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +34,11 @@ class NewCathViewController: UIViewController {
         }
         
         var cathDict = [String : Any]()
-        if setDateManual, let dateString = dateTextField.text {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MM-dd-yyyy hh:mm a"
-            cathDict["date"] = dateString.date() as! NSDate
-        } else {
-            cathDict["date"] = NSDate()
-        }
+        cathDict["date"] = Date().string(withFormat: Constants.DateFormat.Normal)
+        cathDict["timestamp"] = Date().toFormat(Constants.DateFormat.Long)
+        cathDict["amount"] = Int16((amountString as NSString).integerValue)
         
-        cathDict["amount"] = (amountString as NSString).integerValue
+        //print(cathDict)
         _ = coordinator.coreDataManager.createNewObject(ofType: .Cath, objectDictionary: cathDict)
         navigationController?.dismiss(animated: true, completion: nil)
         
@@ -58,10 +52,7 @@ class NewCathViewController: UIViewController {
         
         present(alertController, animated: true, completion: nil)
     }
-    
-    @IBAction func setDateManual(_ sender: Any) {
-        setDateManual = true
-    }
+
     private func getDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

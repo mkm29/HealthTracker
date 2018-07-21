@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     
     @objc func localAuthentication(tapGestureRecognizer: UITapGestureRecognizer?) -> Void {
         // bypass FaceId for testing
-        //self.performSegue(withIdentifier: "ShowProtected", sender: nil)
+        self.performSegue(withIdentifier: "ShowProtected", sender: nil)
         
         
         let laContext = LAContext()

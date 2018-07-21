@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MedicationTableViewController: UITableViewController, HealthTVC {
+class MedicationTableViewController: UITableViewController, HealthTVC, NSFetchedResultsControllerDelegate {
     
     var coordinator: Coordinator! // = Coordinator.shared
 
@@ -25,6 +25,7 @@ class MedicationTableViewController: UITableViewController, HealthTVC {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         coordinator = Coordinator.shared
         setupReveal()
+        coordinator.medicationFRC.delegate = self
         coordinator.fetch(type: .Medication)
     }
     
@@ -33,6 +34,36 @@ class MedicationTableViewController: UITableViewController, HealthTVC {
         Open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate methods
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        default:
+            print("...")
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            print("...")
+        }
     }
 
     // MARK: - Table view data source

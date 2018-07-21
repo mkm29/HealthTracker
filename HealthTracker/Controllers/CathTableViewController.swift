@@ -25,6 +25,7 @@ class CathTableViewController: UITableViewController, NSFetchedResultsController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         setupReveal()
         coordinator.fetch(type: .Cath)
+        coordinator.cathFRC.delegate = self
     }
     
     func setupReveal() {
@@ -32,6 +33,36 @@ class CathTableViewController: UITableViewController, NSFetchedResultsController
         Open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate methods
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        default:
+            print("...")
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            print("...")
+        }
     }
 
     // MARK: - Table view data source
@@ -83,7 +114,7 @@ class CathTableViewController: UITableViewController, NSFetchedResultsController
             // get urinate object
             let cath = coordinator.cathFRC.object(at: indexPath)
             cell.amountLabel.text = "\(cath.amount)"
-            cell.timeLabel.text = cath.timestamp?.timeString()
+            cell.timeLabel.text = cath.timestamp?.string(withFormat: Constants.DateFormat.Time)
             return cell
         }
         return UITableViewCell()

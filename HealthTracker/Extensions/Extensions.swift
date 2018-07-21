@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mitchell Murphy. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
 extension Optional where Wrapped == String {
     var nilIfEmpty: String? {
@@ -36,16 +36,13 @@ extension String {
 
 extension Date {
     
-    func timeString() -> String {
+    func toFormat(_ format: String) -> Date? {
+        // 1. get date string from self
         let formatter = DateFormatter()
-        formatter.dateFormat = Constants.DateFormat.Time
-        return formatter.string(from:self)
-    }
-    
-    func dayMonth() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = Constants.DateFormat.DayMonth
-        return formatter.string(from: self)
+        formatter.dateFormat = format
+        let dateString = formatter.string(from: self)
+        // 2.
+        return formatter.date(from: dateString)
     }
     
     func string(withFormat format: String) -> String {
@@ -57,7 +54,6 @@ extension Date {
 }
 
 extension UIViewController {
-    
     
     func showAlert(_ title: String, _ message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
