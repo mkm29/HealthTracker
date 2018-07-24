@@ -17,8 +17,6 @@ class CoreDataManager {
         case Physician
     }
     
-    
-    
     public lazy var context: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
@@ -87,18 +85,20 @@ class CoreDataManager {
     
     
     func createNewObject(ofType type: EntityType, objectDictionary dict: [String : Any]) -> NSManagedObject? {
+        var newObject: NSManagedObject?
         
         switch type {
         case .Cath:
-            return newCath(fromDict: dict)
+            newObject = newCath(fromDict: dict)
         case .Medication:
-            return newMedication(fromDictionary: dict)
+            newObject = newMedication(fromDictionary: dict)
         case .Bowel:
-            return newBowel(fromDict: dict)
+            newObject = newBowel(fromDict: dict)
         case .Physician:
-            return newPysician(fromDict: dict)
+            newObject = newPysician(fromDict: dict)
         }
-        
+        saveContext()
+        return newObject
     }
     
     private func newCath(fromDict dict: [String : Any]) -> Cath? {
@@ -112,16 +112,8 @@ class CoreDataManager {
         newCath.date = datestring
         newCath.timestamp = timestamp
         newCath.amount = amount
-        saveContext()
         return newCath
     }
-    
-//    func getCath(fromTimestamp timestamp: Date) -> Cath? {
-//        
-//        let request: NSFetchRequest<Cath> = Cath.fetchRequest()
-//        request.predicate = NSPredicate(format: "timestamp == %@", timestamp)
-//        
-//    }
     
     private func newMedication(fromDictionary dict: [String : Any]) -> Medication? {
         guard let name = dict["name"] as? String,
@@ -136,7 +128,6 @@ class CoreDataManager {
         newMedication.purpose = purpose
         newMedication.frequency = frequency
         newMedication.dosage = dosage
-        saveContext()
         return newMedication
     }
     
@@ -150,19 +141,30 @@ class CoreDataManager {
         newBowel.timestamp = timestamp as Date
         newBowel.date = date
         newBowel.type = type
-        saveContext()
         return newBowel
     }
     
     private func newPysician(fromDict dict: [String:Any]) -> Physician? {
-        guard let name = dict["name"] as? String, let specialty = dict["specialty"] as? String else {
-            print("Error: unable to get all data from dictionary")
+        guard let givenName = dict["givenName"] as? String,
+            let familyName = dict["familyName"] as? String,
+            let specialty = dict["specialty"] as? String else {
+            AppDelegate.getAppDelegate().showAlert("Error", "There was an issue creating new Physician object: unable to parse data.")
             return nil
         }
+
         let newPhysician = Physician(context: context)
-        newPhysician.name = name
+        newPhysician.givenName = givenName
+        newPhysician.familyName = familyName
         newPhysician.specialty = specialty
-        saveContext()
+        
+        if let medicalEducation = dict["medicalEducation"] as? String {
+            newPhysician.medicalEducation = medicalEducation
+        }
+        
+        if let contactIdentifier = dict["contactIdentifier"] as? String {
+            newPhysician.contactIdentifier = contactIdentifier
+        }
+
         return newPhysician
     }
     

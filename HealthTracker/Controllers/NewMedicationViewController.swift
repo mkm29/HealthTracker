@@ -24,6 +24,8 @@ class NewMedicationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         nameTextField.becomeFirstResponder()
+        nameTextField.addBottomBorder()
+        purposeTextField.addBottomBorder()
     }
     
 
@@ -40,7 +42,7 @@ class NewMedicationViewController: UIViewController {
                 print("All fields must be completed.")
                 return
         }
-        let medicationDict: [String:Any] = ["name" : name, "dosage" : Int16(dosage), "frequency" : Int16(frequency), "purpose" : purpose, "date" : datePicker.date]
+        let medicationDict: [String:Any] = ["name" : name, "dosage" : Int16(dosage) ?? 0, "frequency" : Int16(frequency) ?? 0, "purpose" : purpose, "date" : datePicker.date]
         _ = coordinator.coreDataManager.createNewObject(ofType: .Medication, objectDictionary: medicationDict)
         navigationController?.dismiss(animated: true, completion: nil)
     }

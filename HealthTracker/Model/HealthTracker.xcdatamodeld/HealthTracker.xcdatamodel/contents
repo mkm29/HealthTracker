@@ -2,19 +2,21 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14296.2" systemVersion="18A336e" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="appointment" inverseEntity="Note" syncable="YES"/>
         <relationship name="physician" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Physician" inverseName="appointments" inverseEntity="Physician" syncable="YES"/>
     </entity>
     <entity name="Bowel" representedClassName="Bowel" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="bowelMovement" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="Cath" representedClassName="Cath" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="date" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="cath" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="Filled" representedClassName="Filled" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,7 +30,18 @@
         <attribute name="purpose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remaining" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="filled" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Filled" inverseName="medication" inverseEntity="Filled" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="medication" inverseEntity="Note" syncable="YES"/>
         <relationship name="prescriber" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Physician" inverseName="medications" inverseEntity="Physician" syncable="YES"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="note" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="bowelMovement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bowel" inverseName="note" inverseEntity="Bowel" syncable="YES"/>
+        <relationship name="cath" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cath" inverseName="note" inverseEntity="Cath" syncable="YES"/>
+        <relationship name="medication" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medication" inverseName="notes" inverseEntity="Medication" syncable="YES"/>
+        <relationship name="physician" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Physician" inverseName="notes" inverseEntity="Physician" syncable="YES"/>
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,10 +50,14 @@
         <relationship name="supplies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Supply" inverseName="order" inverseEntity="Supply" syncable="YES"/>
     </entity>
     <entity name="Physician" representedClassName="Physician" syncable="YES" codeGenerationType="class">
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="contactIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="familyName" attributeType="String" syncable="YES"/>
+        <attribute name="givenName" attributeType="String" syncable="YES"/>
+        <attribute name="medicalEducation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specialty" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="physician" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="medications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Medication" inverseName="prescriber" inverseEntity="Medication" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="physician" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="Supply" representedClassName="Supply" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,12 +67,13 @@
     </entity>
     <elements>
         <element name="Appointment" positionX="512.31640625" positionY="-112.10546875" width="128" height="105"/>
-        <element name="Bowel" positionX="-226.54296875" positionY="185.984375" width="128" height="90"/>
-        <element name="Cath" positionX="-92.8046875" positionY="2.5703125" width="128" height="90"/>
+        <element name="Bowel" positionX="-226.54296875" positionY="185.984375" width="128" height="105"/>
+        <element name="Cath" positionX="-174.76953125" positionY="-10.8828125" width="128" height="105"/>
         <element name="Filled" positionX="377.01171875" positionY="232.44140625" width="128" height="90"/>
-        <element name="Medication" positionX="36" positionY="297" width="128" height="150"/>
+        <element name="Medication" positionX="-14.80859375" positionY="268.06640625" width="128" height="165"/>
+        <element name="Note" positionX="124.84765625" positionY="-213.68359375" width="128" height="165"/>
         <element name="Order" positionX="-414.81640625" positionY="287.61328125" width="128" height="105"/>
-        <element name="Physician" positionX="304.6171875" positionY="26.0390625" width="128" height="105"/>
+        <element name="Physician" positionX="304.6171875" positionY="26.0390625" width="128" height="165"/>
         <element name="Supply" positionX="-201.26171875" positionY="463.203125" width="128" height="105"/>
     </elements>
 </model>

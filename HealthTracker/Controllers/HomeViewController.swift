@@ -21,10 +21,10 @@ class HomeViewController: UIViewController {
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //localAuthentication(tapGestureRecognizer: nil)
-        localAuthentication(tapGestureRecognizer: nil)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        //localAuthentication(tapGestureRecognizer: nil)
+//        localAuthentication(tapGestureRecognizer: nil)
+//    }
     
     @objc func localAuthentication(tapGestureRecognizer: UITapGestureRecognizer?) -> Void {
         // bypass FaceId for testing
@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
             
             if let laError = error {
-                showAlert("Auth Error", laError.localizedDescription)
+                AppDelegate.getAppDelegate().showAlert("Auth Error", laError.localizedDescription)
                 return
             }
             
@@ -50,11 +50,11 @@ class HomeViewController: UIViewController {
                     //print("TouchId support")
                 } else {
                     print("No Biometric support")
-                    showAlert("Auth Error", "FaceId not supported")
+                    AppDelegate.getAppDelegate().showAlert("Auth Error", "FaceId not supported")
                 }
             } else {
                 // Fallback on earlier versions
-                showAlert("Error", "Unhandled error")
+                AppDelegate.getAppDelegate().showAlert("Error", "Unhandled error")
             }
             
             
@@ -66,9 +66,14 @@ class HomeViewController: UIViewController {
                         print("laError - \(laError)")
                     } else {
                         if isSuccess {
+                            Coordinator.shared.isAuthenticated = true
+                            // need to add a delay
                             // 1. Fade out Anonymous image
                             if let faceImage = UIImage(named: "Mitch") {
-                                self.fadeInNewImage(newImage: faceImage)
+                                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                                    self.fadeInNewImage(newImage: faceImage)
+                                })
+                                
                             }
                         } else {
                             print("failure")
@@ -83,11 +88,11 @@ class HomeViewController: UIViewController {
                 errMessage = error!.localizedDescription
             }
             if let err = error?.localizedDescription {
-                showAlert("Auth Error", "Can't evaluate policy: \(err)")
+                AppDelegate.getAppDelegate().showAlert("Auth Error", "Can't evaluate policy: \(err)")
             } else {
                 errMessage = "Can't evaluate policy"
             }
-            showAlert("FaceId Error", errMessage)
+            AppDelegate.getAppDelegate().showAlert("FaceId Error", errMessage)
         }
     }
     
@@ -110,6 +115,7 @@ class HomeViewController: UIViewController {
             finished in
             self.imageView.image = newImage
             tmpImageView.removeFromSuperview()
+            // request permissions here? or when needed?
             self.performSegue(withIdentifier: "ShowProtected", sender: nil)
         })
     }

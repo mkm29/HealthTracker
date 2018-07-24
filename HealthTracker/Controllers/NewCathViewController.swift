@@ -20,6 +20,7 @@ class NewCathViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         //dateTextField.text = getDateString()
+        amountTextField.addBottomBorder()
         amountTextField.becomeFirstResponder()
     }
     

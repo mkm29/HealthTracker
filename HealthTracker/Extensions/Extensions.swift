@@ -6,8 +6,6 @@
 //  Copyright © 2018 Mitchell Murphy. All rights reserved.
 //
 
-import CoreData
-
 extension Optional where Wrapped == String {
     var nilIfEmpty: String? {
         guard let strongSelf = self else {
@@ -53,12 +51,18 @@ extension Date {
     
 }
 
-extension UIViewController {
+extension UITextField {
     
-    func showAlert(_ title: String, _ message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+    func addBottomBorder() {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
+        self.borderStyle = .none
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
     }
+    
     
 }

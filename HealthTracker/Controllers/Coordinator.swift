@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import Contacts
 
 class Coordinator {
     
@@ -21,10 +21,15 @@ class Coordinator {
     
     static let shared = Coordinator()
     
-    var isAuthenticated: Bool = false
-
+    let appDelegate = AppDelegate.getAppDelegate()
     let coreDataManager = CoreDataManager()
     
+    let contactsStore = CNContactStore()
+    
+    // State (bool) variables
+    var hasContactsPermissions = false
+    var hasNotificationsPermissions = false
+    var isAuthenticated = false
     
     // FetchedResultControllers
     var cathFRC: NSFetchedResultsController<Cath>!
@@ -35,8 +40,39 @@ class Coordinator {
     
     
     init() {
-        
         setupFetchedResultsControllers()
+    }
+    
+    func requestContactsAccess() {
+        let authorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+        
+        switch authorizationStatus {
+        case .authorized:
+            hasContactsPermissions = true
+            
+        case .denied, .notDetermined:
+            self.contactsStore.requestAccess(for: CNEntityType.contacts, completionHandler: { (access, accessError) -> Void in
+                if access {
+                    self.hasContactsPermissions = true
+                }
+                else {
+                    if authorizationStatus == CNAuthorizationStatus.denied {
+                        DispatchQueue.main.async {
+                            let message = "\(accessError!.localizedDescription)\n\nPlease allow the app to access your contacts through the Settings."
+                            self.appDelegate.showAlert("Contacts Error", message)
+                        }
+                    }
+                }
+            })
+            
+        default:
+            hasContactsPermissions = false
+        }
+    }
+    
+    func requestNotificationsPermissions() {
+        // I do not want/need remote notifications...just local
+        //UIApplication.shared.registerForRemoteNotifications() // you can also set here for local notification.
     }
     
     func setupFetchedResultsControllers() {
@@ -76,7 +112,7 @@ class Coordinator {
     
     private func setupPhysiciansFRC() {
         let request: NSFetchRequest<Physician> = Physician.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Physician.name), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Physician.familyName), ascending: true)
         request.sortDescriptors = [sort]
         physicianFRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
     }
