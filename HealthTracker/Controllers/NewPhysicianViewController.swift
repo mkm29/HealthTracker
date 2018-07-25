@@ -11,8 +11,6 @@ import ContactsUI
 
 class NewPhysicianViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, CNContactPickerDelegate {
     
-    let coordinator = Coordinator.shared
-    
     var selectedContact: CNContact? {
         didSet {
             firstName.text = selectedContact?.givenName
@@ -29,12 +27,6 @@ class NewPhysicianViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if !coordinator.hasContactsPermissions {
-            // disable choose contacts button
-            coordinator.requestContactsAccess()
-            //chooseContact.isEnabled = false
-        }
 
         // Do any additional setup after loading the view.
         firstName.addBottomBorder()
@@ -47,9 +39,7 @@ class NewPhysicianViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
 
     @IBAction func pickContact(_ sender: Any) {
-        if !coordinator.hasContactsPermissions {
-            coordinator.requestContactsAccess()
-        }
+        // make sure you have permissions
         let contactPickerViewController = CNContactPickerViewController()
         contactPickerViewController.predicateForEnablingContact = NSPredicate(format: "birthday != nil")
         contactPickerViewController.delegate = self
@@ -80,7 +70,7 @@ class NewPhysicianViewController: UIViewController, UITextFieldDelegate, UIPicke
         }
         dict["specialty"] = specialty.text.nilIfEmpty
         dict["eduication"] = education.text.nilIfEmpty
-        _ = coordinator.coreDataManager.createNewObject(ofType: .Physician, objectDictionary: dict)
+        _ = CoreDataManager.shared.createNewObject(ofType: .Physician, objectDictionary: dict)
         
         navigationController?.dismiss(animated: true, completion: nil)
     }

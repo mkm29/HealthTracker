@@ -49,7 +49,7 @@ class NewBowelViewController: UIViewController, UIPickerViewDataSource, UIPicker
         bowelDict["timestamp"] = timestamp
         bowelDict["date"] = formatter.string(from: timestamp as Date)
         bowelDict["type"] = types[typePickerView.selectedRow(inComponent: 0)]
-        _ = Coordinator.shared.coreDataManager.createNewObject(ofType: CoreDataManager.EntityType.Bowel, objectDictionary: bowelDict)
+        _ = CoreDataManager.shared.createNewObject(ofType: Constants.EntityType.Bowel, objectDictionary: bowelDict)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

@@ -4,56 +4,56 @@
 		"dosage" : 100,
 		"frequency" : 3,
 		"purpose" : "anticonvulsant",
-		"remaining" : 0
+		"type" : "prescription"
 	},
 	{
 		"name" : "Keppra",
 		"dosage" : 500,
 		"frequency" : 2,
 		"purpose" : "anticonvulsant",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Myrbetriq",
 		"dosage" : 50,
 		"frequency" : 1,
 		"purpose" : "overactive bladder",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Oxybutynin",
 		"dosage" : 5,
 		"frequency" : 3,
 		"purpose" : "overactive bladder",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Cymbalta",
 		"dosage" : 30,
 		"frequency" : 1,
 		"purpose" : "antidepressant",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Senna",
 		"dosage" : 50,
 		"frequency" : 1,
 		"purpose" : "constipation",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Sucralfate",
 		"dosage" : 1000,
 		"frequency" : 1,
 		"purpose" : "acid reflux/ulcers",
-		"remaining" : 0
+        "type" : "prescription"
 	},
 	{
 		"name" : "Ranitidine",
 		"dosage" : 150,
 		"frequency" : 1,
 		"purpose" : "acid reflux",
-		"remaining" : 0
+        "type" : "prescription"
 	}
 
 ]

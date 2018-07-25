@@ -10,9 +10,9 @@ import UIKit
 
 class BackTableViewController: UITableViewController {
     
-    let MenuItems = ["cath history", "medications", "bowel movements", "physicians", "notes", "orders", "supplies", "settings", "logout"]
-    let ReusableIdentifiers = ["CathCell", "MedicationsCell", "BowelCell", "PhysiciansCell", "NotesCell", "OrdersCell", "SuppliesCell", "SettingsCell", "LogoutCell"]
-    let MenuImageNames = ["urine-collection", "pill-bottle", "toilet-paper", "doctor", "notes", "orders", "supplies", "settings", "logout"]
+    let MenuItems = ["cath history", "medications", "bowel movements", "appointments", "physicians", "notes", "orders", "supplies", "settings", "logout"]
+    let ReusableIdentifiers = ["CathsCell", "MedicationsCell", "BowelCell", "AppointmentCell", "PhysiciansCell", "NotesCell", "OrdersCell", "SuppliesCell", "SettingsCell", "LogoutCell"]
+    let MenuImageNames = ["urine-collection", "pill-bottle", "toilet-paper", "appointment", "doctor", "notes", "orders", "supplies", "settings", "logout"]
 
     override func viewDidLoad() {
         //TableArray = ["cath schedule", "medications", "bowel movements", "physicians"]

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UrinateCell: UITableViewCell {
+class CathCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!

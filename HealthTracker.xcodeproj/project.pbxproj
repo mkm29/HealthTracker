@@ -21,6 +21,11 @@
 		AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B974D20FA8E7200D89D94 /* Extensions.swift */; };
 		AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B975020FA96D000D89D94 /* MedicationCell.swift */; };
 		AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */; };
+		AF65BACA2107F6A800B5555C /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAC92107F6A800B5555C /* NotesTableViewController.swift */; };
+		AF65BACC2107FF8300B5555C /* HealthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACB2107FF8300B5555C /* HealthTableViewController.swift */; };
+		AF65BACE21081AD700B5555C /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACD21081AD700B5555C /* OrdersTableViewController.swift */; };
+		AF65BAD021081D4600B5555C /* SuppliesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACF21081D4600B5555C /* SuppliesTableViewController.swift */; };
+		AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAD12108320600B5555C /* ImportHealth.swift */; };
 		AF69D0F72102D4B600B1716D /* NewBowelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
@@ -33,9 +38,8 @@
 		AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */; };
 		AFD6D82A21069E3F00A6BAE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */; };
 		AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB0EE42103A7BB003B3991 /* MenuCell.swift */; };
-		AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */; };
+		AFEF27BB20F973BF00F057E3 /* CathCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF27BA20F973BF00F057E3 /* CathCell.swift */; };
 		AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */; };
-		AFFB5FE620F6F24400B4500E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB5FE520F6F24400B4500E /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,11 @@
 		AF4B974D20FA8E7200D89D94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
+		AF65BAC92107F6A800B5555C /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		AF65BACB2107FF8300B5555C /* HealthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewController.swift; sourceTree = "<group>"; };
+		AF65BACD21081AD700B5555C /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
+		AF65BACF21081D4600B5555C /* SuppliesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesTableViewController.swift; sourceTree = "<group>"; };
+		AF65BAD12108320600B5555C /* ImportHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportHealth.swift; sourceTree = "<group>"; };
 		AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBowelViewController.swift; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,9 +78,8 @@
 		AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
 		AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFDB0EE42103A7BB003B3991 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
-		AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrinateCell.swift; sourceTree = "<group>"; };
+		AFEF27BA20F973BF00F057E3 /* CathCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathCell.swift; sourceTree = "<group>"; };
 		AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCathViewController.swift; sourceTree = "<group>"; };
-		AFFB5FE520F6F24400B4500E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DAFE2AD3816DE8F14EB7B705 /* Pods-HealthTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthTracker/Pods-HealthTracker.release.xcconfig"; sourceTree = "<group>"; };
 		F4FA8B706B5DBC04D3C1DC4D /* Pods-HealthTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthTracker/Pods-HealthTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +116,7 @@
 		AF4714A320F81DED00006CA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFEF27BA20F973BF00F057E3 /* UrinateCell.swift */,
+				AFEF27BA20F973BF00F057E3 /* CathCell.swift */,
 				AF4B975020FA96D000D89D94 /* MedicationCell.swift */,
 				AFDB0EE42103A7BB003B3991 /* MenuCell.swift */,
 			);
@@ -184,6 +192,7 @@
 				AF8E879120FC161D00C2CC4F /* Constants.swift */,
 				AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */,
 				AF94AC8C20F6DA0500F06A61 /* HealthTracker.xcdatamodeld */,
+				AF65BAD12108320600B5555C /* ImportHealth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,15 +211,18 @@
 				AF044AF3210161800061ED36 /* BackTableViewController.swift */,
 				AF0E9DE0210170520005F8FD /* BowelTableViewController.swift */,
 				AFAF10BA20F6E94700D00312 /* CathTableViewController.swift */,
-				AFFB5FE520F6F24400B4500E /* Coordinator.swift */,
+				AF65BACB2107FF8300B5555C /* HealthTableViewController.swift */,
+				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
 				AF94AC8720F6DA0500F06A61 /* HomeViewController.swift */,
 				AFAF10BC20F6E97A00D00312 /* MedicationTableViewController.swift */,
 				AF69D0F62102D4B600B1716D /* NewBowelViewController.swift */,
 				AFFB5FE320F6F0BA00B4500E /* NewCathViewController.swift */,
 				AF3FAC5420F6FB3B00D5ED73 /* NewMedicationViewController.swift */,
 				AF264C9B21041F120019BD4F /* NewPhysicianViewController.swift */,
-				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
+				AF65BAC92107F6A800B5555C /* NotesTableViewController.swift */,
+				AF65BACD21081AD700B5555C /* OrdersTableViewController.swift */,
 				AF157416210240F400F4C6E1 /* PhysiciansTableViewController.swift */,
+				AF65BACF21081D4600B5555C /* SuppliesTableViewController.swift */,
 				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
 				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
 			);
@@ -338,27 +350,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF65BAD021081D4600B5555C /* SuppliesTableViewController.swift in Sources */,
 				AF044AF4210161800061ED36 /* BackTableViewController.swift in Sources */,
+				AF65BACA2107F6A800B5555C /* NotesTableViewController.swift in Sources */,
 				AF264C9C21041F120019BD4F /* NewPhysicianViewController.swift in Sources */,
 				AF69D0F72102D4B600B1716D /* NewBowelViewController.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTableViewController.swift in Sources */,
+				AF65BACC2107FF8300B5555C /* HealthTableViewController.swift in Sources */,
 				AF94AC8820F6DA0500F06A61 /* HomeViewController.swift in Sources */,
 				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
+				AF65BACE21081AD700B5555C /* OrdersTableViewController.swift in Sources */,
 				AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */,
 				AFAF10BD20F6E97A00D00312 /* MedicationTableViewController.swift in Sources */,
 				AF0E9DE1210170520005F8FD /* BowelTableViewController.swift in Sources */,
 				AFFB5FE420F6F0BA00B4500E /* NewCathViewController.swift in Sources */,
-				AFEF27BB20F973BF00F057E3 /* UrinateCell.swift in Sources */,
+				AFEF27BB20F973BF00F057E3 /* CathCell.swift in Sources */,
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,
 				AFAF10BB20F6E94700D00312 /* CathTableViewController.swift in Sources */,
 				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,
 				AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */,
+				AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
 				AF3FAC5520F6FB3B00D5ED73 /* NewMedicationViewController.swift in Sources */,
 				AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */,
-				AFFB5FE620F6F24400B4500E /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

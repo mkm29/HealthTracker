@@ -9,22 +9,17 @@
 import UIKit
 import CoreData
 
-class PhysiciansTableViewController: UITableViewController, HealthTVC, NSFetchedResultsControllerDelegate {
-    var coordinator: Coordinator! = Coordinator.shared
+class PhysiciansTableViewController: HealthTableViewController, HealthMenu {
+
+    override var entityType: Constants.EntityType { return .Physician }
+    override var sectionNameKeyPath: String? { return "specialty" }
+    override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"specialty", ascending: true), NSSortDescriptor(key: "familyName", ascending: true)] }
 
     @IBOutlet weak var Open: UIBarButtonItem!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         setupReveal()
-        coordinator.physicianFRC.delegate = self
-        coordinator.fetch(type: .Physician)
+
     }
 
     func setupReveal() {
@@ -35,62 +30,18 @@ class PhysiciansTableViewController: UITableViewController, HealthTVC, NSFetched
     }
     
     // MARK: - NSFetchedResultsControllerDelegate methods
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .fade)
-            }
-        default:
-            print("...")
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        default:
-            print("...")
-        }
-    }
-    
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if let rows = coordinator.physicianFRC.fetchedObjects?.count {
-            return rows
-        } else {
-            return 1
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
-    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhysicianCell", for: indexPath)
-        // get doctor
-        let physician = coordinator.physicianFRC.object(at: indexPath)
-        // Configure the cell...
-        if let fname = physician.givenName, let lname = physician.familyName {
-            cell.textLabel?.text = "\(fname) \(lname)"
-        } else {
-            cell.textLabel?.text = ""
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PhysicianCell"), let physician = fetchedResultsController.object(at: indexPath) as? Physician {
+            if let fname = physician.givenName, let lname = physician.familyName {
+                cell.textLabel?.text = "\(fname) \(lname)"
+            } else {
+                cell.textLabel?.text = ""
+            }
+            cell.detailTextLabel?.text = physician.specialty
+            return cell
         }
-        cell.detailTextLabel?.text = physician.specialty
-        return cell
+        return UITableViewCell()
     }
 
 }

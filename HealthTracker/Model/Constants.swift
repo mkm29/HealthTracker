@@ -18,5 +18,14 @@ struct Constants {
         static let Time = "hh:mm a"
     }
     
+    enum EntityType: String {
+        case Cath = "Cath"
+        case Medication = "Medication"
+        case Bowel = "Bowel"
+        case Physician = "Physician"
+        case Note = "Note"
+        case Order = "Order"
+        case Supply = "Supply"
+    }
     
 }

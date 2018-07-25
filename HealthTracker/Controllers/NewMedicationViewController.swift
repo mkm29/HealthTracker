@@ -9,8 +9,6 @@
 import UIKit
 
 class NewMedicationViewController: UIViewController {
-    
-    let coordinator = Coordinator.shared
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dosageTextField: UITextField!
@@ -26,6 +24,8 @@ class NewMedicationViewController: UIViewController {
         nameTextField.becomeFirstResponder()
         nameTextField.addBottomBorder()
         purposeTextField.addBottomBorder()
+        dosageTextField.addBottomBorder()
+        frequencyTextField.addBottomBorder()
     }
     
 
@@ -43,7 +43,7 @@ class NewMedicationViewController: UIViewController {
                 return
         }
         let medicationDict: [String:Any] = ["name" : name, "dosage" : Int16(dosage) ?? 0, "frequency" : Int16(frequency) ?? 0, "purpose" : purpose, "date" : datePicker.date]
-        _ = coordinator.coreDataManager.createNewObject(ofType: .Medication, objectDictionary: medicationDict)
+        _ = CoreDataManager.shared.createNewObject(ofType: .Medication, objectDictionary: medicationDict)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     /*

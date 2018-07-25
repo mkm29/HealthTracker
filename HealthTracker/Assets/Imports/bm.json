@@ -24,14 +24,19 @@
 		"time" : "11:30 AM",
 		"type" : "large"
 	},
-	{
-		"date" : "07-20-2018",
-		"time" : "10:00 AM",
-		"type" : "normal"
+    {
+        "date" : "07-20-2018",
+        "time" : "10:00 AM",
+        "type" : "normal"
     },
      {
-     "date" : "07-23-2018",
-    "time" : "3:30 PM",
-     "type" : "normal"
-     }
+         "date" : "07-23-2018",
+        "time" : "3:30 PM",
+         "type" : "normal"
+     },
+     {
+         "date" : "07-24-2018",
+         "time" : "4:50 PM",
+         "type" : "small"
+    }
 ]

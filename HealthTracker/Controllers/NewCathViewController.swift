@@ -9,8 +9,6 @@
 import UIKit
 
 class NewCathViewController: UIViewController {
-    
-    let coordinator = Coordinator.shared
 
     @IBOutlet weak var amountTextField: UITextField!
 
@@ -40,7 +38,8 @@ class NewCathViewController: UIViewController {
         cathDict["amount"] = Int16((amountString as NSString).integerValue)
         
         //print(cathDict)
-        _ = coordinator.coreDataManager.createNewObject(ofType: .Cath, objectDictionary: cathDict)
+        _ = CoreDataManager.shared.createNewObject(ofType: .Cath, objectDictionary: cathDict)
+        
         navigationController?.dismiss(animated: true, completion: nil)
         
     }

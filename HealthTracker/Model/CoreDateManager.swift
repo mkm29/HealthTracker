@@ -10,42 +10,10 @@ import CoreData
 
 class CoreDataManager {
     
-    enum EntityType {
-        case Cath
-        case Medication
-        case Bowel
-        case Physician
-    }
+    static let shared = CoreDataManager()
     
     public lazy var context: NSManagedObjectContext = {
-        return persistentContainer.viewContext
-    }()
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "HealthTracker")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
+        return AppDelegate.getAppDelegate().persistentContainer.viewContext
     }()
     
     func applicationDocumentsDirectory() -> String {
@@ -57,20 +25,6 @@ class CoreDataManager {
     }
     
     // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
     
     func clearEntity(_ name: String) {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: name)
@@ -84,7 +38,7 @@ class CoreDataManager {
     }
     
     
-    func createNewObject(ofType type: EntityType, objectDictionary dict: [String : Any]) -> NSManagedObject? {
+    func createNewObject(ofType type: Constants.EntityType, objectDictionary dict: [String : Any]) -> NSManagedObject? {
         var newObject: NSManagedObject?
         
         switch type {
@@ -96,8 +50,10 @@ class CoreDataManager {
             newObject = newBowel(fromDict: dict)
         case .Physician:
             newObject = newPysician(fromDict: dict)
+        case .Note, .Order, .Supply:
+            break
         }
-        saveContext()
+        AppDelegate.getAppDelegate().saveContext()
         return newObject
     }
     
@@ -167,94 +123,6 @@ class CoreDataManager {
 
         return newPhysician
     }
-    
-    
-    // TODO: add export functionality
-    
-    // MARK: - Import
-    
-    func importCath() {
-        // if let path = Bundle.main.path(forResource: "shoes", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-        if let path = Bundle.main.path(forResource: "cath", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
-                if let cathDict = json as? [[String : Any]] {
-                    for cath in cathDict {
-                        // create new Cath object
-                        if let dateString = cath["date"] as? String,
-                            let amount = cath["amount"] as? Int16,
-                            let time = cath["time"] as? String,
-                            let timestamp = "\(dateString) \(time)".date() {
-                            
-                            let newCath = Cath(context: context)
-                            newCath.date = dateString
-                            newCath.amount = amount
-                            // concatenate date and time
-                            newCath.timestamp = timestamp
-                            
-                        }
-                    }
-                    saveContext()
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func importMedication() {
-        if let path = Bundle.main.path(forResource: "medication", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
-                if let medicationDict = json as? [[String:Any]] {
-                    for medDict in medicationDict {
-                        if let name = medDict["name"] as? String,
-                            let dosage = medDict["dosage"] as? Int,
-                            let freq = medDict["frequency"] as? Int,
-                            let purpose = medDict["purpose"] as? String {
-                            let newMedication = Medication(context: context)
-                            newMedication.name = name
-                            newMedication.dosage = Int16(dosage)
-                            newMedication.frequency = Int16(freq)
-                            newMedication.purpose = purpose
-                            newMedication.remaining = 0
-                        }
-                    }
-                    saveContext()
-                }
-                
-                
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func importBowel() {
-        if let path = Bundle.main.path(forResource: "bm", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
-                if let bmDict = json as? [[String:String]] {
-                    for dict in bmDict {
-                        if let date = dict["date"], let time = dict["time"], let type = dict["type"], let timestamp = "\(date) \(time)".date() {
-                            let newBowel = Bowel(context: context)
-                            newBowel.date = date
-                            newBowel.timestamp = timestamp
-                            newBowel.type = type
-                        }
-                    }
-                    saveContext()
-                }
-                
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     
     
     

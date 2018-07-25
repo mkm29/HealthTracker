@@ -168,7 +168,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mbx-k3-acz">
-                                <rect key="frame" x="16" y="165.66666666666666" width="343" height="480.66666666666674"/>
+                                <rect key="frame" x="16" y="168.33333333333334" width="343" height="475.66666666666663"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="medication name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CUZ-2j-iu0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -179,71 +179,65 @@
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="r39-OX-Ndl" userLabel="Dosage and Frequency">
-                                        <rect key="frame" x="0.0" y="66" width="343" height="37"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="r39-OX-Ndl" userLabel="Dosage and Frequency">
+                                        <rect key="frame" x="0.0" y="66" width="343" height="32"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Chs-nr-YAt" userLabel="dosage">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="37"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Chs-nr-YAt" userLabel="dosage">
+                                                <rect key="frame" x="0.0" y="0.0" width="116" height="32"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lrm-6H-6ww">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="37"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="SP2-vR-arL"/>
-                                                        </constraints>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="30" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lrm-6H-6ww">
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="32"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="23"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltK-O9-Dgt">
-                                                        <rect key="frame" x="50" y="0.0" width="142.33333333333334" height="37"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgN-fi-UuV">
-                                                        <rect key="frame" x="222.33333333333334" y="0.0" width="30" height="37"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="8Hr-lC-GHo"/>
-                                                        </constraints>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="23"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                    </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="times daily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-bX-tRa">
-                                                        <rect key="frame" x="262.33333333333331" y="0.0" width="80.666666666666686" height="37"/>
+                                                        <rect key="frame" x="64" y="0.0" width="52" height="32"/>
                                                         <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="hqi-bX-tRa" firstAttribute="leading" secondItem="zgN-fi-UuV" secondAttribute="trailing" constant="10" id="6qG-5W-0YZ"/>
-                                                    <constraint firstItem="zgN-fi-UuV" firstAttribute="leading" secondItem="ltK-O9-Dgt" secondAttribute="trailing" constant="30" id="m6a-cO-je4"/>
-                                                    <constraint firstItem="ltK-O9-Dgt" firstAttribute="leading" secondItem="Lrm-6H-6ww" secondAttribute="trailing" constant="10" id="pWI-ES-DZR"/>
-                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Uj0-jf-314">
+                                                <rect key="frame" x="132" y="0.0" width="211" height="32"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgN-fi-UuV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="32"/>
+                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="23"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="times daily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-bX-tRa">
+                                                        <rect key="frame" x="41" y="0.0" width="170" height="32"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="medication purpose" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-VP-UWe">
-                                        <rect key="frame" x="0.0" y="119.00000000000003" width="343" height="36"/>
+                                        <rect key="frame" x="0.0" y="113.99999999999997" width="343" height="36"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last filled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eY8-OP-uaz">
-                                        <rect key="frame" x="0.0" y="171.00000000000003" width="343" height="31.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="165.99999999999997" width="343" height="31.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Ev-je-Bjx">
-                                        <rect key="frame" x="0.0" y="218.66666666666663" width="343" height="216"/>
+                                        <rect key="frame" x="0.0" y="213.66666666666663" width="343" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="553278960.25492597">
                                             <!--2018-07-14 16:36:00 +0000-->
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuS-tG-Tdv">
-                                        <rect key="frame" x="0.0" y="450.66666666666674" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="445.66666666666663" width="343" height="30"/>
                                         <color key="backgroundColor" red="0.33376038070000003" green="0.12777683140000001" blue="0.52394640449999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="add new medication">
                                             <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -350,7 +344,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UrinateCell" rowHeight="110" id="LB4-or-j2e" customClass="UrinateCell" customModule="HealthTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CathCell" rowHeight="110" id="LB4-or-j2e" customClass="CathCell" customModule="HealthTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LB4-or-j2e" id="xAA-gu-ray">
@@ -611,7 +605,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CathCell" rowHeight="65" id="QF5-tc-L3U" userLabel="cath cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CathsCell" rowHeight="65" id="QF5-tc-L3U" userLabel="cath cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QF5-tc-L3U" id="EHl-nX-7Yl">
@@ -751,8 +745,42 @@
                                     <segue destination="d0j-Kj-KBk" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="sgL-WU-RiU"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="65" id="1va-xp-ocN" userLabel="notes cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppointmentCell" rowHeight="65" id="S0c-W6-YdZ" userLabel="appointment cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="288" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S0c-W6-YdZ" id="emf-Yw-pVa">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-cB-R09">
+                                            <rect key="frame" x="0.0" y="4.6666666666666643" width="60" height="59.999999999999993"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="9pU-4b-0T3"/>
+                                                <constraint firstAttribute="width" secondItem="5f7-cB-R09" secondAttribute="height" multiplier="1:1" id="UQh-7V-yYq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZb-eH-4uT">
+                                            <rect key="frame" x="79" y="20.333333333333329" width="296" height="24"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BZb-eH-4uT" firstAttribute="leading" secondItem="5f7-cB-R09" secondAttribute="trailing" constant="19" id="0hc-1w-wtY"/>
+                                        <constraint firstAttribute="bottom" secondItem="5f7-cB-R09" secondAttribute="bottom" id="7Ox-l4-s3E"/>
+                                        <constraint firstAttribute="trailing" secondItem="BZb-eH-4uT" secondAttribute="trailing" id="JII-tX-bpe"/>
+                                        <constraint firstItem="5f7-cB-R09" firstAttribute="leading" secondItem="emf-Yw-pVa" secondAttribute="leading" id="MP0-hn-Ojd"/>
+                                        <constraint firstItem="BZb-eH-4uT" firstAttribute="centerY" secondItem="emf-Yw-pVa" secondAttribute="centerY" id="b3A-2h-Qw1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="menuImage" destination="5f7-cB-R09" id="GOn-03-dZl"/>
+                                    <outlet property="title" destination="BZb-eH-4uT" id="nxH-Pv-qq9"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="65" id="1va-xp-ocN" userLabel="notes cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="353" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1va-xp-ocN" id="Bku-as-wOO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
@@ -786,7 +814,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrdersCell" rowHeight="65" id="7qQ-zD-nSj" userLabel="orders cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="353" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="418" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qQ-zD-nSj" id="u6J-TP-Mxr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
@@ -820,7 +848,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuppliesCell" rowHeight="65" id="WGs-P1-Q2p" userLabel="supplies" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="418" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="483" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WGs-P1-Q2p" id="v7E-aT-PVv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
@@ -854,7 +882,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="65" id="oeY-5e-sYr" userLabel="settings cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="483" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="548" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oeY-5e-sYr" id="ObA-e9-OA9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
@@ -888,7 +916,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoutCell" rowHeight="65" id="uVW-P2-7Ql" userLabel="logout cell" customClass="MenuCell" customModule="HealthTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="548" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="613" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uVW-P2-7Ql" id="Dfg-bj-drQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.666666666666671"/>
@@ -1111,6 +1139,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l27-gS-0vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3149.5999999999999" y="1845.8128078817736"/>
+        </scene>
+        <!--Notes Table View Controller-->
+        <scene sceneID="uBI-hU-gZE">
+            <objects>
+                <tableViewController id="t3U-Kf-qeW" customClass="NotesTableViewController" customModule="HealthTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eem-Zu-Vln">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="lwi-6D-Yxg" detailTextLabel="EBJ-lu-hEt" rowHeight="90" style="IBUITableViewCellStyleSubtitle" id="Qep-lj-dQc">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qep-lj-dQc" id="kIa-b0-K1e">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lwi-6D-Yxg">
+                                            <rect key="frame" x="16.000000000000004" y="25" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EBJ-lu-hEt">
+                                            <rect key="frame" x="15.999999999999996" y="48.333333333333329" width="32.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t3U-Kf-qeW" id="pUc-jt-F3Y"/>
+                            <outlet property="delegate" destination="t3U-Kf-qeW" id="9Gr-Rf-kym"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="iXa-g6-ggc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dzb-3N-nI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4090.4000000000001" y="2584.729064039409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UE1-lp-g1C">

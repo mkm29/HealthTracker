@@ -66,7 +66,6 @@ class HomeViewController: UIViewController {
                         print("laError - \(laError)")
                     } else {
                         if isSuccess {
-                            Coordinator.shared.isAuthenticated = true
                             // need to add a delay
                             // 1. Fade out Anonymous image
                             if let faceImage = UIImage(named: "Mitch") {
