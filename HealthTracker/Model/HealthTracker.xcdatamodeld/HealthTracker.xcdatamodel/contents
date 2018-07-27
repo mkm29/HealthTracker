@@ -36,7 +36,8 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="body" attributeType="String" syncable="YES"/>
-        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="note" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="bowelMovement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bowel" inverseName="note" inverseEntity="Bowel" syncable="YES"/>
@@ -73,7 +74,7 @@
         <element name="Cath" positionX="-174.76953125" positionY="-10.8828125" width="128" height="105"/>
         <element name="Filled" positionX="377.01171875" positionY="232.44140625" width="128" height="90"/>
         <element name="Medication" positionX="-14.80859375" positionY="268.06640625" width="128" height="180"/>
-        <element name="Note" positionX="124.84765625" positionY="-213.68359375" width="128" height="165"/>
+        <element name="Note" positionX="124.84765625" positionY="-213.68359375" width="128" height="180"/>
         <element name="Order" positionX="-414.81640625" positionY="287.61328125" width="128" height="120"/>
         <element name="Physician" positionX="304.6171875" positionY="26.0390625" width="128" height="165"/>
         <element name="Supply" positionX="-201.26171875" positionY="463.203125" width="128" height="105"/>

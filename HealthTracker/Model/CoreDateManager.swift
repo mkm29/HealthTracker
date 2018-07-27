@@ -50,7 +50,9 @@ class CoreDataManager {
             newObject = newBowel(fromDict: dict)
         case .Physician:
             newObject = newPysician(fromDict: dict)
-        case .Note, .Order, .Supply:
+        case .Note:
+            newObject = newNote(fromDict: dict)
+        case .Order, .Supply:
             break
         }
         AppDelegate.getAppDelegate().saveContext()
@@ -122,6 +124,20 @@ class CoreDataManager {
         }
 
         return newPhysician
+    }
+    
+    private func newNote(fromDict dict: [String: Any]) -> Note? {
+        guard let noteTitle = dict["title"] as? String,
+            let noteBody = dict["body"] as? String else {
+            AppDelegate.getAppDelegate().showAlert("Error", "There was an issue creating new Mote object: unable to parse data.")
+            return nil
+        }
+        let newNote = Note(context: context)
+        newNote.body = noteBody
+        newNote.title = noteTitle
+        newNote.timestamp = Date()
+        newNote.date = newNote.timestamp?.string(withFormat: Constants.DateFormat.Normal)
+        return newNote
     }
     
     

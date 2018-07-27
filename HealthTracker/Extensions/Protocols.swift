@@ -11,3 +11,13 @@ protocol HealthMenu {
     
     func setupReveal()
 }
+
+//protocol AddEntity {
+//    
+//    var coreDataManager: CoreDataManager { get set }
+//    
+//    func cancel(_ sender: Any)
+//    
+//    func save(_ sender: Any)
+//    
+//}

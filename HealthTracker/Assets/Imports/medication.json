@@ -45,7 +45,7 @@
 		"name" : "Sucralfate",
 		"dosage" : 1000,
 		"frequency" : 1,
-		"purpose" : "acid reflux/ulcers",
+		"purpose" : "acid reflux",
         "type" : "prescription"
 	},
 	{

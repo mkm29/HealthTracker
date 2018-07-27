@@ -50,15 +50,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             // need to import date
             //print("First launch, importing data...")
-            let importer = ImportHealth()
-            importer.importCath()
-            importer.importBowel()
-            importer.importMedication()
-            //print(coreDataManager.applicationDocumentsDirectory())
+            importRecords()
+            print(applicationsDocumentDirectory())
         }
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         
         return true
+    }
+    
+    func importRecords() {
+        ImportHealth.importCath()
+        ImportHealth.importBowel()
+        ImportHealth.importMedication()
+    }
+    
+    func applicationsDocumentDirectory() -> String {
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        return documentsURL.absoluteString.replacingOccurrences(of: "%20", with: "\\ ")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -82,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        saveContext()
     }
 
     // MARK: - Core Data stack

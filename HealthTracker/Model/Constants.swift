@@ -28,4 +28,14 @@ struct Constants {
         case Supply = "Supply"
     }
     
+    enum CellIdentifiers: String {
+        case Cath = "CathCell"
+        case Bowel = "BowelCell"
+        case Medication = "MedicationCell"
+        case Note = "NoteCell"
+        case Order = "OrderCell"
+        case Physician = "PhysicianCell"
+        case Supply = "SupplyCell"
+    }
+    
 }
