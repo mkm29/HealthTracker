@@ -16,7 +16,7 @@ class CoreDataManager {
         return AppDelegate.getAppDelegate().persistentContainer.viewContext
     }()
     
-    func applicationDocumentsDirectory() -> String {
+    class func applicationDocumentsDirectory() -> String {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.bartjacobs.Core_Data" in the application's documents Application Support directory.
         //let urls = FileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
@@ -26,11 +26,11 @@ class CoreDataManager {
     
     // MARK: - Core Data Saving support
     
-    func clearEntity(_ name: String) {
+    class func clearEntity(_ name: String) {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: name)
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         do {
-            _ = try context.execute(request)
+            _ = try AppDelegate.getAppDelegate().persistentContainer.viewContext.execute(request)
         } catch {
             print(error.localizedDescription)
         }
@@ -52,7 +52,7 @@ class CoreDataManager {
             newObject = newPysician(fromDict: dict)
         case .Note:
             newObject = newNote(fromDict: dict)
-        case .Order, .Supply:
+        case .Order, .Supply, .Appointment:
             break
         }
         AppDelegate.getAppDelegate().saveContext()
@@ -86,11 +86,14 @@ class CoreDataManager {
         newMedication.purpose = purpose
         newMedication.frequency = frequency
         newMedication.dosage = dosage
+        if let imagePath = dict["imagePath"] as? String {
+            newMedication.imagePath = imagePath
+        }
         return newMedication
     }
     
     private func newBowel(fromDict dict: [String:Any]) -> Bowel? {
-        guard let timestamp = dict["timestamp"] as? NSDate, let date = dict["date"] as? String, let type = dict["type"] as? String else {
+        guard let timestamp = dict["timestamp"] as? NSDate, let date = dict["date"] as? String, let intensity = dict["intensity"] as? Int16 else {
             print("Error: unable to get all data from dictionary")
             return nil
         }
@@ -98,7 +101,7 @@ class CoreDataManager {
         let newBowel = Bowel(context: context)
         newBowel.timestamp = timestamp as Date
         newBowel.date = date
-        newBowel.type = type
+        newBowel.intensity = intensity
         return newBowel
     }
     

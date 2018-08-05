@@ -7,6 +7,8 @@ target 'HealthTracker' do
 
   # Pods for HealthTracker
   pod 'Firebase'
-  pod 'FirebaseDatabase'
+  pod 'FirebaseCore'
+  pod 'FirebaseFirestore'
+#  pod 'FirebaseDatabase'
 #  pod 'Hakawai'
 end

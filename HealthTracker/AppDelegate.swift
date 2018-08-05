@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             importRecords()
             print(applicationsDocumentDirectory())
         }
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         
         return true
     }

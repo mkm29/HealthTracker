@@ -54,6 +54,15 @@ class ImportHealth {
                     let appDelegate = AppDelegate.getAppDelegate()
                     
                     for medDict in medicationDict {
+//                        {
+//                            "name": "Duloxetine",
+//                            "dosage": 30,
+//                            "frequency": 1,
+//                            "prescription": true,
+//                            "purpose": "major depressive disorder",
+//                            "active": true,
+//                            "pillboxImageURL": "https://pillbox.nlm.nih.gov/assets/large/57237-0018-30_NLMIMAGE10_F63AFB57.jpg"
+//                        }
                         if let name = medDict["name"] as? String,
                             let dosage = medDict["dosage"] as? Int,
                             let freq = medDict["frequency"] as? Int,
@@ -63,7 +72,16 @@ class ImportHealth {
                             newMedication.dosage = Int16(dosage)
                             newMedication.frequency = Int16(freq)
                             newMedication.purpose = purpose
-                            newMedication.remaining = 0
+                            
+                            if let isPrescription = medDict["prescription"] as? Bool {
+                                newMedication.prescription = isPrescription
+                            }
+                            if let isActive = medDict["active"] as? Bool {
+                                newMedication.active = isActive
+                            }
+                            if let pillboxImageURL = medDict["pillboxImageURL"] as? String {
+                                newMedication.pillboxImageURL = pillboxImageURL
+                            }
                         }
                     }
                     appDelegate.saveContext()
@@ -81,19 +99,22 @@ class ImportHealth {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 
-                if let bmDict = json as? [[String:String]] {
-                    let appDelegate = AppDelegate.getAppDelegate()
-                    
+                if let bmDict = json as? [[String:Any]] {
                     for dict in bmDict {
-                        if let date = dict["date"], let time = dict["time"], let type = dict["type"], let timestamp = "\(date) \(time)".date() {
-                            let newBowel = Bowel(context: appDelegate.persistentContainer.viewContext)
-                            newBowel.date = date
-                            newBowel.timestamp = timestamp
-                            newBowel.type = type
-                        }
+                        _ = CoreDataManager.shared.createNewObject(ofType: .Bowel, objectDictionary: dict)
                     }
-                    
-                    appDelegate.saveContext()
+//                    let appDelegate = AppDelegate.getAppDelegate()
+//
+//                    for dict in bmDict {
+//                        if let date = dict["date"] as? String, let time = dict["time"], let intensity = dict["intensity"] as? Int16, let timestamp = "\(date) \(time)".date() {
+//                            let newBowel = Bowel(context: appDelegate.persistentContainer.viewContext)
+//                            newBowel.date = date
+//                            newBowel.timestamp = timestamp
+//                            newBowel.intensity = intensity
+//                        }
+//                    }
+//
+//                    appDelegate.saveContext()
                 }
                 
             } catch {

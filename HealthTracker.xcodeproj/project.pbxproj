@@ -10,8 +10,9 @@
 		58FA55A1E65ED8D9ED9B3F5D /* Pods_HealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A7DF50F5A709D9BA5916EF /* Pods_HealthTracker.framework */; };
 		AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */; };
 		AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF044AF3210161800061ED36 /* MenuTVC.swift */; };
+		AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8903211576D900DDD4AA /* FirebaseClient.swift */; };
+		AF0E8908211579C600DDD4AA /* FirebaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8907211579C600DDD4AA /* FirebaseVC.swift */; };
 		AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E9DE0210170520005F8FD /* BowelTVC.swift */; };
-		AF15741521022DE700F4C6E1 /* bm.json in Resources */ = {isa = PBXBuildFile; fileRef = AF15741421022DE700F4C6E1 /* bm.json */; };
 		AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */; };
 		AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EBAE0210269D900E1A1FF /* Protocols.swift */; };
 		AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */; };
@@ -27,7 +28,6 @@
 		AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACD21081AD700B5555C /* OrdersTVC.swift */; };
 		AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACF21081D4600B5555C /* SuppliesTVC.swift */; };
 		AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAD12108320600B5555C /* ImportHealth.swift */; };
-		AF69D0F72102D4B600B1716D /* AddBowelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69D0F62102D4B600B1716D /* AddBowelVC.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
 		AF94AC8820F6DA0500F06A61 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* HomeVC.swift */; };
@@ -37,6 +37,15 @@
 		AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC9120F6DA0700F06A61 /* LaunchScreen.storyboard */; };
 		AFAF10BB20F6E94700D00312 /* CathTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BA20F6E94700D00312 /* CathTVC.swift */; };
 		AFAF10BD20F6E97A00D00312 /* MedicationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */; };
+		AFB545A2210BDDD200F3B8DA /* AddBowelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */; };
+		AFB545A6210BDE9600F3B8DA /* BowelDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A5210BDE9600F3B8DA /* BowelDetailVC.swift */; };
+		AFB545A8210BDED000F3B8DA /* CathDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A7210BDED000F3B8DA /* CathDetailVC.swift */; };
+		AFB545AA210BDEE800F3B8DA /* MedicationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A9210BDEE800F3B8DA /* MedicationDetailVC.swift */; };
+		AFB545AC210BDEFE00F3B8DA /* OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545AB210BDEFE00F3B8DA /* OrderDetailVC.swift */; };
+		AFB545AE210BDF6B00F3B8DA /* PhysicianDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545AD210BDF6B00F3B8DA /* PhysicianDetailVC.swift */; };
+		AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */; };
+		AFB545B2210BDFD200F3B8DA /* AppointmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */; };
+		AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545B3210BF0AE00F3B8DA /* AddAppointmentVC.swift */; };
 		AFCEBF2F210958D3004E6186 /* AddNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */; };
 		AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEBF3021095C65004E6186 /* AddEntityVC.swift */; };
 		AFD6D82A21069E3F00A6BAE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */; };
@@ -51,8 +60,9 @@
 		AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		AF044AF3210161800061ED36 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
+		AF0E8903211576D900DDD4AA /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		AF0E8907211579C600DDD4AA /* FirebaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVC.swift; sourceTree = "<group>"; };
 		AF0E9DE0210170520005F8FD /* BowelTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelTVC.swift; sourceTree = "<group>"; };
-		AF15741421022DE700F4C6E1 /* bm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bm.json; sourceTree = "<group>"; };
 		AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansTVC.swift; sourceTree = "<group>"; };
 		AF1EBAE0210269D900E1A1FF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhysicianVC.swift; sourceTree = "<group>"; };
@@ -63,12 +73,12 @@
 		AF4B974D20FA8E7200D89D94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
+		AF62500A2116864F00F19231 /* bowel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bowel.json; sourceTree = "<group>"; };
 		AF65BAC92107F6A800B5555C /* NotesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTVC.swift; sourceTree = "<group>"; };
 		AF65BACB2107FF8300B5555C /* HealthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTVC.swift; sourceTree = "<group>"; };
 		AF65BACD21081AD700B5555C /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		AF65BACF21081D4600B5555C /* SuppliesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesTVC.swift; sourceTree = "<group>"; };
 		AF65BAD12108320600B5555C /* ImportHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportHealth.swift; sourceTree = "<group>"; };
-		AF69D0F62102D4B600B1716D /* AddBowelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBowelVC.swift; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +90,15 @@
 		AF94AC9420F6DA0700F06A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFAF10BA20F6E94700D00312 /* CathTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathTVC.swift; sourceTree = "<group>"; };
 		AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTVC.swift; sourceTree = "<group>"; };
+		AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBowelVC.swift; sourceTree = "<group>"; };
+		AFB545A5210BDE9600F3B8DA /* BowelDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelDetailVC.swift; sourceTree = "<group>"; };
+		AFB545A7210BDED000F3B8DA /* CathDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathDetailVC.swift; sourceTree = "<group>"; };
+		AFB545A9210BDEE800F3B8DA /* MedicationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetailVC.swift; sourceTree = "<group>"; };
+		AFB545AB210BDEFE00F3B8DA /* OrderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailVC.swift; sourceTree = "<group>"; };
+		AFB545AD210BDF6B00F3B8DA /* PhysicianDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianDetailVC.swift; sourceTree = "<group>"; };
+		AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyDetailVC.swift; sourceTree = "<group>"; };
+		AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailVC.swift; sourceTree = "<group>"; };
+		AFB545B3210BF0AE00F3B8DA /* AddAppointmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentVC.swift; sourceTree = "<group>"; };
 		AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteVC.swift; sourceTree = "<group>"; };
 		AFCEBF3021095C65004E6186 /* AddEntityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntityVC.swift; sourceTree = "<group>"; };
 		AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,6 +148,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AF4B6576210BDD0700A6E3E8 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				AFB545B3210BF0AE00F3B8DA /* AddAppointmentVC.swift */,
+				AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */,
+				AFFB5FE320F6F0BA00B4500E /* AddCathVC.swift */,
+				AFCEBF3021095C65004E6186 /* AddEntityVC.swift */,
+				AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */,
+				AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */,
+				AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		AF4B974F20FA8FC300D89D94 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,9 +174,9 @@
 		AF81551820FFCEDD007F5007 /* Imports */ = {
 			isa = PBXGroup;
 			children = (
-				AF15741421022DE700F4C6E1 /* bm.json */,
 				AF45D113210029D300D691C1 /* cath.json */,
 				AF45D112210029D300D691C1 /* medication.json */,
+				AF62500A2116864F00F19231 /* bowel.json */,
 			);
 			path = Imports;
 			sourceTree = "<group>";
@@ -199,6 +232,7 @@
 				AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */,
 				AF94AC8C20F6DA0500F06A61 /* HealthTracker.xcdatamodeld */,
 				AF65BAD12108320600B5555C /* ImportHealth.swift */,
+				AFF186732116002D002726DF /* Client */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,28 +248,55 @@
 		AFAF10B720F6E75C00D00312 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AF69D0F62102D4B600B1716D /* AddBowelVC.swift */,
-				AFFB5FE320F6F0BA00B4500E /* AddCathVC.swift */,
-				AFCEBF3021095C65004E6186 /* AddEntityVC.swift */,
-				AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */,
-				AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */,
-				AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */,
+				AF4B6576210BDD0700A6E3E8 /* Add */,
+				AFB545A4210BDE6800F3B8DA /* Detail */,
+				AFB545A3210BDE4100F3B8DA /* Table */,
+				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
+				AF94AC8720F6DA0500F06A61 /* HomeVC.swift */,
+				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
+				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
+				AF0E8907211579C600DDD4AA /* FirebaseVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AFB545A3210BDE4100F3B8DA /* Table */ = {
+			isa = PBXGroup;
+			children = (
 				AF0E9DE0210170520005F8FD /* BowelTVC.swift */,
 				AFAF10BA20F6E94700D00312 /* CathTVC.swift */,
 				AF65BACB2107FF8300B5555C /* HealthTVC.swift */,
-				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
-				AF94AC8720F6DA0500F06A61 /* HomeVC.swift */,
 				AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */,
 				AF044AF3210161800061ED36 /* MenuTVC.swift */,
 				AF65BAC92107F6A800B5555C /* NotesTVC.swift */,
-				AF4693C121097FB100F244F8 /* NoteDetailVC.swift */,
 				AF65BACD21081AD700B5555C /* OrdersTVC.swift */,
 				AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */,
 				AF65BACF21081D4600B5555C /* SuppliesTVC.swift */,
-				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
-				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
 			);
-			path = Controllers;
+			path = Table;
+			sourceTree = "<group>";
+		};
+		AFB545A4210BDE6800F3B8DA /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */,
+				AFB545A5210BDE9600F3B8DA /* BowelDetailVC.swift */,
+				AFB545A7210BDED000F3B8DA /* CathDetailVC.swift */,
+				AFB545A9210BDEE800F3B8DA /* MedicationDetailVC.swift */,
+				AF4693C121097FB100F244F8 /* NoteDetailVC.swift */,
+				AFB545AB210BDEFE00F3B8DA /* OrderDetailVC.swift */,
+				AFB545AD210BDF6B00F3B8DA /* PhysicianDetailVC.swift */,
+				AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		AFF186732116002D002726DF /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				AF0E8903211576D900DDD4AA /* FirebaseClient.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +360,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF15741521022DE700F4C6E1 /* bm.json in Resources */,
 				AF45D114210029D300D691C1 /* medication.json in Resources */,
 				AF45D115210029D300D691C1 /* cath.json in Resources */,
 				AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */,
@@ -337,13 +397,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HealthTracker/Pods-HealthTracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -363,13 +435,17 @@
 				AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */,
 				AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */,
 				AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */,
-				AF69D0F72102D4B600B1716D /* AddBowelVC.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */,
 				AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */,
+				AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */,
+				AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */,
 				AF94AC8820F6DA0500F06A61 /* HomeVC.swift in Sources */,
 				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
+				AFB545A6210BDE9600F3B8DA /* BowelDetailVC.swift in Sources */,
 				AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */,
 				AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */,
+				AFB545A2210BDDD200F3B8DA /* AddBowelVC.swift in Sources */,
+				AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */,
 				AFAF10BD20F6E97A00D00312 /* MedicationTVC.swift in Sources */,
 				AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */,
 				AFFB5FE420F6F0BA00B4500E /* AddCathVC.swift in Sources */,
@@ -380,13 +456,19 @@
 				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,
 				AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */,
 				AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */,
+				AFB545AC210BDEFE00F3B8DA /* OrderDetailVC.swift in Sources */,
 				AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */,
+				AF0E8908211579C600DDD4AA /* FirebaseVC.swift in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
 				AFCEBF2F210958D3004E6186 /* AddNoteVC.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
+				AFB545B2210BDFD200F3B8DA /* AppointmentDetailVC.swift in Sources */,
+				AFB545AE210BDF6B00F3B8DA /* PhysicianDetailVC.swift in Sources */,
+				AFB545AA210BDEE800F3B8DA /* MedicationDetailVC.swift in Sources */,
 				AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */,
 				AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */,
+				AFB545A8210BDED000F3B8DA /* CathDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

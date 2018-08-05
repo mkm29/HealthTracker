@@ -61,16 +61,77 @@ extension Date {
 
 extension UITextField {
     
-    func addBottomBorder() {
+    enum BorderType {
+        case Left
+        case Top
+        case Bottom
+        case Right
+    }
+    
+    func addBorder(type: BorderType, color: UIColor, withWidth: Double) {
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGray.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
-        self.borderStyle = .none
+        border.borderColor = color.cgColor
+        let width = CGFloat(withWidth)
         border.borderWidth = width
+        self.borderStyle = .none
+        
+        var borderFrame: CGRect!
+        
+        switch type {
+        case .Bottom:
+            borderFrame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
+        case .Top:
+            borderFrame = CGRect(x: 0, y: 0 + width, width: self.frame.size.width, height: width)
+        case .Left:
+            borderFrame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
+        case .Right:
+            borderFrame = CGRect(x: self.frame.size.width, y: 0, width: width, height: self.frame.size.height)
+        }
+        border.frame = borderFrame
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
     }
+    
+}
+
+extension UIButton {
+    
+//    func roundBottomCorners() {
+//        let rectShape = CAShapeLayer()
+//        rectShape.bounds = self.frame
+//        rectShape.position = self.center
+//        rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft , .bottomRight , .topLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+//
+//        self.layer.backgroundColor = UIColor.green.cgColor
+//        //Here I'm masking the textView's layer with rectShape layer
+//        self.layer.mask = rectShape
+//    }
+    
+//    func roundBottom(cornerRadius: Int = 10) {
+//        self.clipsToBounds = true
+//        self.layer.cornerRadius = CGFloat(cornerRadius) // 10
+//        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+//        let tes = [CACornerMask.layerMaxXMinYCorner, CACornerMask.layerMinXMinYCorner]
+//        self.layer.maskedCorners = tes
+//    }
+    func round(radius: CGFloat, corners: CACornerMask) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = corners
+    }
+    
+    func roundTop(withRadius radius: CGFloat = Constants.Design.cornerRadius) {
+        self.round(radius: radius, corners: [CACornerMask.layerMaxXMinYCorner, CACornerMask.layerMinXMinYCorner])
+    }
+    
+    func roundBottom(withRadius radius: CGFloat = Constants.Design.cornerRadius) {
+        self.round(radius: radius, corners: [CACornerMask.layerMinXMaxYCorner, CACornerMask.layerMaxXMaxYCorner])
+    }
+    
+    func roundRight(withRadius radius: CGFloat = Constants.Design.cornerRadius) {
+        self.round(radius: radius, corners: [CACornerMask.layerMaxXMinYCorner, CACornerMask.layerMaxXMaxYCorner])
+    }
+
     
     
 }
