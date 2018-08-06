@@ -11,41 +11,47 @@ import CoreData
 
 class ImportHealth {
     
+    let appDelegate = AppDelegate.getAppDelegate()
+    let coreData = CoreDataManager()
+    let firebase = FirebaseClient()
     // MARK: - Import
     
-    class func importCath() {
+    func importCath() {
         // if let path = Bundle.main.path(forResource: "shoes", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+        print("Starting import")
         if let path = Bundle.main.path(forResource: "cath", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+            print("file exists")
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
+                print("serialzes JSON")
                 if let cathDict = json as? [[String : Any]] {
-                    let appDelegate = AppDelegate.getAppDelegate()
                     
                     for cath in cathDict {
-                        // create new Cath object
-                        if let dateString = cath["date"] as? String,
-                            let amount = cath["amount"] as? Int16,
+                        if let date = cath["date"] as? String,
                             let time = cath["time"] as? String,
-                            let timestamp = "\(dateString) \(time)".date() {
-                            
-                            let newCath = Cath(context: appDelegate.persistentContainer.viewContext)
-                            newCath.date = dateString
-                            newCath.amount = amount
-                            // concatenate date and time
-                            newCath.timestamp = timestamp
-                            
+                            let timestamp = "\(date) \(time)".date(withFormat: Constants.DateFormat.Long) {
+                            var newDict = cath
+                            newDict["timestamp"] = timestamp
+                            if let newCath = coreData.createNewObject(ofType: .Cath, objectDictionary: newDict) as? Cath {
+                                print("Created Cath")
+                                let firebaseCath = firebase.addDocument(.cath, data: newDict)
+                                newCath.documentID = firebaseCath?.documentID
+                            }
                         }
                     }
                     appDelegate.saveContext()
+                } else {
+                    print("unable to serialize JSON")
                 }
             } catch {
                 print(error.localizedDescription)
             }
+        } else {
+            print("file does not exist")
         }
     }
     
-    class func importMedication() {
+    func importMedication() {
         if let path = Bundle.main.path(forResource: "medication", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
@@ -54,35 +60,9 @@ class ImportHealth {
                     let appDelegate = AppDelegate.getAppDelegate()
                     
                     for medDict in medicationDict {
-//                        {
-//                            "name": "Duloxetine",
-//                            "dosage": 30,
-//                            "frequency": 1,
-//                            "prescription": true,
-//                            "purpose": "major depressive disorder",
-//                            "active": true,
-//                            "pillboxImageURL": "https://pillbox.nlm.nih.gov/assets/large/57237-0018-30_NLMIMAGE10_F63AFB57.jpg"
-//                        }
-                        if let name = medDict["name"] as? String,
-                            let dosage = medDict["dosage"] as? Int,
-                            let freq = medDict["frequency"] as? Int,
-                            let purpose = medDict["purpose"] as? String {
-                            let newMedication = Medication(context: appDelegate.persistentContainer.viewContext)
-                            newMedication.name = name
-                            newMedication.dosage = Int16(dosage)
-                            newMedication.frequency = Int16(freq)
-                            newMedication.purpose = purpose
-                            
-                            if let isPrescription = medDict["prescription"] as? Bool {
-                                newMedication.prescription = isPrescription
-                            }
-                            if let isActive = medDict["active"] as? Bool {
-                                newMedication.active = isActive
-                            }
-                            if let pillboxImageURL = medDict["pillboxImageURL"] as? String {
-                                newMedication.pillboxImageURL = pillboxImageURL
-                            }
-                        }
+                        let newMedication = CoreDataManager.shared.createNewObject(ofType: .Medication, objectDictionary: medDict) as! Medication
+                        let firebaseMed = firebase.addDocument(.medication, data: medDict)
+                        newMedication.documentID = firebaseMed?.documentID
                     }
                     appDelegate.saveContext()
                 }
@@ -94,32 +74,40 @@ class ImportHealth {
         }
     }
     
-    class func importBowel() {
-        if let path = Bundle.main.path(forResource: "bm", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+    func importBowel() {
+        print("Starting import")
+        if let path = Bundle.main.path(forResource: "bowel", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped) {
+            print("file exists")
             do {
+                print("serialzes JSON")
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
-                if let bmDict = json as? [[String:Any]] {
-                    for dict in bmDict {
-                        _ = CoreDataManager.shared.createNewObject(ofType: .Bowel, objectDictionary: dict)
+                if let jsonDict = json as? [[String:Any]] {
+                    for dict in jsonDict {
+                        if let date = dict["date"] as? String,
+                            let time = dict["time"] as? String,
+                            let timestamp = "\(date) \(time)".date(withFormat: Constants.DateFormat.Long) {
+                            var newDict = dict
+                            newDict["timestamp"] = timestamp
+                            if let newBowel = coreData.createNewObject(ofType: .Bowel, objectDictionary: newDict) as? Bowel {
+                                print("createn Bowel")
+                                let firebaseBowel = firebase.addDocument(.bowel, data: newDict)
+                                newBowel.documentID = firebaseBowel?.documentID
+                            } else {
+                                print("unable to create Bowel")
+                            }
+                            
+                        }
                     }
-//                    let appDelegate = AppDelegate.getAppDelegate()
-//
-//                    for dict in bmDict {
-//                        if let date = dict["date"] as? String, let time = dict["time"], let intensity = dict["intensity"] as? Int16, let timestamp = "\(date) \(time)".date() {
-//                            let newBowel = Bowel(context: appDelegate.persistentContainer.viewContext)
-//                            newBowel.date = date
-//                            newBowel.timestamp = timestamp
-//                            newBowel.intensity = intensity
-//                        }
-//                    }
-//
-//                    appDelegate.saveContext()
                 }
+
+                appDelegate.saveContext()
+                print("Done")
                 
             } catch {
                 print(error.localizedDescription)
             }
+        } else {
+            print("file not found")
         }
     }
     

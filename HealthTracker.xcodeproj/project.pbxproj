@@ -18,7 +18,6 @@
 		AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */; };
 		AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */; };
 		AF45D114210029D300D691C1 /* medication.json in Resources */ = {isa = PBXBuildFile; fileRef = AF45D112210029D300D691C1 /* medication.json */; };
-		AF45D115210029D300D691C1 /* cath.json in Resources */ = {isa = PBXBuildFile; fileRef = AF45D113210029D300D691C1 /* cath.json */; };
 		AF4693C221097FB100F244F8 /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4693C121097FB100F244F8 /* NoteDetailVC.swift */; };
 		AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B974D20FA8E7200D89D94 /* Extensions.swift */; };
 		AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B975020FA96D000D89D94 /* MedicationCell.swift */; };
@@ -35,6 +34,8 @@
 		AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8C20F6DA0500F06A61 /* HealthTracker.xcdatamodeld */; };
 		AF94AC9020F6DA0700F06A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC8F20F6DA0700F06A61 /* Assets.xcassets */; };
 		AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC9120F6DA0700F06A61 /* LaunchScreen.storyboard */; };
+		AF9E9D532117F7BE00E2978C /* cath.json in Resources */ = {isa = PBXBuildFile; fileRef = AF9E9D512117F7BD00E2978C /* cath.json */; };
+		AF9E9D542117F7BE00E2978C /* bowel.json in Resources */ = {isa = PBXBuildFile; fileRef = AF9E9D522117F7BD00E2978C /* bowel.json */; };
 		AFAF10BB20F6E94700D00312 /* CathTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BA20F6E94700D00312 /* CathTVC.swift */; };
 		AFAF10BD20F6E97A00D00312 /* MedicationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */; };
 		AFB545A2210BDDD200F3B8DA /* AddBowelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */; };
@@ -68,12 +69,10 @@
 		AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhysicianVC.swift; sourceTree = "<group>"; };
 		AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationVC.swift; sourceTree = "<group>"; };
 		AF45D112210029D300D691C1 /* medication.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medication.json; sourceTree = "<group>"; };
-		AF45D113210029D300D691C1 /* cath.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cath.json; sourceTree = "<group>"; };
 		AF4693C121097FB100F244F8 /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
 		AF4B974D20FA8E7200D89D94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
-		AF62500A2116864F00F19231 /* bowel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bowel.json; sourceTree = "<group>"; };
 		AF65BAC92107F6A800B5555C /* NotesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTVC.swift; sourceTree = "<group>"; };
 		AF65BACB2107FF8300B5555C /* HealthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTVC.swift; sourceTree = "<group>"; };
 		AF65BACD21081AD700B5555C /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
@@ -88,6 +87,8 @@
 		AF94AC8F20F6DA0700F06A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF94AC9220F6DA0700F06A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF94AC9420F6DA0700F06A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF9E9D512117F7BD00E2978C /* cath.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cath.json; sourceTree = "<group>"; };
+		AF9E9D522117F7BD00E2978C /* bowel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bowel.json; sourceTree = "<group>"; };
 		AFAF10BA20F6E94700D00312 /* CathTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathTVC.swift; sourceTree = "<group>"; };
 		AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTVC.swift; sourceTree = "<group>"; };
 		AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBowelVC.swift; sourceTree = "<group>"; };
@@ -174,9 +175,9 @@
 		AF81551820FFCEDD007F5007 /* Imports */ = {
 			isa = PBXGroup;
 			children = (
-				AF45D113210029D300D691C1 /* cath.json */,
+				AF9E9D522117F7BD00E2978C /* bowel.json */,
+				AF9E9D512117F7BD00E2978C /* cath.json */,
 				AF45D112210029D300D691C1 /* medication.json */,
-				AF62500A2116864F00F19231 /* bowel.json */,
 			);
 			path = Imports;
 			sourceTree = "<group>";
@@ -361,7 +362,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF45D114210029D300D691C1 /* medication.json in Resources */,
-				AF45D115210029D300D691C1 /* cath.json in Resources */,
+				AF9E9D542117F7BE00E2978C /* bowel.json in Resources */,
+				AF9E9D532117F7BE00E2978C /* cath.json in Resources */,
 				AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */,
 				AF94AC9020F6DA0700F06A61 /* Assets.xcassets in Resources */,
 				AF94AC8B20F6DA0500F06A61 /* Main.storyboard in Resources */,

@@ -49,19 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //print("First launch, setting UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             // need to import date
-            //print("First launch, importing data...")
-            importRecords()
-            print(applicationsDocumentDirectory())
         }
         FirebaseApp.configure()
+        print(applicationsDocumentDirectory())
         
         return true
-    }
-    
-    func importRecords() {
-        ImportHealth.importCath()
-        ImportHealth.importBowel()
-        ImportHealth.importMedication()
     }
     
     func applicationsDocumentDirectory() -> String {
