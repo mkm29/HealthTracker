@@ -8,9 +8,7 @@
 
 import UIKit
 
-class SupplyDetailVC: UIViewController {
-    
-    var supply: Supply? = nil
+class SupplyDetailVC: DetailVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

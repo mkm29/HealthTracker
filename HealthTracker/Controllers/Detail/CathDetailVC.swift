@@ -8,9 +8,8 @@
 
 import UIKit
 
-class CathDetailVC: UIViewController, UITextFieldDelegate {
+class CathDetailVC: DetailVC, UITextFieldDelegate {
     
-    var cath: Cath? = nil
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -21,7 +20,7 @@ class CathDetailVC: UIViewController, UITextFieldDelegate {
 
         // Disable the save button until something is changed
         saveButton.isEnabled = false
-        if let cath = cath {
+        if let cath = selectedObject as? Cath {
             datePicker.date = cath.timestamp!
             amount.text = "\(cath.amount)"
         }
@@ -38,14 +37,14 @@ class CathDetailVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if let cath = cath {
+        if let cath = selectedObject as? Cath {
             // update Cath
             cath.timestamp = datePicker.date
             cath.date = datePicker.date.string(withFormat: Constants.DateFormat.Normal)
             if let amountString = amount.text as NSString? {
                 cath.amount = Int16(amountString.intValue)
             }
-            AppDelegate.getAppDelegate().saveContext()
+            coordinator.coreDataManager.saveContext()
         }
         
         navigationController?.dismiss(animated: true, completion: nil)

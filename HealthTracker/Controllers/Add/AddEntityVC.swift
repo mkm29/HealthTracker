@@ -10,23 +10,11 @@ import UIKit
 
 class AddEntityVC: UIViewController {
     
-    let coreDataManager = CoreDataManager.shared
-    
+    var coordinator = Coordinator.shared
     var entityType: Constants.EntityType { fatalError("entity must be overridden") }
 
-    func addEntity(fromDict dict: [String:Any]) {
-        _ = coreDataManager.createNewObject(ofType: entityType, objectDictionary: dict)
+    func addEntity(fromDict dict: [String:Any]) -> Any? {
+         return coordinator.addObject(entityType, data: dict)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

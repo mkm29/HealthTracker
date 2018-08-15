@@ -27,6 +27,8 @@
 		AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACD21081AD700B5555C /* OrdersTVC.swift */; };
 		AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACF21081D4600B5555C /* SuppliesTVC.swift */; };
 		AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAD12108320600B5555C /* ImportHealth.swift */; };
+		AF8DC63421223E5C00981A06 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DC63321223E5C00981A06 /* Coordinator.swift */; };
+		AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DC6352122459E00981A06 /* DetailVC.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
 		AF94AC8820F6DA0500F06A61 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* HomeVC.swift */; };
@@ -78,6 +80,8 @@
 		AF65BACD21081AD700B5555C /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		AF65BACF21081D4600B5555C /* SuppliesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesTVC.swift; sourceTree = "<group>"; };
 		AF65BAD12108320600B5555C /* ImportHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportHealth.swift; sourceTree = "<group>"; };
+		AF8DC63321223E5C00981A06 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AF8DC6352122459E00981A06 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				AFAF10B520F6E74300D00312 /* Model */,
 				AFAF10B620F6E75100D00312 /* Storyboards */,
 				AF4714A320F81DED00006CA7 /* View */,
+				AF8DC63321223E5C00981A06 /* Coordinator.swift */,
 			);
 			path = HealthTracker;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				AFB545AB210BDEFE00F3B8DA /* OrderDetailVC.swift */,
 				AFB545AD210BDF6B00F3B8DA /* PhysicianDetailVC.swift */,
 				AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */,
+				AF8DC6352122459E00981A06 /* DetailVC.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */,
 				AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */,
+				AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */,
 				AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */,
 				AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */,
 				AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */,
@@ -453,6 +460,7 @@
 				AFFB5FE420F6F0BA00B4500E /* AddCathVC.swift in Sources */,
 				AFEF27BB20F973BF00F057E3 /* CathCell.swift in Sources */,
 				AF4693C221097FB100F244F8 /* NoteDetailVC.swift in Sources */,
+				AF8DC63421223E5C00981A06 /* Coordinator.swift in Sources */,
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,
 				AFAF10BB20F6E94700D00312 /* CathTVC.swift in Sources */,
 				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,

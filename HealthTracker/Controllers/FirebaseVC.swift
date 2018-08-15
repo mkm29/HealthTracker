@@ -14,8 +14,6 @@ class FirebaseVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let importer = ImportHealth()
-        importer.importCath()
     }
 
 }

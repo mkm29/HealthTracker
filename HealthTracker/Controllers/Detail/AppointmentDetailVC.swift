@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppointmentDetailVC: UIViewController {
+class AppointmentDetailVC: DetailVC {
     
     var appointment: Appointment? = nil
 

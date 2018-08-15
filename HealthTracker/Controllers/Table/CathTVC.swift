@@ -36,11 +36,14 @@ class CathTVC: HealthTVC, HealthMenu {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCathDetail" {
-            guard let navVC = segue.destination as? UINavigationController, let detailVC = navVC.viewControllers.first as? CathDetailVC, let indexPath = tableView.indexPathForSelectedRow else {
+            guard let navVC = segue.destination as? UINavigationController,
+                let detailVC = navVC.viewControllers.first as? CathDetailVC,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let cath = fetchedResultsController?.object(at: indexPath) as? Cath else {
                 AppDelegate.getAppDelegate().showAlert("Oops", "Cath object could not be found...")
                 return
             }
-            detailVC.cath = fetchedResultsController.object(at: indexPath) as? Cath
+            detailVC.selectedObject = cath
         }
     }
 

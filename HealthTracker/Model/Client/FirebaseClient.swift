@@ -38,8 +38,8 @@ class FirebaseClient {
         }
     }
     
-    func addDocument(_ type: DocumentType, data: [String:Any]) -> DocumentReference? {
-        let ref: DocumentReference? = db.collection(type.rawValue).addDocument(data: data)
+    func addDocument(ofType type: String, data: [String:Any]) -> DocumentReference? {
+        let ref: DocumentReference? = db.collection(type).addDocument(data: data)
         return ref
     }
     

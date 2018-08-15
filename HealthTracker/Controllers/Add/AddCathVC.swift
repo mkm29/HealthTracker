@@ -13,18 +13,31 @@ class AddCathVC: AddEntityVC {
     override var entityType: Constants.EntityType { return Constants.EntityType.Cath }
 
     @IBOutlet weak var amountTextField: UITextField!
-
+    @IBOutlet var setDateView: UIView!
+    @IBOutlet weak var setDateTextfield: UITextField!
+    
+    var setDate = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         //dateTextField.text = getDateString()
         amountTextField.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         amountTextField.becomeFirstResponder()
+        
+        setDateView.layer.cornerRadius = 10.0
+        setDateView.layer.borderColor = UIColor.darkGray.cgColor
+        setDateView.layer.borderWidth = 1.5
+    }
+    @IBAction func setTime(_ sender: Any) {
+        view.addSubview(setDateView)
+        setDateView.center = view.center
     }
     
-
+    @IBAction func setDateTime(_ sender: Any) {
+        setDate = true
+        setDateView.removeFromSuperview()
+    }
+    
     
     @IBAction func save(_ sender: Any) {
         // validate
@@ -35,12 +48,21 @@ class AddCathVC: AddEntityVC {
         }
         
         var cathDict = [String : Any]()
-        cathDict["date"] = Date().string(withFormat: Constants.DateFormat.Normal)
-        cathDict["timestamp"] = Date() //.toFormat(Constants.DateFormat.Long)
+        
+        if setDate {
+            if let dateString = setDateTextfield.text.nilIfEmpty {
+                cathDict["date"] = dateString.date(withFormat: Constants.DateFormat.Normal)
+                cathDict["timestamp"] = dateString.date(withFormat: Constants.DateFormat.Long)
+            }
+        } else {
+            cathDict["date"] = Date().string(withFormat: Constants.DateFormat.Normal)
+            cathDict["timestamp"] = Date()
+        }
+        
+        
         cathDict["amount"] = Int16((amountString as NSString).integerValue)
         
-        addEntity(fromDict: cathDict)
-        
+        _ = addEntity(fromDict: cathDict)
         navigationController?.dismiss(animated: true, completion: nil)
         
     }

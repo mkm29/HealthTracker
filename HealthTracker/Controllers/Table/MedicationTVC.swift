@@ -32,5 +32,15 @@ class MedicationTVC: HealthTVC, HealthMenu  {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowMedication",
+            let indexPath = tableView.indexPathForSelectedRow,
+            let med = fetchedResultsController?.object(at: indexPath) as? Medication {
+            let navVC = segue.destination as! UINavigationController
+            let medicationDetail = navVC.viewControllers.first as! MedicationDetailVC
+            medicationDetail.selectedObject = med
+        }
+    }
 
 }

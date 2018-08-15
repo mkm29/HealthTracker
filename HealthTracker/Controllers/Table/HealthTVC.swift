@@ -29,20 +29,26 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     var sectionNameKeyPath : String? { return nil }
     var fetchPredicate : NSPredicate? {
         didSet {
-            fetchedResultsController.fetchRequest.predicate = fetchPredicate
+            fetchedResultsController?.fetchRequest.predicate = fetchPredicate
+            fetch()
         }
     }
     
+    var coordinator = Coordinator.shared
+    
     //weak var Open: UIBarButtonItem! { fatalError("View must have outlet for menu!") }
     
-    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
-    
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
+        guard let context = coordinator.coreDataManager?.context else {
+            AppDelegate.getAppDelegate().showAlert("Error", "Could not setup core data...")
+            return nil
+        }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         fetchRequest.predicate = fetchPredicate
         
         fetchRequest.sortDescriptors = sortDescriptors
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-        managedObjectContext: (AppDelegate.getAppDelegate()).persistentContainer.viewContext,
+        managedObjectContext: coordinator.coreDataManager!.context,
         sectionNameKeyPath: sectionNameKeyPath,
         cacheName: nil)
         aFetchedResultsController.delegate = self
@@ -58,17 +64,27 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }()
     
     func fetch() {
-        do {
-            //print(fetchedResultsController.fetchRequest)
-            try fetchedResultsController.performFetch()
-        } catch let error {
-            AppDelegate.getAppDelegate().showAlert("Error", error.localizedDescription)
+        if let fetchedResultsController = fetchedResultsController {
+            do {
+                //print(fetchedResultsController.fetchRequest)
+                try fetchedResultsController.performFetch()
+            } catch let error {
+                AppDelegate.getAppDelegate().showAlert("Error", error.localizedDescription)
+            }
+        } else {
+            AppDelegate.getAppDelegate().showAlert("Error", "Unable to setup fetched results controller...")
         }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
-        if let sections = fetchedResultsController.sections?.count, let objects = fetchedResultsController.fetchedObjects?.count, objects > 0 {
+        
+        guard let frc = fetchedResultsController else {
+            return numOfSections
+        }
+        
+        if let sections = frc.sections?.count, let objects = frc.fetchedObjects?.count, objects > 0 {
             numOfSections = sections
         }
         else {
@@ -85,7 +101,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let sections = fetchedResultsController.sections else {
+        guard let sections = fetchedResultsController?.sections else {
             return 0
         }
         
@@ -104,7 +120,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionHeader: String = ""
         if sectionNameKeyPath != nil {
-            if let sections = fetchedResultsController.sections {
+            if let sections = fetchedResultsController?.sections {
                 switch entityType {
                 case .Cath, .Bowel, .Note:
                     sectionHeader = sections[section].name.convertDate()
@@ -161,23 +177,26 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+        guard let frc = fetchedResultsController else {
+            return
+        }
         switch entityType {
         case .Appointment:
             print("configureAppointmentCell")
         case .Cath:
-            configureCathCell(cell as! CathCell, cath: fetchedResultsController.object(at: indexPath) as! Cath)
+            configureCathCell(cell as! CathCell, cath: frc.object(at: indexPath) as! Cath)
         case .Bowel:
-            configureBowelCell(cell, bowel: fetchedResultsController.object(at: indexPath) as! Bowel)
+            configureBowelCell(cell, bowel: frc.object(at: indexPath) as! Bowel)
         case .Medication:
-            configureMedicationCell(cell as! MedicationCell, medication: fetchedResultsController.object(at: indexPath) as! Medication)
+            configureMedicationCell(cell as! MedicationCell, medication: frc.object(at: indexPath) as! Medication)
         case .Note:
-            configreNoteCell(cell, note: fetchedResultsController.object(at: indexPath) as! Note)
+            configreNoteCell(cell, note: frc.object(at: indexPath) as! Note)
         case .Order:
-            configureOrderCell(cell, order: fetchedResultsController.object(at: indexPath) as! Order)
+            configureOrderCell(cell, order: frc.object(at: indexPath) as! Order)
         case .Physician:
-            configurePhysicianCell(cell, physician: fetchedResultsController.object(at: indexPath) as! Physician)
+            configurePhysicianCell(cell, physician: frc.object(at: indexPath) as! Physician)
         case .Supply:
-            configureSupplyCell(cell, supply: fetchedResultsController.object(at: indexPath) as! Supply)
+            configureSupplyCell(cell, supply: frc.object(at: indexPath) as! Supply)
         }
     }
     

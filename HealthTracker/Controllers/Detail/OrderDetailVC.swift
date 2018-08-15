@@ -8,9 +8,7 @@
 
 import UIKit
 
-class OrderDetailVC: UIViewController {
-    
-    var order: Order? = nil
+class OrderDetailVC: DetailVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

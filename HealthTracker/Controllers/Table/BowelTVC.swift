@@ -35,5 +35,29 @@ class BowelTVC: HealthTVC, HealthMenu {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowBowelDetail" {
+            guard let navVC = segue.destination as? UINavigationController,
+                let detailVC = navVC.viewControllers.first as? BowelDetailVC,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let bowel = fetchedResultsController?.object(at: indexPath) as? Bowel else {
+                AppDelegate.getAppDelegate().showAlert("Error", "There was an error retrieving the object!")
+                return
+            }
+            detailVC.selectedObject = bowel
+        }
+//        if segue.identifier == "ShowCathDetail" {
+//            guard let navVC = segue.destination as? UINavigationController,
+//                let detailVC = navVC.viewControllers.first as? CathDetailVC,
+//                let indexPath = tableView.indexPathForSelectedRow,
+//                let cath = fetchedResultsController?.object(at: indexPath) as? Cath else {
+//                    AppDelegate.getAppDelegate().showAlert("Oops", "Cath object could not be found...")
+//                    return
+//            }
+//            detailVC.coordinator = coordinator
+//            detailVC.cath = cath
+//        }
+    }
 
 }

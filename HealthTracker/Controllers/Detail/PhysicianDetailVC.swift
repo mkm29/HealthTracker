@@ -8,9 +8,7 @@
 
 import UIKit
 
-class PhysicianDetailVC: UIViewController {
-    
-    var physician: Physician? = nil
+class PhysicianDetailVC: DetailVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

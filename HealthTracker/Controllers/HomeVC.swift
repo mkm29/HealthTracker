@@ -95,6 +95,16 @@ class HomeVC: UIViewController {
         }
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowProtected" {
+//            let navVC = segue.destination as! UINavigationController
+//            if let heathTVC = navVC.viewControllers.first as? HealthTVC {
+//                // set the coordinator property
+//                heathTVC.coordinator = Coordinator()
+//            }
+//        }
+//    }
+    
     func fadeInNewImage(newImage: UIImage?) {
         if newImage == nil {
             return

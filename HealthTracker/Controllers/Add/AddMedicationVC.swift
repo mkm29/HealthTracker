@@ -17,6 +17,8 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
     @IBOutlet weak var frequencyTextField: UITextField!
     @IBOutlet weak var purposeTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var isPrescription: UISwitch!
+    @IBOutlet weak var isActive: UISwitch!
     
     let imagePicker = UIImagePickerController()
     var imagePickerSource: UIImagePickerController.SourceType = .photoLibrary
@@ -92,8 +94,11 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
         var medicationDict: [String:Any] = ["name" : name,
                                             "dosage" : Int16(dosage) ?? 0,
                                             "frequency" : Int16(frequency) ?? 0,
-                                            "purpose" : purpose]
-        if let medImage = imageView.image, let imagePath = saveImage(medImage, tag: "medication_\(name)") {
+                                            "purpose" : purpose,
+                                            "prescription" : isPrescription.isOn,
+                                            "active" : isActive.isOn]
+        if let medImage = imageView.image,
+            let imagePath = medImage.saveImage(withPrefix: "medication_\(name)") {
             medicationDict["imagePath"] = imagePath
         }
         

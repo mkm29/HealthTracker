@@ -38,8 +38,10 @@ class NotesTVC: HealthTVC, HealthMenu {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowNoteDetail" {
-            if let navVC = segue.destination as? UINavigationController, let detailVC = navVC.viewControllers.first as? NoteDetailVC, let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.note = fetchedResultsController.object(at: indexPath) as? Note
+            if let navVC = segue.destination as? UINavigationController,
+                let detailVC = navVC.viewControllers.first as? NoteDetailVC,
+                let indexPath = tableView.indexPathForSelectedRow, let note = fetchedResultsController?.object(at: indexPath) as? Note {
+                detailVC.selectedObject = note
             }
         }
     }

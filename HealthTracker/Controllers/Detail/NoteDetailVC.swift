@@ -8,9 +8,7 @@
 
 import UIKit
 
-class NoteDetailVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-    
-    var note: Note? = nil
+class NoteDetailVC: DetailVC, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextArea: UITextView!
@@ -24,7 +22,7 @@ class NoteDetailVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         titleTextField.delegate = self
         bodyTextArea.delegate = self
         // Do any additional setup after loading the view.
-        if let note = note {
+        if let note = selectedObject as? Note {
             titleTextField.text = note.title.nilIfEmpty
             bodyTextArea.text = note.body.nilIfEmpty
         }
@@ -35,10 +33,10 @@ class NoteDetailVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if let note = note {
+        if let note = selectedObject as? Note {
             note.title = titleTextField.text
             note.body = bodyTextArea.text
-            AppDelegate.getAppDelegate().saveContext()
+            coordinator.coreDataManager.saveContext()
         }
         navigationController?.dismiss(animated: true, completion: nil)
     }
