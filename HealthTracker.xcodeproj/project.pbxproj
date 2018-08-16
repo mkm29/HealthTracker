@@ -27,6 +27,8 @@
 		AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACD21081AD700B5555C /* OrdersTVC.swift */; };
 		AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACF21081D4600B5555C /* SuppliesTVC.swift */; };
 		AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAD12108320600B5555C /* ImportHealth.swift */; };
+		AF68D3F62124E3C7005E02FF /* SetDateTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */; };
+		AF68D3F82124F2A3005E02FF /* AlwaysShowPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */; };
 		AF8DC63421223E5C00981A06 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DC63321223E5C00981A06 /* Coordinator.swift */; };
 		AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DC6352122459E00981A06 /* DetailVC.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
@@ -80,6 +82,8 @@
 		AF65BACD21081AD700B5555C /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		AF65BACF21081D4600B5555C /* SuppliesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesTVC.swift; sourceTree = "<group>"; };
 		AF65BAD12108320600B5555C /* ImportHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportHealth.swift; sourceTree = "<group>"; };
+		AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDateTimeVC.swift; sourceTree = "<group>"; };
+		AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
 		AF8DC63321223E5C00981A06 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AF8DC6352122459E00981A06 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
 				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
 				AF0E8907211579C600DDD4AA /* FirebaseVC.swift */,
+				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
+				AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			files = (
 				AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */,
 				AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */,
+				AF68D3F82124F2A3005E02FF /* AlwaysShowPopup.swift in Sources */,
 				AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */,
 				AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */,
@@ -478,6 +485,7 @@
 				AFB545AA210BDEE800F3B8DA /* MedicationDetailVC.swift in Sources */,
 				AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */,
 				AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */,
+				AF68D3F62124E3C7005E02FF /* SetDateTimeVC.swift in Sources */,
 				AFB545A8210BDED000F3B8DA /* CathDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
