@@ -77,6 +77,16 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if !coordinator.isAuthenticated {
+            coordinator.showLoginVC(fromVC: self)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
         
@@ -206,8 +216,9 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     private func configureBowelCell(_ cell: UITableViewCell, bowel: Bowel) {
-        cell.textLabel?.text = bowel.timestamp?.string(withFormat: Constants.DateFormat.DayMonthTime)
-        cell.detailTextLabel?.text = Constants.BowelType[bowel.intensity]
+        cell.textLabel?.text = bowel.timestamp?.string(withFormat: Constants.DateFormat.Time)
+        
+        cell.detailTextLabel?.text = Constants.bowelType[bowel.intensity]
     }
     
     private func configureMedicationCell(_ cell: MedicationCell, medication: Medication) {

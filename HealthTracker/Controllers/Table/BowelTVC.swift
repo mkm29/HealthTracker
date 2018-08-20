@@ -47,17 +47,6 @@ class BowelTVC: HealthTVC, HealthMenu {
             }
             detailVC.selectedObject = bowel
         }
-//        if segue.identifier == "ShowCathDetail" {
-//            guard let navVC = segue.destination as? UINavigationController,
-//                let detailVC = navVC.viewControllers.first as? CathDetailVC,
-//                let indexPath = tableView.indexPathForSelectedRow,
-//                let cath = fetchedResultsController?.object(at: indexPath) as? Cath else {
-//                    AppDelegate.getAppDelegate().showAlert("Oops", "Cath object could not be found...")
-//                    return
-//            }
-//            detailVC.coordinator = coordinator
-//            detailVC.cath = cath
-//        }
     }
 
 }

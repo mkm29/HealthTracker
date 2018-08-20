@@ -20,13 +20,10 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         }
     }
 
-    @IBOutlet weak var chooseContact: UIButton!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var specialty: UITextField!
     @IBOutlet weak var education: UITextField!
-    
-    @IBOutlet weak var chooseContactButton: UIButton!
     @IBOutlet weak var addPhysicianButton: UIButton!
     
     override func viewDidLoad() {
@@ -38,7 +35,6 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         specialty.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         education.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         
-        chooseContactButton.roundTop(withRadius: 20)
         addPhysicianButton.roundBottom(withRadius: 20)
         //AppDelegate.getAppDelegate().contactsStore
         
@@ -68,13 +64,15 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
             return
         }
         var dict: [String:Any] = ["givenName" : givenName, "familyName" : familyName]
-        
-        if let identifier = selectedContact?.identifier {
-            dict["identifier"] = identifier
-        }
+
         dict["specialty"] = specialty.text.nilIfEmpty
-        dict["eduication"] = education.text.nilIfEmpty
-        addEntity(fromDict: dict)
+        dict["medicalEducation"] = education.text.nilIfEmpty
+        
+        if let selectedContact = selectedContact {
+            dict["contactIdentifier"] = selectedContact.identifier
+        }
+        
+        _ = addEntity(fromDict: dict)
         
         navigationController?.dismiss(animated: true, completion: nil)
     }

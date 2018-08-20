@@ -11,7 +11,6 @@
 		AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */; };
 		AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF044AF3210161800061ED36 /* MenuTVC.swift */; };
 		AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8903211576D900DDD4AA /* FirebaseClient.swift */; };
-		AF0E8908211579C600DDD4AA /* FirebaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8907211579C600DDD4AA /* FirebaseVC.swift */; };
 		AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E9DE0210170520005F8FD /* BowelTVC.swift */; };
 		AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */; };
 		AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EBAE0210269D900E1A1FF /* Protocols.swift */; };
@@ -51,6 +50,7 @@
 		AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */; };
 		AFB545B2210BDFD200F3B8DA /* AppointmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */; };
 		AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545B3210BF0AE00F3B8DA /* AddAppointmentVC.swift */; };
+		AFC64154212B6A9B007C4794 /* LogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC64153212B6A9B007C4794 /* LogoutVC.swift */; };
 		AFCEBF2F210958D3004E6186 /* AddNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */; };
 		AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEBF3021095C65004E6186 /* AddEntityVC.swift */; };
 		AFD6D82A21069E3F00A6BAE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */; };
@@ -66,7 +66,6 @@
 		AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		AF044AF3210161800061ED36 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
 		AF0E8903211576D900DDD4AA /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
-		AF0E8907211579C600DDD4AA /* FirebaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVC.swift; sourceTree = "<group>"; };
 		AF0E9DE0210170520005F8FD /* BowelTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelTVC.swift; sourceTree = "<group>"; };
 		AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansTVC.swift; sourceTree = "<group>"; };
 		AF1EBAE0210269D900E1A1FF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyDetailVC.swift; sourceTree = "<group>"; };
 		AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailVC.swift; sourceTree = "<group>"; };
 		AFB545B3210BF0AE00F3B8DA /* AddAppointmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentVC.swift; sourceTree = "<group>"; };
+		AFC64153212B6A9B007C4794 /* LogoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutVC.swift; sourceTree = "<group>"; };
 		AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteVC.swift; sourceTree = "<group>"; };
 		AFCEBF3021095C65004E6186 /* AddEntityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntityVC.swift; sourceTree = "<group>"; };
 		AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -262,12 +262,12 @@
 				AFB545A4210BDE6800F3B8DA /* Detail */,
 				AFB545A3210BDE4100F3B8DA /* Table */,
 				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
+				AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */,
 				AF94AC8720F6DA0500F06A61 /* HomeVC.swift */,
 				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
 				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
-				AF0E8907211579C600DDD4AA /* FirebaseVC.swift */,
 				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
-				AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */,
+				AFC64153212B6A9B007C4794 /* LogoutVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -475,12 +475,12 @@
 				AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */,
 				AFB545AC210BDEFE00F3B8DA /* OrderDetailVC.swift in Sources */,
 				AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */,
-				AF0E8908211579C600DDD4AA /* FirebaseVC.swift in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
 				AFCEBF2F210958D3004E6186 /* AddNoteVC.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
 				AFB545B2210BDFD200F3B8DA /* AppointmentDetailVC.swift in Sources */,
+				AFC64154212B6A9B007C4794 /* LogoutVC.swift in Sources */,
 				AFB545AE210BDF6B00F3B8DA /* PhysicianDetailVC.swift in Sources */,
 				AFB545AA210BDEE800F3B8DA /* MedicationDetailVC.swift in Sources */,
 				AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */,

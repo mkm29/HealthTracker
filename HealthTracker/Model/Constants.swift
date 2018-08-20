@@ -48,15 +48,15 @@ struct Constants {
         static let Blue = UIColor(red: 0.0235, green: 0.502, blue: 0.9765, alpha: 1.0)
     }
     
-    static let BowelType: [Int16 : String] = [1 : "small",
-                                              2: "small",
-                                              3: "medium-small",
-                                              4: "medium-small",
-                                              5: "normal",
-                                              6: "normal",
-                                              7: "large",
-                                              8: "large",
-                                              9: "very large",
-                                              10: "very large"]
+    static let bowelType: [Int16 : String] = [1 : "extra-small",
+                                              2 : "extra-small",
+                                              3 : "small",
+                                              4 : "small",
+                                              5 : "medium",
+                                              6 : "medium",
+                                              7 : "large",
+                                              8 : "large",
+                                              9 : "extra-large",
+                                              10 : "extra-large"]
     
 }

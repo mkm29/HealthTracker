@@ -43,15 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         // Override point for customization after application launch.
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore  {
             //print("First launch, setting UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
+            //print(Coordinator.shared.documentsDirectory)
+            Coordinator.shared.importAllFromFirebase()
             // need to import date
         }
-        FirebaseApp.configure()
-        
         return true
     }
 
@@ -76,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        //Coordinator.shared.coreDataManager.saveContext()
     }
 
 

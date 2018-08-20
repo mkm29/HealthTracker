@@ -16,7 +16,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var leadingContraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(localAuthentication(tapGestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(login(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -26,84 +26,25 @@ class HomeVC: UIViewController {
 //        localAuthentication(tapGestureRecognizer: nil)
 //    }
     
-    @objc func localAuthentication(tapGestureRecognizer: UITapGestureRecognizer?) -> Void {
-        // bypass FaceId for testing
-        
-        let laContext = LAContext()
-        var error: NSError?
-        let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        
-        if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
-            
-            if let laError = error {
-                AppDelegate.getAppDelegate().showAlert("Auth Error", laError.localizedDescription)
-                return
-            }
-            
-            var localizedReason = "Unlock device"
-            if #available(iOS 11.0, *) {
-                if (laContext.biometryType == LABiometryType.faceID) {
-                    localizedReason = "Unlock using Face ID"
-                    //print("FaceId support")
-                } else if (laContext.biometryType == LABiometryType.touchID) {
-                    localizedReason = "Unlock using Touch ID"
-                    //print("TouchId support")
-                } else {
-                    print("No Biometric support")
-                    AppDelegate.getAppDelegate().showAlert("Auth Error", "FaceId not supported")
-                }
-            } else {
-                // Fallback on earlier versions
-                AppDelegate.getAppDelegate().showAlert("Error", "Unhandled error")
-            }
-            
-            
-            laContext.evaluatePolicy(biometricsPolicy, localizedReason: localizedReason, reply: { (isSuccess, error) in
-                
-                DispatchQueue.main.async(execute: {
-                    
-                    if let laError = error {
-                        print("laError - \(laError)")
-                    } else {
-                        if isSuccess {
-                            // need to add a delay
-                            // 1. Fade out Anonymous image
-                            if let faceImage = UIImage(named: "Mitch") {
-                                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-                                    self.fadeInNewImage(newImage: faceImage)
-                                })
-                                
-                            }
-                        } else {
-                            print("failure")
-                        }
-                    }
-                    
-                })
-            })
-        } else {
-            var errMessage = ""
-            if error != nil {
-                errMessage = error!.localizedDescription
-            }
-            if let err = error?.localizedDescription {
-                AppDelegate.getAppDelegate().showAlert("Auth Error", "Can't evaluate policy: \(err)")
-            } else {
-                errMessage = "Can't evaluate policy"
-            }
-            AppDelegate.getAppDelegate().showAlert("FaceId Error", errMessage)
+    override func viewWillAppear(_ animated: Bool) {
+        if let anomImage = UIImage(named: "Anonymous") {
+            imageView.image = anomImage
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowProtected" {
-//            let navVC = segue.destination as! UINavigationController
-//            if let heathTVC = navVC.viewControllers.first as? HealthTVC {
-//                // set the coordinator property
-//                heathTVC.coordinator = Coordinator()
-//            }
-//        }
-//    }
+    @objc func login(tapGestureRecognizer: UITapGestureRecognizer?) {
+        Coordinator.shared.login { (status) in
+            if status {
+                if let faceImage = UIImage(named: "Mitch") {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                        self.fadeInNewImage(newImage: faceImage)
+                    })
+                }
+            } else {
+                AppDelegate.getAppDelegate().showAlert("Error", "There was an error logging in.")
+            }
+        }
+    }
     
     func fadeInNewImage(newImage: UIImage?) {
         if newImage == nil {

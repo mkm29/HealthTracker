@@ -120,6 +120,11 @@ class CoreDataManager {
         newCath.timestamp = timestamp
         newCath.date = timestamp.string(withFormat: Constants.DateFormat.Normal)
         newCath.amount = amount
+        
+        if let documentID = dict["documentID"] as? String {
+            newCath.documentID = documentID
+        }
+        
         return newCath
     }
     
@@ -146,24 +151,28 @@ class CoreDataManager {
         if let frequency = dict["frequency"] as? Int16 {
             newMedication.frequency = frequency
         }
+        if let documentID = dict["documentID"] as? String {
+            newMedication.documentID = documentID
+        }
 
         return newMedication
     }
     
     private func newBowel(fromDict dict: [String:Any]) -> Bowel? {
-        guard let timestamp = dict["timestamp"] as? Date else {
+        guard let timestamp = dict["timestamp"] as? Date, let intensity = dict["intensity"] as? Int16 else {
             print("CoreData Error:", "Could not get timestamp")
             return nil
         }
-        if let intensity = dict["intensity"] as? Int16 {
-            let newBowel = Bowel(context: context)
-            newBowel.timestamp = timestamp
-            newBowel.date = timestamp.string(withFormat: Constants.DateFormat.Normal)
-            newBowel.intensity = intensity
-            return newBowel
-        }
         
-        return nil
+        let newBowel = Bowel(context: context)
+        newBowel.timestamp = timestamp
+        newBowel.date = timestamp.string(withFormat: Constants.DateFormat.Normal)
+        newBowel.intensity = intensity
+        
+        if let documentID = dict["documentID"] as? String {
+           newBowel.documentID = documentID
+        }
+        return newBowel
     }
     
     private func newPysician(fromDict dict: [String:Any]) -> Physician? {
