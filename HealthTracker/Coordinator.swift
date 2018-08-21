@@ -18,7 +18,7 @@ class Coordinator {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
     }
     
-    static let shared = Coordinator()
+//    static let shared = Coordinator()
     
     var isAuthenticated = false
     
@@ -71,7 +71,7 @@ class Coordinator {
                         if isSuccess {
                             // need to add a delay
                             // 1. Fade out Anonymous image
-                            Coordinator.shared.isAuthenticated = true
+                            self.isAuthenticated = true
                             completionHandler(true)
                         } else {
                             print("failure")
@@ -98,7 +98,7 @@ class Coordinator {
     
     func showLoginVC(fromVC: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? HomeVC {
+        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
             fromVC.dismiss(animated: true) {
                 fromVC.present(loginVC, animated: true, completion: nil)
             }

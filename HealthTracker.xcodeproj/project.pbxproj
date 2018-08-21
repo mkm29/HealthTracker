@@ -8,18 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		58FA55A1E65ED8D9ED9B3F5D /* Pods_HealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A7DF50F5A709D9BA5916EF /* Pods_HealthTracker.framework */; };
-		AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */; };
-		AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF044AF3210161800061ED36 /* MenuTVC.swift */; };
+		AF030C25212C4CCF00484F40 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C24212C4CCF00484F40 /* String.swift */; };
+		AF030C27212C506900484F40 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C26212C506900484F40 /* Date.swift */; };
+		AF030C29212C508900484F40 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C28212C508900484F40 /* UITextField.swift */; };
+		AF030C2B212C50A700484F40 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C2A212C50A700484F40 /* UIButton.swift */; };
+		AF030C2D212C50CC00484F40 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C2C212C50CC00484F40 /* UIImage.swift */; };
+		AF030C2F212C50E800484F40 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C2E212C50E800484F40 /* UIImageView.swift */; };
+		AF030C31212C50FB00484F40 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C30212C50FB00484F40 /* URL.swift */; };
+		AF030C34212C514300484F40 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C32212C514100484F40 /* UIViewController.swift */; };
+		AF030C35212C514300484F40 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C33212C514100484F40 /* UITableViewExtension.swift */; };
+		AF030C39212C514F00484F40 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C36212C514D00484F40 /* UIColor.swift */; };
+		AF030C3A212C514F00484F40 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C37212C514E00484F40 /* UIView.swift */; };
+		AF030C3B212C514F00484F40 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C38212C514F00484F40 /* UIApplication.swift */; };
 		AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8903211576D900DDD4AA /* FirebaseClient.swift */; };
 		AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E9DE0210170520005F8FD /* BowelTVC.swift */; };
 		AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */; };
 		AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EBAE0210269D900E1A1FF /* Protocols.swift */; };
+		AF247B54212C42D300C340DE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF247B53212C42D300C340DE /* MainVC.swift */; };
+		AF247B58212C43F700C340DE /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF247B55212C43F500C340DE /* ImageHeaderView.swift */; };
+		AF247B59212C43F700C340DE /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF247B56212C43F600C340DE /* ImageHeaderView.xib */; };
+		AF247B5F212C443800C340DE /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF247B5C212C443600C340DE /* BaseTableViewCell.swift */; };
+		AF247B60212C443800C340DE /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF247B5D212C443700C340DE /* DataTableViewCell.xib */; };
+		AF247B61212C443800C340DE /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF247B5E212C443700C340DE /* DataTableViewCell.swift */; };
 		AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */; };
 		AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */; };
 		AF45D114210029D300D691C1 /* medication.json in Resources */ = {isa = PBXBuildFile; fileRef = AF45D112210029D300D691C1 /* medication.json */; };
 		AF4693C221097FB100F244F8 /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4693C121097FB100F244F8 /* NoteDetailVC.swift */; };
-		AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B974D20FA8E7200D89D94 /* Extensions.swift */; };
+		AF4B974E20FA8E7200D89D94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B974D20FA8E7200D89D94 /* Optional.swift */; };
 		AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B975020FA96D000D89D94 /* MedicationCell.swift */; };
+		AF4ED82E212C60FC00D5342F /* LeftMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ED82D212C60FC00D5342F /* LeftMenuVC.swift */; };
+		AF4ED830212C651B00D5342F /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ED82F212C651B00D5342F /* ExSlideMenuController.swift */; };
 		AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */; };
 		AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAC92107F6A800B5555C /* NotesTVC.swift */; };
 		AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACB2107FF8300B5555C /* HealthTVC.swift */; };
@@ -32,7 +50,7 @@
 		AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DC6352122459E00981A06 /* DetailVC.swift */; };
 		AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E879120FC161D00C2CC4F /* Constants.swift */; };
 		AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */; };
-		AF94AC8820F6DA0500F06A61 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* HomeVC.swift */; };
+		AF94AC8820F6DA0500F06A61 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8720F6DA0500F06A61 /* LoginVC.swift */; };
 		AF94AC8B20F6DA0500F06A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC8920F6DA0500F06A61 /* Main.storyboard */; };
 		AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF94AC8C20F6DA0500F06A61 /* HealthTracker.xcdatamodeld */; };
 		AF94AC9020F6DA0700F06A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC8F20F6DA0700F06A61 /* Assets.xcassets */; };
@@ -61,20 +79,36 @@
 
 /* Begin PBXFileReference section */
 		30A7DF50F5A709D9BA5916EF /* Pods_HealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthTracker-Bridging-Header.h"; sourceTree = "<group>"; };
-		AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		AF044AF3210161800061ED36 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
+		AF030C24212C4CCF00484F40 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		AF030C26212C506900484F40 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		AF030C28212C508900484F40 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		AF030C2A212C50A700484F40 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		AF030C2C212C50CC00484F40 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		AF030C2E212C50E800484F40 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		AF030C30212C50FB00484F40 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		AF030C32212C514100484F40 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		AF030C33212C514100484F40 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		AF030C36212C514D00484F40 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		AF030C37212C514E00484F40 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		AF030C38212C514F00484F40 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AF0E8903211576D900DDD4AA /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		AF0E9DE0210170520005F8FD /* BowelTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelTVC.swift; sourceTree = "<group>"; };
 		AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansTVC.swift; sourceTree = "<group>"; };
 		AF1EBAE0210269D900E1A1FF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		AF247B53212C42D300C340DE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		AF247B55212C43F500C340DE /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
+		AF247B56212C43F600C340DE /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
+		AF247B5C212C443600C340DE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		AF247B5D212C443700C340DE /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
+		AF247B5E212C443700C340DE /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhysicianVC.swift; sourceTree = "<group>"; };
 		AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationVC.swift; sourceTree = "<group>"; };
 		AF45D112210029D300D691C1 /* medication.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medication.json; sourceTree = "<group>"; };
 		AF4693C121097FB100F244F8 /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
-		AF4B974D20FA8E7200D89D94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AF4B974D20FA8E7200D89D94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		AF4B975020FA96D000D89D94 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
+		AF4ED82D212C60FC00D5342F /* LeftMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuVC.swift; sourceTree = "<group>"; };
+		AF4ED82F212C651B00D5342F /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
 		AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
 		AF65BAC92107F6A800B5555C /* NotesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTVC.swift; sourceTree = "<group>"; };
 		AF65BACB2107FF8300B5555C /* HealthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTVC.swift; sourceTree = "<group>"; };
@@ -88,7 +122,7 @@
 		AF8E879120FC161D00C2CC4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF94AC8220F6DA0500F06A61 /* HealthTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF94AC8520F6DA0500F06A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF94AC8720F6DA0500F06A61 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		AF94AC8720F6DA0500F06A61 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AF94AC8A20F6DA0500F06A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF94AC8D20F6DA0500F06A61 /* HealthTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthTracker.xcdatamodel; sourceTree = "<group>"; };
 		AF94AC8F20F6DA0700F06A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,12 +181,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AF4714A320F81DED00006CA7 /* View */ = {
+		AF247B5B212C441E00C340DE /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				AFEF27BA20F973BF00F057E3 /* CathCell.swift */,
 				AF4B975020FA96D000D89D94 /* MedicationCell.swift */,
+				AF247B5C212C443600C340DE /* BaseTableViewCell.swift */,
+				AF247B5E212C443700C340DE /* DataTableViewCell.swift */,
+				AF247B5D212C443700C340DE /* DataTableViewCell.xib */,
 				AFDB0EE42103A7BB003B3991 /* MenuCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		AF4714A320F81DED00006CA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF247B55212C43F500C340DE /* ImageHeaderView.swift */,
+				AF247B56212C43F600C340DE /* ImageHeaderView.xib */,
+				AF247B5B212C441E00C340DE /* TableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +221,20 @@
 		AF4B974F20FA8FC300D89D94 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AF4B974D20FA8E7200D89D94 /* Extensions.swift */,
+				AF030C26212C506900484F40 /* Date.swift */,
+				AF4B974D20FA8E7200D89D94 /* Optional.swift */,
 				AF1EBAE0210269D900E1A1FF /* Protocols.swift */,
+				AF030C24212C4CCF00484F40 /* String.swift */,
+				AF030C38212C514F00484F40 /* UIApplication.swift */,
+				AF030C2A212C50A700484F40 /* UIButton.swift */,
+				AF030C36212C514D00484F40 /* UIColor.swift */,
+				AF030C2C212C50CC00484F40 /* UIImage.swift */,
+				AF030C2E212C50E800484F40 /* UIImageView.swift */,
+				AF030C33212C514100484F40 /* UITableViewExtension.swift */,
+				AF030C28212C508900484F40 /* UITextField.swift */,
+				AF030C37212C514E00484F40 /* UIView.swift */,
+				AF030C32212C514100484F40 /* UIViewController.swift */,
+				AF030C30212C50FB00484F40 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -261,13 +320,13 @@
 				AF4B6576210BDD0700A6E3E8 /* Add */,
 				AFB545A4210BDE6800F3B8DA /* Detail */,
 				AFB545A3210BDE4100F3B8DA /* Table */,
-				AF044AED21015E1D0061ED36 /* HealthTracker-Bridging-Header.h */,
 				AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */,
-				AF94AC8720F6DA0500F06A61 /* HomeVC.swift */,
-				AF044AEE21015E1E0061ED36 /* SWRevealViewController.h */,
-				AF044AEF21015E1F0061ED36 /* SWRevealViewController.m */,
+				AF94AC8720F6DA0500F06A61 /* LoginVC.swift */,
 				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
 				AFC64153212B6A9B007C4794 /* LogoutVC.swift */,
+				AF247B53212C42D300C340DE /* MainVC.swift */,
+				AF4ED82D212C60FC00D5342F /* LeftMenuVC.swift */,
+				AF4ED82F212C651B00D5342F /* ExSlideMenuController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,7 +338,6 @@
 				AFAF10BA20F6E94700D00312 /* CathTVC.swift */,
 				AF65BACB2107FF8300B5555C /* HealthTVC.swift */,
 				AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */,
-				AF044AF3210161800061ED36 /* MenuTVC.swift */,
 				AF65BAC92107F6A800B5555C /* NotesTVC.swift */,
 				AF65BACD21081AD700B5555C /* OrdersTVC.swift */,
 				AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */,
@@ -374,8 +432,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF45D114210029D300D691C1 /* medication.json in Resources */,
+				AF247B60212C443800C340DE /* DataTableViewCell.xib in Resources */,
 				AF9E9D542117F7BE00E2978C /* bowel.json in Resources */,
 				AF9E9D532117F7BE00E2978C /* cath.json in Resources */,
+				AF247B59212C43F700C340DE /* ImageHeaderView.xib in Resources */,
 				AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */,
 				AF94AC9020F6DA0700F06A61 /* Assets.xcassets in Resources */,
 				AF94AC8B20F6DA0500F06A61 /* Main.storyboard in Resources */,
@@ -414,6 +474,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -426,6 +487,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -446,19 +508,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */,
-				AF044AF4210161800061ED36 /* MenuTVC.swift in Sources */,
+				AF030C29212C508900484F40 /* UITextField.swift in Sources */,
+				AF030C3B212C514F00484F40 /* UIApplication.swift in Sources */,
 				AF68D3F82124F2A3005E02FF /* AlwaysShowPopup.swift in Sources */,
+				AF4ED830212C651B00D5342F /* ExSlideMenuController.swift in Sources */,
+				AF030C3A212C514F00484F40 /* UIView.swift in Sources */,
+				AF247B58212C43F700C340DE /* ImageHeaderView.swift in Sources */,
 				AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */,
 				AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */,
 				AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */,
 				AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */,
 				AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */,
+				AF030C31212C50FB00484F40 /* URL.swift in Sources */,
 				AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */,
-				AF94AC8820F6DA0500F06A61 /* HomeVC.swift in Sources */,
+				AF94AC8820F6DA0500F06A61 /* LoginVC.swift in Sources */,
+				AF030C34212C514300484F40 /* UIViewController.swift in Sources */,
 				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
+				AF247B5F212C443800C340DE /* BaseTableViewCell.swift in Sources */,
 				AFB545A6210BDE9600F3B8DA /* BowelDetailVC.swift in Sources */,
 				AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */,
+				AF030C2B212C50A700484F40 /* UIButton.swift in Sources */,
 				AF61D9CE20FE4BE4000761AF /* CoreDateManager.swift in Sources */,
 				AFB545A2210BDDD200F3B8DA /* AddBowelVC.swift in Sources */,
 				AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */,
@@ -466,18 +536,25 @@
 				AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */,
 				AFFB5FE420F6F0BA00B4500E /* AddCathVC.swift in Sources */,
 				AFEF27BB20F973BF00F057E3 /* CathCell.swift in Sources */,
+				AF030C35212C514300484F40 /* UITableViewExtension.swift in Sources */,
 				AF4693C221097FB100F244F8 /* NoteDetailVC.swift in Sources */,
+				AF247B54212C42D300C340DE /* MainVC.swift in Sources */,
 				AF8DC63421223E5C00981A06 /* Coordinator.swift in Sources */,
 				AF94AC8620F6DA0500F06A61 /* AppDelegate.swift in Sources */,
 				AFAF10BB20F6E94700D00312 /* CathTVC.swift in Sources */,
-				AF044AF021015E1F0061ED36 /* SWRevealViewController.m in Sources */,
 				AFDB0EE52103A7BB003B3991 /* MenuCell.swift in Sources */,
+				AF030C25212C4CCF00484F40 /* String.swift in Sources */,
 				AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */,
 				AFB545AC210BDEFE00F3B8DA /* OrderDetailVC.swift in Sources */,
 				AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */,
-				AF4B974E20FA8E7200D89D94 /* Extensions.swift in Sources */,
+				AF4ED82E212C60FC00D5342F /* LeftMenuVC.swift in Sources */,
+				AF4B974E20FA8E7200D89D94 /* Optional.swift in Sources */,
+				AF030C2D212C50CC00484F40 /* UIImage.swift in Sources */,
 				AF4B975120FA96D000D89D94 /* MedicationCell.swift in Sources */,
+				AF030C2F212C50E800484F40 /* UIImageView.swift in Sources */,
 				AFCEBF2F210958D3004E6186 /* AddNoteVC.swift in Sources */,
+				AF030C27212C506900484F40 /* Date.swift in Sources */,
+				AF030C39212C514F00484F40 /* UIColor.swift in Sources */,
 				AF94AC8E20F6DA0500F06A61 /* HealthTracker.xcdatamodeld in Sources */,
 				AFB545B2210BDFD200F3B8DA /* AppointmentDetailVC.swift in Sources */,
 				AFC64154212B6A9B007C4794 /* LogoutVC.swift in Sources */,
@@ -485,6 +562,7 @@
 				AFB545AA210BDEE800F3B8DA /* MedicationDetailVC.swift in Sources */,
 				AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */,
 				AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */,
+				AF247B61212C443800C340DE /* DataTableViewCell.swift in Sources */,
 				AF68D3F62124E3C7005E02FF /* SetDateTimeVC.swift in Sources */,
 				AFB545A8210BDED000F3B8DA /* CathDetailVC.swift in Sources */,
 			);
@@ -635,6 +713,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -643,7 +722,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HealthTracker/Controllers/HealthTracker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -657,6 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -665,7 +745,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HealthTracker/Controllers/HealthTracker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

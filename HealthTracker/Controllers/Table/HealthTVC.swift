@@ -34,12 +34,12 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
-    var coordinator = Coordinator.shared
+    var coordinator: Coordinator?
     
     //weak var Open: UIBarButtonItem! { fatalError("View must have outlet for menu!") }
     
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
-        guard let context = coordinator.coreDataManager?.context else {
+        guard let context = coordinator?.coreDataManager?.context else {
             AppDelegate.getAppDelegate().showAlert("Error", "Could not setup core data...")
             return nil
         }
@@ -48,7 +48,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
         fetchRequest.sortDescriptors = sortDescriptors
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-        managedObjectContext: coordinator.coreDataManager!.context,
+        managedObjectContext: context,
         sectionNameKeyPath: sectionNameKeyPath,
         cacheName: nil)
         aFetchedResultsController.delegate = self
@@ -78,13 +78,10 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if !coordinator.isAuthenticated {
-            coordinator.showLoginVC(fromVC: self)
+        if let sliderMenu = slideMenuController() as? ExSlideMenuController {
+            coordinator = sliderMenu.coordinator
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        self.checkAuth(coordinator: coordinator)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

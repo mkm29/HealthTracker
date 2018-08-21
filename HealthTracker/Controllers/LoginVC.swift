@@ -8,8 +8,9 @@
 
 import UIKit
 import LocalAuthentication
+import SlideMenuControllerSwift
 
-class HomeVC: UIViewController {
+class LoginVC: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -33,17 +34,40 @@ class HomeVC: UIViewController {
     }
     
     @objc func login(tapGestureRecognizer: UITapGestureRecognizer?) {
-        Coordinator.shared.login { (status) in
+        let coordinator = Coordinator()
+        coordinator.login { (status) in
             if status {
-                if let faceImage = UIImage(named: "Mitch") {
-                    DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-                        self.fadeInNewImage(newImage: faceImage)
-                    })
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                    self.setupSliderMenu()
+                })
             } else {
                 AppDelegate.getAppDelegate().showAlert("Error", "There was an error logging in.")
             }
         }
+    }
+    
+    func setupSliderMenu() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
+        let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuVC") as! LeftMenuVC
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+
+        UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+
+        leftViewController.mainViewController = nvc
+
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
+        SlideMenuOptions.contentViewScale = 1
+        slideMenuController.delegate = mainViewController
+        slideMenuController.coordinator = Coordinator()
+
+        if let window = UIApplication.shared.delegate?.window {
+            window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+            window?.rootViewController = slideMenuController
+            window?.makeKeyAndVisible()
+        }
+        
     }
     
     func fadeInNewImage(newImage: UIImage?) {
@@ -68,6 +92,12 @@ class HomeVC: UIViewController {
             // request permissions here? or when needed?
             self.performSegue(withIdentifier: "ShowProtected", sender: nil)
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowProtected" {
+            
+        }
     }
 }
 

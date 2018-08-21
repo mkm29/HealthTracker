@@ -27,6 +27,11 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
         datePicker.addTarget(self, action: #selector(enableSave), for: .valueChanged)
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setNavigationBarItem()
+//    }
+    
     @objc func enableSave() {
         saveButton.isEnabled = true
     }
@@ -37,6 +42,10 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
+        guard let coordinator = coordinator else {
+            AppDelegate.getAppDelegate().showAlert("Error", "Unable to access application data, logout and log back in.")
+            return
+        }
         if let cath = selectedObject as? Cath {
             // update Cath
             cath.timestamp = datePicker.date

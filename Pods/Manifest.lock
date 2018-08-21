@@ -91,11 +91,13 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
+  - SlideMenuControllerSwift (4.0.0)
 
 DEPENDENCIES:
   - Firebase
   - FirebaseCore
   - FirebaseFirestore
+  - SlideMenuControllerSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -115,6 +117,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
@@ -133,7 +136,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
 
-PODFILE CHECKSUM: 45cfcf7f97e0115b9c3b783138c93a362346b0dc
+PODFILE CHECKSUM: 03981bad6ce99715dc43bb35f226ca66eee5f0c9
 
 COCOAPODS: 1.5.3

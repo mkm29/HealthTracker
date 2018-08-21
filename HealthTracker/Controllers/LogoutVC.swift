@@ -9,32 +9,17 @@
 import UIKit
 
 class LogoutVC: UIViewController {
+    
+    var coordinator: Coordinator?
 
     override func viewWillAppear(_ animated: Bool) {
-        let coordinator = Coordinator.shared
-        coordinator.isAuthenticated = false
-        coordinator.showLoginVC(fromVC: self)
+        if let coordinator = coordinator {
+            coordinator.isAuthenticated = false
+        }
         
-        
-//        dismiss(animated: true) {
-//            if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") {
-//                self.present(loginVC, animated: true, completion: nil)
-//            } else {
-//                print("unable to instantiate loginVC")
-//            }
-////            self.present(self.storyboard?.instantiateInitialViewController(), animated: true, completion: nil)
-//        }
-//        coordinator.showLoginVC(fromVC: self)
+        dismiss(animated: false) {
+            self.present(UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!, animated: true, completion: nil)
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

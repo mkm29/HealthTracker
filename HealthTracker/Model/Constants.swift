@@ -48,6 +48,12 @@ struct Constants {
         static let Blue = UIColor(red: 0.0235, green: 0.502, blue: 0.9765, alpha: 1.0)
     }
     
+    struct Menu {
+        static let MenuItems = ["cath history", "medications", "bowel movements", "appointments", "physicians", "notes", "orders", "supplies", "settings", "logout"]
+        static let ReusableIdentifiers = ["CathsCell", "MedicationsCell", "BowelCell", "AppointmentCell", "PhysiciansCell", "NotesCell", "OrdersCell", "SuppliesCell", "SettingsCell", "LogoutCell"]
+        static let MenuImageNames = ["Toilet", "Medication", "Toilet-Paper", "Health Calendar", "Health Source", "Notes", "Amazon", "Supply", "Settings", "Logout"]
+    }
+    
     static let bowelType: [Int16 : String] = [1 : "extra-small",
                                               2 : "extra-small",
                                               3 : "small",

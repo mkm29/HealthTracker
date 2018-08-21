@@ -32,11 +32,7 @@ class ImportHealth {
                             let timestamp = "\(date) \(time)".date(withFormat: Constants.DateFormat.Long) {
                             var newDict = cath
                             newDict["timestamp"] = timestamp
-                            if let newCath = coreData.createNewObject(ofType: .Cath, objectDictionary: newDict) as? Cath {
-                                print("Created Cath")
-                                //let firebaseCath = firebase.addDocument(Consants, data: newDict)
-                                //newCath.documentID = firebaseCath?.documentID
-                            }
+                            _ = coreData.createNewObject(ofType: .Cath, objectDictionary: newDict)
                         }
                     }
                     coreData.saveContext()
@@ -57,10 +53,9 @@ class ImportHealth {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 
                 if let medicationDict = json as? [[String:Any]] {
-                    let appDelegate = AppDelegate.getAppDelegate()
                     
                     for medDict in medicationDict {
-                        let newMedication = coreData.createNewObject(ofType: .Medication, objectDictionary: medDict) as! Medication
+                        _ = coreData.createNewObject(ofType: .Medication, objectDictionary: medDict) as! Medication
                         //let firebaseMed = firebase.addDocument(.medication, data: medDict)
                         //newMedication.documentID = firebaseMed?.documentID
                     }
@@ -88,13 +83,7 @@ class ImportHealth {
                             let timestamp = "\(date) \(time)".date(withFormat: Constants.DateFormat.Long) {
                             var newDict = dict
                             newDict["timestamp"] = timestamp
-                            if let newBowel = coreData.createNewObject(ofType: .Bowel, objectDictionary: newDict) as? Bowel {
-                                print("createn Bowel")
-                                //let firebaseBowel = firebase.addDocument(.bowel, data: newDict)
-                                //newBowel.documentID = firebaseBowel?.documentID
-                            } else {
-                                print("unable to create Bowel")
-                            }
+                            _ = coreData.createNewObject(ofType: .Bowel, objectDictionary: newDict) as? Bowel
                             
                         }
                     }

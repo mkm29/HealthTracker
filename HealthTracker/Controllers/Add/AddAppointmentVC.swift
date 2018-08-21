@@ -23,9 +23,9 @@ class AddAppointmentVC: AddEntityVC, EKCalendarChooserDelegate {
     @IBAction func pickExisting(_ sender: Any) {
         let eventStore = EKEventStore()
         
-        let calendar = eventStore.defaultCalendarForNewEvents
-        let eventChoose = EKEventViewController()
-        let vc = EKEventViewController.init()
+//        let calendar = eventStore.defaultCalendarForNewEvents
+//        let eventChoose = EKEventViewController()
+//        let vc = EKEventViewController.init()
         
         
         eventStore.requestAccess(to: .event) { (granted, error) in

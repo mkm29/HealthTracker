@@ -64,6 +64,10 @@ class MedicationDetailVC: DetailVC {
     
     
     @IBAction func save(_ sender: Any) {
+        guard let coordinator = coordinator else {
+            AppDelegate.getAppDelegate().showAlert("Error", "Unable to access application data, logout and log back in.")
+            return
+        }
         guard let medication = selectedObject as? Medication, let name = medication.name else {
             print("No medication. Should handle in viewDidLoad")
             return

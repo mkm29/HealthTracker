@@ -39,7 +39,7 @@ class AddNoteVC: AddEntityVC, UITextViewDelegate {
         }
         let newNote: [String:String] = ["title" : noteTtitle,
                                         "body" : noteBody]
-        addEntity(fromDict: newNote)
+        _ = addEntity(fromDict: newNote)
         
         navigationController?.dismiss(animated: true, completion: nil)
     }

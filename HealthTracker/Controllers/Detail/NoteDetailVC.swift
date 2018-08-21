@@ -33,6 +33,10 @@ class NoteDetailVC: DetailVC, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
+        guard let coordinator = coordinator else {
+            AppDelegate.getAppDelegate().showAlert("Error", "Unable to access application data, logout and log back in.")
+            return
+        }
         if let note = selectedObject as? Note {
             note.title = titleTextField.text
             note.body = bodyTextArea.text

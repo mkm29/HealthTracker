@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-class NotesTVC: HealthTVC, HealthMenu {
-    
-    @IBOutlet weak var Open: UIBarButtonItem!
+class NotesTVC: HealthTVC {
     
     // MARK: - Variables to overide
     override var cellIdentifier: String { return Constants.CellIdentifiers.Note.rawValue }
@@ -19,18 +17,10 @@ class NotesTVC: HealthTVC, HealthMenu {
     override var sectionNameKeyPath: String? { return "date" }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false)] }
     
-    override func viewDidLoad() {
-        setupReveal()
-        fetch()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarItem()
     }
-    
-    func setupReveal() {
-        Open.target = self.revealViewController()
-        Open.action = #selector(SWRevealViewController.revealToggle(_:))
-        
-        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
-    }
-
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0

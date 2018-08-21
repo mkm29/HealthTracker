@@ -102,7 +102,7 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
             medicationDict["imagePath"] = imagePath
         }
         
-        addEntity(fromDict: medicationDict)
+        _ = addEntity(fromDict: medicationDict)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

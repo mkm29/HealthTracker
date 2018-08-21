@@ -9,24 +9,16 @@
 import UIKit
 import CoreData
 
-class BowelTVC: HealthTVC, HealthMenu {
+class BowelTVC: HealthTVC {
     
     override var cellIdentifier: String { return Constants.CellIdentifiers.Bowel.rawValue }
     override var entityType: Constants.EntityType { return .Bowel }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false), NSSortDescriptor(key: "timestamp", ascending: false)] }
     override var sectionNameKeyPath: String? { return "date" }
     
-    @IBOutlet weak var Open: UIBarButtonItem!
-    
-    override func viewDidLoad() {
-        setupReveal()
-    }
-    
-    func setupReveal() {
-        Open.target = self.revealViewController()
-        Open.action = #selector(SWRevealViewController.revealToggle(_:))
-        
-        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarItem()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

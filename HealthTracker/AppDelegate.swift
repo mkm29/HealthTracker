@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreData
 import Contacts
 import Firebase
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,9 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //print("First launch, setting UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             //print(Coordinator.shared.documentsDirectory)
-            Coordinator.shared.importAllFromFirebase()
+            let coordinator = Coordinator()
+            coordinator.importAllFromFirebase()
             // need to import date
         }
+        
         return true
     }
 

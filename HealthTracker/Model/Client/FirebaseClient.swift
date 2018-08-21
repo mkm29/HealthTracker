@@ -65,6 +65,7 @@ class FirebaseClient {
             let document: DocumentSnapshot
             do {
                 try document = transaction.getDocument(docRef)
+                print(document)
             } catch let fetchError as NSError {
                 errorPointer?.pointee = fetchError
                 return nil
