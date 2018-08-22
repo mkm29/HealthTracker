@@ -31,6 +31,7 @@ struct Constants {
     }
     
     enum CellIdentifiers: String {
+        case Appointment = "AppointmentCell"
         case Cath = "CathCell"
         case Bowel = "BowelCell"
         case Medication = "MedicationCell"
@@ -45,7 +46,8 @@ struct Constants {
     }
     
     struct Colors {
-        static let Blue = UIColor(red: 0.0235, green: 0.502, blue: 0.9765, alpha: 1.0)
+        static let blue = UIColor(red: 0.0235, green: 0.502, blue: 0.9765, alpha: 1.0)
+        static let lightGray = UIColor(red: 0.969, green: 0.969, blue: 0.969, alpha: 1.0)
     }
     
     struct Menu {

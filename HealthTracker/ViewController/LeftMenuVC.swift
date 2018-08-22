@@ -11,7 +11,12 @@ enum LeftMenu: Int {
     case main = 0
     case cath
     case bowel
-    case medication
+    case medications
+    case physicians
+    case appointments
+    case notes
+    case supplies
+    case logout
 }
 
 protocol LeftMenuProtocol : class {
@@ -23,12 +28,15 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var menus = ["home", "cath", "bowel", "medication", "logout"]
+    var menus = ["home", "cath schedule", "bowel history", "medications", "physicians", "appointments", "notes", "supplies", "logout"]
     var mainViewController: UIViewController!
     var cathViewController: UIViewController!
     var bowelViewController: UIViewController!
     var medicationsViewController: UIViewController!
-    var nonMenuViewController: UIViewController!
+    var physiciansViewController: UIViewController!
+    var appointmentsViewController: UIViewController!
+    var notesViewController: UIViewController!
+    var suppliesViewController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,22 +46,46 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //view.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
         tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        
+        // 1 - Home
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
         mainViewController = UINavigationController(rootViewController: mainVC)
-        //let cathNavVC = storyboard.instantiateViewController(withIdentifier: "CathNavVC") as! UINavigationController
+        
+        
+        // 2 - Cath Schedule
         let cathTVC = storyboard.instantiateViewController(withIdentifier: "CathTVC") as! CathTVC
         cathViewController = UINavigationController(rootViewController: cathTVC)
         
+        // 3 - Bowel History
         let bowelTVC = storyboard.instantiateViewController(withIdentifier: "BowelTVC") as! BowelTVC
         bowelViewController = UINavigationController(rootViewController: bowelTVC)
         
+        // 4 - Medications
         let medicationTVC = storyboard.instantiateViewController(withIdentifier: "MedicationTVC") as! MedicationTVC
         medicationsViewController = UINavigationController(rootViewController: medicationTVC)
+        
+        // 5 - Physicians
+        let physiciansVC = storyboard.instantiateViewController(withIdentifier: "PhysiciansTVC") as! PhysiciansTVC
+        physiciansViewController = UINavigationController(rootViewController: physiciansVC)
+        
+        // 6 - Appointments
+        let appointmentsVC = storyboard.instantiateViewController(withIdentifier: "AppointmentsTVC") as! AppointmentsTVC
+        appointmentsViewController = UINavigationController(rootViewController: appointmentsVC)
+        
+        // 7 - Notes
+        let notesVC = storyboard.instantiateViewController(withIdentifier: "NotesTVC") as! NotesTVC
+        notesViewController = UINavigationController(rootViewController: notesVC)
+        
+        // 8 - Supplies
+        let suppliesVC = storyboard.instantiateViewController(withIdentifier: "SuppliesTVC") as! SuppliesTVC
+        suppliesViewController = UINavigationController(rootViewController: suppliesVC)
         
         imageHeaderView = ImageHeaderView.loadNib()
         self.view.addSubview(self.imageHeaderView)
@@ -77,8 +109,26 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
             slideMenuController()?.changeMainViewController(cathViewController, close: true)
         case .bowel:
             slideMenuController()?.changeMainViewController(bowelViewController, close: true)
-        case .medication:
+        case .medications:
             slideMenuController()?.changeMainViewController(medicationsViewController, close: true)
+        case .appointments:
+            slideMenuController()?.changeMainViewController(appointmentsViewController, close: true)
+        case .logout:
+            logout()
+        case .notes:
+            slideMenuController()?.changeMainViewController(notesViewController, close: true)
+        case .physicians:
+            slideMenuController()?.changeMainViewController(physiciansViewController, close: true)
+        case .supplies:
+            slideMenuController()?.changeMainViewController(suppliesViewController, close: true)
+        }
+    }
+    
+    func logout() {
+        if let ex = slideMenuController() as? ExSlideMenuController {
+            print("got ExSlideMenuController, logout")
+        } else {
+            print("Could not get ExSlideMenuController to logout...")
         }
     }
     
@@ -89,7 +139,7 @@ extension LeftMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .cath, .bowel, .medication:
+            case .main, .cath, .bowel, .medications, .appointments, .logout, .notes, .physicians, .supplies:
                 return BaseTableViewCell.height()
             }
         }
@@ -122,7 +172,7 @@ extension LeftMenuVC: UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .bowel, .cath, .medication:
+            case .main, .bowel, .cath, .medications, .appointments, .logout, .notes, .physicians, .supplies:
                 let cell = BaseTableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell

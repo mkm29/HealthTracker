@@ -27,18 +27,14 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
         datePicker.addTarget(self, action: #selector(enableSave), for: .valueChanged)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setNavigationBarItem()
-//    }
-    
     @objc func enableSave() {
         saveButton.isEnabled = true
     }
     
 
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
+    @IBAction func cancel(_ sender: Any?) {
+        let cathTVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathTVC")
+        slideMenuController()?.changeMainViewController(cathTVC, close: true)
     }
     
     @IBAction func save(_ sender: Any) {
@@ -56,7 +52,7 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
             coordinator.coreDataManager.saveContext()
         }
         
-        navigationController?.dismiss(animated: true, completion: nil)
+        cancel(nil)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

@@ -7,16 +7,13 @@
 //
 
 import UIKit
-import Contacts
 import Firebase
-import SlideMenuControllerSwift
+//import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    let contactStore = CNContactStore()
     
     class func getAppDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate

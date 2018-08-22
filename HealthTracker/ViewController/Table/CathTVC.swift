@@ -28,20 +28,16 @@ class CathTVC: HealthTVC {
     }
     
     @objc func addCath() {
-        print("Add New Cath")
+        let addCathNVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCathNVC") as! UINavigationController
+        slideMenuController()?.changeMainViewController(addCathNVC, close: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowCathDetail" {
-            guard let navVC = segue.destination as? UINavigationController,
-                let detailVC = navVC.viewControllers.first as? CathDetailVC,
-                let indexPath = tableView.indexPathForSelectedRow,
-                let cath = fetchedResultsController?.object(at: indexPath) as? Cath else {
-                AppDelegate.getAppDelegate().showAlert("Oops", "Cath object could not be found...")
-                return
-            }
-            detailVC.selectedObject = cath
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathDetailNVC") as! UINavigationController
+        let cathDetailVC = nvc.viewControllers.first as! CathDetailVC
+        let cath = fetchedResultsController?.object(at: indexPath) as! Cath
+        cathDetailVC.selectedObject = cath
+        slideMenuController()?.changeMainViewController(nvc, close: true)
     }
 
 }

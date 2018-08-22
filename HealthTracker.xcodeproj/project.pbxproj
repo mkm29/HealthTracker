@@ -22,6 +22,7 @@
 		AF030C3B212C514F00484F40 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF030C38212C514F00484F40 /* UIApplication.swift */; };
 		AF0E8904211576D900DDD4AA /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E8903211576D900DDD4AA /* FirebaseClient.swift */; };
 		AF0E9DE1210170520005F8FD /* BowelTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0E9DE0210170520005F8FD /* BowelTVC.swift */; };
+		AF13E5CE212CDDF400B5A1A1 /* AppointmentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13E5CD212CDDF400B5A1A1 /* AppointmentsTVC.swift */; };
 		AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */; };
 		AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EBAE0210269D900E1A1FF /* Protocols.swift */; };
 		AF247B54212C42D300C340DE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF247B53212C42D300C340DE /* MainVC.swift */; };
@@ -93,6 +94,7 @@
 		AF030C38212C514F00484F40 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AF0E8903211576D900DDD4AA /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		AF0E9DE0210170520005F8FD /* BowelTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowelTVC.swift; sourceTree = "<group>"; };
+		AF13E5CD212CDDF400B5A1A1 /* AppointmentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTVC.swift; sourceTree = "<group>"; };
 		AF157416210240F400F4C6E1 /* PhysiciansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansTVC.swift; sourceTree = "<group>"; };
 		AF1EBAE0210269D900E1A1FF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		AF247B53212C42D300C340DE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 				AF94AC9420F6DA0700F06A61 /* Info.plist */,
 				AFD6D82921069E3E00A6BAE4 /* GoogleService-Info.plist */,
 				AFAF10B420F6E73800D00312 /* Assets */,
-				AFAF10B720F6E75C00D00312 /* Controllers */,
+				AFAF10B720F6E75C00D00312 /* ViewController */,
 				AF4B974F20FA8FC300D89D94 /* Extensions */,
 				AFAF10B520F6E74300D00312 /* Model */,
 				AFAF10B620F6E75100D00312 /* Storyboards */,
@@ -314,26 +316,27 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		AFAF10B720F6E75C00D00312 /* Controllers */ = {
+		AFAF10B720F6E75C00D00312 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				AF4B6576210BDD0700A6E3E8 /* Add */,
 				AFB545A4210BDE6800F3B8DA /* Detail */,
 				AFB545A3210BDE4100F3B8DA /* Table */,
 				AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */,
+				AF4ED82F212C651B00D5342F /* ExSlideMenuController.swift */,
+				AF4ED82D212C60FC00D5342F /* LeftMenuVC.swift */,
 				AF94AC8720F6DA0500F06A61 /* LoginVC.swift */,
-				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
 				AFC64153212B6A9B007C4794 /* LogoutVC.swift */,
 				AF247B53212C42D300C340DE /* MainVC.swift */,
-				AF4ED82D212C60FC00D5342F /* LeftMenuVC.swift */,
-				AF4ED82F212C651B00D5342F /* ExSlideMenuController.swift */,
+				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
 			);
-			path = Controllers;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		AFB545A3210BDE4100F3B8DA /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				AF13E5CD212CDDF400B5A1A1 /* AppointmentsTVC.swift */,
 				AF0E9DE0210170520005F8FD /* BowelTVC.swift */,
 				AFAF10BA20F6E94700D00312 /* CathTVC.swift */,
 				AF65BACB2107FF8300B5555C /* HealthTVC.swift */,
@@ -563,6 +566,7 @@
 				AF3FAC5520F6FB3B00D5ED73 /* AddMedicationVC.swift in Sources */,
 				AF8E879220FC161D00C2CC4F /* Constants.swift in Sources */,
 				AF247B61212C443800C340DE /* DataTableViewCell.swift in Sources */,
+				AF13E5CE212CDDF400B5A1A1 /* AppointmentsTVC.swift in Sources */,
 				AF68D3F62124E3C7005E02FF /* SetDateTimeVC.swift in Sources */,
 				AFB545A8210BDED000F3B8DA /* CathDetailVC.swift in Sources */,
 			);

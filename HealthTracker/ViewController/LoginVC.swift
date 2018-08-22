@@ -35,15 +35,18 @@ class LoginVC: UIViewController {
     
     @objc func login(tapGestureRecognizer: UITapGestureRecognizer?) {
         let coordinator = Coordinator()
-        coordinator.login { (status) in
-            if status {
-                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-                    self.setupSliderMenu()
-                })
-            } else {
-                AppDelegate.getAppDelegate().showAlert("Error", "There was an error logging in.")
-            }
-        }
+        setupSliderMenu()
+        
+//        
+//        coordinator.login { (status) in
+//            if status {
+//                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+//                    self.setupSliderMenu()
+//                })
+//            } else {
+//                AppDelegate.getAppDelegate().showAlert("Error", "There was an error logging in.")
+//            }
+//        }
     }
     
     func setupSliderMenu() {

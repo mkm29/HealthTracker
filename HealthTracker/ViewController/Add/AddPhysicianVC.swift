@@ -45,7 +45,12 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         let contactPickerViewController = CNContactPickerViewController()
         contactPickerViewController.predicateForEnablingContact = NSPredicate(format: "birthday != nil")
         contactPickerViewController.delegate = self
-        present(contactPickerViewController, animated: true, completion: nil)
+        
+        requestContactsAccess { (granted) in
+            if granted {
+                self.present(contactPickerViewController, animated: true, completion: nil)
+            }
+        }
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
@@ -75,5 +80,38 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         _ = addEntity(fromDict: dict)
         
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Contacts
+    func requestContactsAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let contactsStore = CNContactStore()
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            completionHandler(true)
+        case .denied:
+            showSettingsAlert(completionHandler)
+        case .restricted, .notDetermined:
+            contactsStore.requestAccess(for: .contacts) { granted, error in
+                if granted {
+                    completionHandler(true)
+                } else {
+                    DispatchQueue.main.async {
+                        self.showSettingsAlert(completionHandler)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let alert = UIAlertController(title: nil, message: "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { action in
+            completionHandler(false)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            completionHandler(false)
+        })
+        present(alert, animated: true)
     }
 }

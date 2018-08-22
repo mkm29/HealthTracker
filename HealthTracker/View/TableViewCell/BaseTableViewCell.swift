@@ -24,31 +24,38 @@ open class BaseTableViewCell : UITableViewCell {
     }
     
     open func setup() {
+        // set image?
     }
     
     open class func height() -> CGFloat {
-        return 48
+        return 60
     }
     
     open func setData(_ data: Any?) {
-        self.backgroundColor = UIColor(hex: "F1F8E9")
-        self.textLabel?.font = UIFont.italicSystemFont(ofSize: 18)
+        self.backgroundColor = UIColor(hex: "F7F7F7")
+        self.textLabel?.font = UIFont(name: "Avenir", size: 20) //UIFont.italicSystemFont(ofSize: 18)
         self.textLabel?.textColor = UIColor(hex: "9E9E9E")
         if let menuText = data as? String {
             self.textLabel?.text = menuText
         }
     }
     
-    override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        if highlighted {
-            self.alpha = 0.4
-        } else {
-            self.alpha = 1.0
-        }
-    }
-    
-    // ignore the default handling
-    override open func setSelected(_ selected: Bool, animated: Bool) {
-    }
+//    override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
+//        if highlighted {
+//            alpha = 1.0
+//        } else {
+//            alpha = 0.4
+//        }
+//    }
+//    
+//    // ignore the default handling
+//    override open func setSelected(_ selected: Bool, animated: Bool) {
+//        // make selected menu items highlighted
+//        if selected {
+//            alpha = 1.0
+//        } else {
+//            alpha = 0.4
+//        }
+//    }
   
 }

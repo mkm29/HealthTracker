@@ -10,6 +10,7 @@ import CoreData
 import Firebase
 import LocalAuthentication
 import UIKit
+import Contacts
 
 class Coordinator {
     
@@ -24,7 +25,6 @@ class Coordinator {
     
     var coreDataManager: CoreDataManager!
     var firebase: FirebaseClient!
-    
     
     init() {
         coreDataManager = CoreDataManager()
@@ -203,5 +203,7 @@ class Coordinator {
         
         return dict
     }
+    
+
     
 }
