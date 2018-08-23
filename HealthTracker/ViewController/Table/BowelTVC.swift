@@ -16,11 +16,6 @@ class BowelTVC: HealthTVC {
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false), NSSortDescriptor(key: "timestamp", ascending: false)] }
     override var sectionNameKeyPath: String? { return "date" }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBarItem()
-    }
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
     }
@@ -28,17 +23,15 @@ class BowelTVC: HealthTVC {
         return 60.0
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowBowelDetail" {
-            guard let navVC = segue.destination as? UINavigationController,
-                let detailVC = navVC.viewControllers.first as? BowelDetailVC,
-                let indexPath = tableView.indexPathForSelectedRow,
-                let bowel = fetchedResultsController?.object(at: indexPath) as? Bowel else {
-                AppDelegate.getAppDelegate().showAlert("Error", "There was an error retrieving the object!")
-                return
-            }
-            detailVC.selectedObject = bowel
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bowelDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BowelDetailVC") as! BowelDetailVC
+        let bowel = fetchedResultsController?.object(at: indexPath) as! Bowel
+        bowelDetailVC.selectedObject = bowel
+        let nvc = UINavigationController(rootViewController: bowelDetailVC)
+        slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+        slideMenuController()?.changeRightViewWidth(view.bounds.width)
+        slideMenuController()?.openRight()
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }

@@ -27,11 +27,6 @@ class AddNoteVC: AddEntityVC, UITextViewDelegate {
         textView.text = ""
     }
     
-
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func save(_ sender: Any) {
         guard let noteTtitle = titleTextField.text.nilIfEmpty, let noteBody = bodyTextView.text.nilIfEmpty else {
             AppDelegate.getAppDelegate().showAlert("Oops", "Sorry both fields must be complete")
@@ -41,7 +36,7 @@ class AddNoteVC: AddEntityVC, UITextViewDelegate {
                                         "body" : noteBody]
         _ = addEntity(fromDict: newNote)
         
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
 
 }

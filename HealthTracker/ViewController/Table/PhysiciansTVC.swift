@@ -15,10 +15,5 @@ class PhysiciansTVC: HealthTVC {
     override var entityType: Constants.EntityType { return .Physician }
     override var sectionNameKeyPath: String? { return "specialty" }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"specialty", ascending: true), NSSortDescriptor(key: "familyName", ascending: true)] }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBarItem()
-    }
 
 }

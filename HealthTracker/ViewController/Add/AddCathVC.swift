@@ -22,7 +22,7 @@ class AddCathVC: AddEntityVC, SetDateProtocol {
         amountTextField.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         amountTextField.becomeFirstResponder()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissAddEntity))
     }
     
     @IBAction func setDateButtonTapped(_ sender: Any) {
@@ -65,13 +65,8 @@ class AddCathVC: AddEntityVC, SetDateProtocol {
         cathDict["amount"] = Int16((amountString as NSString).integerValue)
         
         _ = addEntity(fromDict: cathDict)
-        cancel(nil)
+        dismissAddEntity()
         
-    }
-    
-    @objc func cancel(_ sender: Any?) {
-        let cathTVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathTVC")
-        slideMenuController()?.changeMainViewController(cathTVC, close: true)
     }
     
     func setDate(date: Date) {

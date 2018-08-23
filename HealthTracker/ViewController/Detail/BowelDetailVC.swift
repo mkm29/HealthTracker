@@ -34,10 +34,6 @@ class BowelDetailVC: DetailVC {
             bowel.date = datePicker.date.string(withFormat: Constants.DateFormat.Normal)
             bowel.intensity = Int16(slider.value)
         }
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
 }

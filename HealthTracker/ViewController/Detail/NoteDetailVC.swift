@@ -27,10 +27,6 @@ class NoteDetailVC: DetailVC, UITextFieldDelegate, UITextViewDelegate {
             bodyTextArea.text = note.body.nilIfEmpty
         }
     }
-
-    @IBAction func back(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func save(_ sender: Any) {
         guard let coordinator = coordinator else {
@@ -42,7 +38,7 @@ class NoteDetailVC: DetailVC, UITextFieldDelegate, UITextViewDelegate {
             note.body = bodyTextArea.text
             coordinator.coreDataManager.saveContext()
         }
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

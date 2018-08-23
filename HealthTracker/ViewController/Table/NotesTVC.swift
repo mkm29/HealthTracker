@@ -17,22 +17,18 @@ class NotesTVC: HealthTVC {
     override var sectionNameKeyPath: String? { return "date" }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false)] }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBarItem()
-    }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowNoteDetail" {
-            if let navVC = segue.destination as? UINavigationController,
-                let detailVC = navVC.viewControllers.first as? NoteDetailVC,
-                let indexPath = tableView.indexPathForSelectedRow, let note = fetchedResultsController?.object(at: indexPath) as? Note {
-                detailVC.selectedObject = note
-            }
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathDetailNVC") as! UINavigationController
+        let detailVC = nvc.viewControllers.first as! BowelDetailVC
+        let bowel = fetchedResultsController?.object(at: indexPath) as! Bowel
+        detailVC.selectedObject = bowel
+        slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+        slideMenuController()?.changeRightViewWidth(view.bounds.width)
+        slideMenuController()?.openRight()
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

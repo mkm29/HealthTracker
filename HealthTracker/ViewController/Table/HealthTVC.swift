@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+
+
 class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - Variables to be overridden
@@ -21,6 +23,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 //        case Order = "Order"
 //        case Supply = "Supply"
 //    }
+    
     var cellIdentifier: String { fatalError("cellIdentifier must be overridden") }
     var entityType: Constants.EntityType { fatalError("entity must be overridden") }
     var entity : String { return entityType.rawValue }
@@ -78,10 +81,13 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let sliderMenu = slideMenuController() as? ExSlideMenuController {
-            coordinator = sliderMenu.coordinator
+        guard let sliderMenu = slideMenuController() as? ExSlideMenuController else {
+            self.goToInitialViewController()
+            return
         }
-        self.checkAuth(coordinator: coordinator)
+        coordinator = sliderMenu.coordinator
+        checkAuth(coordinator: coordinator)
+        setNavigationBarItem()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,7 +135,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         if sectionNameKeyPath != nil {
             if let sections = fetchedResultsController?.sections {
                 switch entityType {
-                case .Cath, .Bowel, .Note:
+                case .Cath, .Bowel, .Note, .Appointment, .Order:
                     sectionHeader = sections[section].name.convertDate()
                 default:
                     sectionHeader = sections[section].name
@@ -153,6 +159,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
     
+    // update the following to handle syncing with Firebase? 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -188,22 +195,22 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
             return
         }
         switch entityType {
-        case .Appointment:
-            print("configureAppointmentCell")
-        case .Cath:
-            configureCathCell(cell as! CathCell, cath: frc.object(at: indexPath) as! Cath)
-        case .Bowel:
-            configureBowelCell(cell, bowel: frc.object(at: indexPath) as! Bowel)
-        case .Medication:
-            configureMedicationCell(cell as! MedicationCell, medication: frc.object(at: indexPath) as! Medication)
-        case .Note:
-            configreNoteCell(cell, note: frc.object(at: indexPath) as! Note)
-        case .Order:
-            configureOrderCell(cell, order: frc.object(at: indexPath) as! Order)
-        case .Physician:
-            configurePhysicianCell(cell, physician: frc.object(at: indexPath) as! Physician)
-        case .Supply:
-            configureSupplyCell(cell, supply: frc.object(at: indexPath) as! Supply)
+            case .Appointment:
+                print("configureAppointmentCell")
+            case .Cath:
+                configureCathCell(cell as! CathCell, cath: frc.object(at: indexPath) as! Cath)
+            case .Bowel:
+                configureBowelCell(cell, bowel: frc.object(at: indexPath) as! Bowel)
+            case .Medication:
+                configureMedicationCell(cell as! MedicationCell, medication: frc.object(at: indexPath) as! Medication)
+            case .Note:
+                configreNoteCell(cell, note: frc.object(at: indexPath) as! Note)
+            case .Order:
+                configureOrderCell(cell, order: frc.object(at: indexPath) as! Order)
+            case .Physician:
+                configurePhysicianCell(cell, physician: frc.object(at: indexPath) as! Physician)
+            case .Supply:
+                configureSupplyCell(cell, supply: frc.object(at: indexPath) as! Supply)
         }
     }
     

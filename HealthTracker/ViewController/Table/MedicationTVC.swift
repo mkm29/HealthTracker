@@ -16,23 +16,18 @@ class MedicationTVC: HealthTVC  {
     override var sectionNameKeyPath: String? { return "purpose" }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"purpose", ascending: true), NSSortDescriptor(key: "name", ascending: true)] }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBarItem()
-    }
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowMedication",
-            let indexPath = tableView.indexPathForSelectedRow,
-            let med = fetchedResultsController?.object(at: indexPath) as? Medication {
-            let navVC = segue.destination as! UINavigationController
-            let medicationDetail = navVC.viewControllers.first as! MedicationDetailVC
-            medicationDetail.selectedObject = med
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MedicationDetailVC") as! MedicationDetailVC
+        detailVC.selectedObject = fetchedResultsController?.object(at: indexPath) as! Medication
+        let nvc = UINavigationController(rootViewController: detailVC)
+        slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+        slideMenuController()?.changeRightViewWidth(view.bounds.width)
+        slideMenuController()?.openRight()
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }

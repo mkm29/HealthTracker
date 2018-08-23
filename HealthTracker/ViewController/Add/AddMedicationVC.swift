@@ -54,11 +54,6 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
         dismiss(animated: true, completion: nil)
     }
     
-
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
     @objc func setImagePickerSource(tapGestureRecognizer: UITapGestureRecognizer?) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let alertController = UIAlertController(title: "Pick Image", message: "How do you want to choose the image?", preferredStyle: .alert)
@@ -103,7 +98,7 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
         }
         
         _ = addEntity(fromDict: medicationDict)
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
     
     private func saveImage(_ image: UIImage, tag: String) -> String? {

@@ -9,23 +9,30 @@
 import UIKit
 
 class AddEntityVC: UIViewController {
-    
+
     var coordinator: Coordinator?
     var entityType: Constants.EntityType { fatalError("entity must be overridden") }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if let sliderMenu = slideMenuController() as? ExSlideMenuController {
-            coordinator = sliderMenu.coordinator
-        }
-        self.checkAuth(coordinator: coordinator)
-    }
 
     func addEntity(fromDict dict: [String:Any]) -> Any? {
-        guard let coordinator = coordinator else {
+        guard let menu = slideMenuController() as? ExSlideMenuController, let coordinator = menu.coordinator else {
             AppDelegate.getAppDelegate().showAlert("Error", "Unable to access app coordinator, please log out and log back in.")
             return nil
         }
-         return coordinator.addObject(entityType, data: dict)
+        return coordinator.addObject(entityType, data: dict)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let sliderMenu = slideMenuController() as? ExSlideMenuController, let coordinator = sliderMenu.coordinator else {
+            // Go to LoginVC
+            self.goToInitialViewController()
+            return
+        }
+        checkAuth(coordinator: coordinator)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissAddEntity))
+    }
+    
+    @objc func dismissAddEntity() {
+        slideMenuController()?.closeRight()
     }
 
 }

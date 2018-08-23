@@ -94,7 +94,7 @@ class MedicationDetailVC: DetailVC {
         coordinator.coreDataManager.saveContext()
         
         // 3. dismiss
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
     
     // save image and return filePath
@@ -127,10 +127,6 @@ class MedicationDetailVC: DetailVC {
             if value { return true }
         }
         return false
-    }
-    
-    @IBAction func back(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
     }
 
 }

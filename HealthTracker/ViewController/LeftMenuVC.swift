@@ -125,11 +125,13 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
     }
     
     func logout() {
-        if let ex = slideMenuController() as? ExSlideMenuController {
-            print("got ExSlideMenuController, logout")
+        if let ex = slideMenuController() as? ExSlideMenuController, let coordinator = ex.coordinator {
+            coordinator.isAuthenticated = false
         } else {
-            print("Could not get ExSlideMenuController to logout...")
+            //print("Could not get ExSlideMenuController to logout...")
+            AppDelegate.getAppDelegate().showAlert("Error", "Sorry there was a problem logging out.")
         }
+        self.goToInitialViewController()
     }
     
 }

@@ -58,6 +58,8 @@
 		AF94AC9320F6DA0700F06A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF94AC9120F6DA0700F06A61 /* LaunchScreen.storyboard */; };
 		AF9E9D532117F7BE00E2978C /* cath.json in Resources */ = {isa = PBXBuildFile; fileRef = AF9E9D512117F7BD00E2978C /* cath.json */; };
 		AF9E9D542117F7BE00E2978C /* bowel.json in Resources */ = {isa = PBXBuildFile; fileRef = AF9E9D522117F7BD00E2978C /* bowel.json */; };
+		AFAC5AD9212E491B004B8919 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC5AD8212E491B004B8919 /* RightViewController.swift */; };
+		AFAC5ADB212E51F1004B8919 /* AddSupplyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAC5ADA212E51F1004B8919 /* AddSupplyVC.swift */; };
 		AFAF10BB20F6E94700D00312 /* CathTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BA20F6E94700D00312 /* CathTVC.swift */; };
 		AFAF10BD20F6E97A00D00312 /* MedicationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */; };
 		AFB545A2210BDDD200F3B8DA /* AddBowelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */; };
@@ -132,6 +134,8 @@
 		AF94AC9420F6DA0700F06A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9E9D512117F7BD00E2978C /* cath.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cath.json; sourceTree = "<group>"; };
 		AF9E9D522117F7BD00E2978C /* bowel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bowel.json; sourceTree = "<group>"; };
+		AFAC5AD8212E491B004B8919 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		AFAC5ADA212E51F1004B8919 /* AddSupplyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSupplyVC.swift; sourceTree = "<group>"; };
 		AFAF10BA20F6E94700D00312 /* CathTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathTVC.swift; sourceTree = "<group>"; };
 		AFAF10BC20F6E97A00D00312 /* MedicationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTVC.swift; sourceTree = "<group>"; };
 		AFB545A1210BDDD200F3B8DA /* AddBowelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBowelVC.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				AF3FAC5420F6FB3B00D5ED73 /* AddMedicationVC.swift */,
 				AFCEBF2E210958D3004E6186 /* AddNoteVC.swift */,
 				AF264C9B21041F120019BD4F /* AddPhysicianVC.swift */,
+				AFAC5ADA212E51F1004B8919 /* AddSupplyVC.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				AF94AC8720F6DA0500F06A61 /* LoginVC.swift */,
 				AFC64153212B6A9B007C4794 /* LogoutVC.swift */,
 				AF247B53212C42D300C340DE /* MainVC.swift */,
+				AFAC5AD8212E491B004B8919 /* RightViewController.swift */,
 				AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */,
 			);
 			path = ViewController;
@@ -355,12 +361,12 @@
 				AFB545B1210BDFD200F3B8DA /* AppointmentDetailVC.swift */,
 				AFB545A5210BDE9600F3B8DA /* BowelDetailVC.swift */,
 				AFB545A7210BDED000F3B8DA /* CathDetailVC.swift */,
+				AF8DC6352122459E00981A06 /* DetailVC.swift */,
 				AFB545A9210BDEE800F3B8DA /* MedicationDetailVC.swift */,
 				AF4693C121097FB100F244F8 /* NoteDetailVC.swift */,
 				AFB545AB210BDEFE00F3B8DA /* OrderDetailVC.swift */,
 				AFB545AD210BDF6B00F3B8DA /* PhysicianDetailVC.swift */,
 				AFB545AF210BDF9100F3B8DA /* SupplyDetailVC.swift */,
-				AF8DC6352122459E00981A06 /* DetailVC.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				AF65BACA2107F6A800B5555C /* NotesTVC.swift in Sources */,
 				AF264C9C21041F120019BD4F /* AddPhysicianVC.swift in Sources */,
 				AF157417210240F400F4C6E1 /* PhysiciansTVC.swift in Sources */,
+				AFAC5ADB212E51F1004B8919 /* AddSupplyVC.swift in Sources */,
 				AF8DC6362122459E00981A06 /* DetailVC.swift in Sources */,
 				AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */,
 				AFB545B4210BF0AE00F3B8DA /* AddAppointmentVC.swift in Sources */,
@@ -527,6 +534,7 @@
 				AFB545B0210BDF9100F3B8DA /* SupplyDetailVC.swift in Sources */,
 				AF94AC8820F6DA0500F06A61 /* LoginVC.swift in Sources */,
 				AF030C34212C514300484F40 /* UIViewController.swift in Sources */,
+				AFAC5AD9212E491B004B8919 /* RightViewController.swift in Sources */,
 				AF1EBAE1210269D900E1A1FF /* Protocols.swift in Sources */,
 				AF247B5F212C443800C340DE /* BaseTableViewCell.swift in Sources */,
 				AFB545A6210BDE9600F3B8DA /* BowelDetailVC.swift in Sources */,

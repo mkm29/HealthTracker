@@ -16,10 +16,6 @@ class AddAppointmentVC: AddEntityVC, EKCalendarChooserDelegate {
     
     let eventStore = EKEventStore()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func pickExisting(_ sender: Any) {
         let eventStore = EKEventStore()
         

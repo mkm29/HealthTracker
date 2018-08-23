@@ -53,14 +53,16 @@ class LoginVC: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
         let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuVC") as! LeftMenuVC
+        let rightViewController = storyboard.instantiateViewController(withIdentifier: "RightViewController") as! RightViewController
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-
+        
         UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
-
+        
         leftViewController.mainViewController = nvc
-
-        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
+        
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+        slideMenuController.coordinator = Coordinator()
         SlideMenuOptions.contentViewScale = 1
         slideMenuController.delegate = mainViewController
         slideMenuController.coordinator = Coordinator()

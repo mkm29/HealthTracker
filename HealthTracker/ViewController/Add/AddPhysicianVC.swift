@@ -57,11 +57,6 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         selectedContact = contact
     }
     
-    
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func save(_ sender: Any) {
         
         guard let givenName = firstName.text, let familyName = lastName.text else {
@@ -79,7 +74,7 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         
         _ = addEntity(fromDict: dict)
         
-        navigationController?.dismiss(animated: true, completion: nil)
+        dismissAddEntity()
     }
     
     // MARK: - Contacts

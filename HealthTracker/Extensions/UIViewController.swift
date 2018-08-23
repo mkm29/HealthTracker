@@ -37,4 +37,11 @@ extension UIViewController {
             }
         }
     }
+    
+    func goToInitialViewController() {
+        let window = UIApplication.shared.delegate!.window!
+        window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+    }
 }

@@ -31,12 +31,6 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
         saveButton.isEnabled = true
     }
     
-
-    @IBAction func cancel(_ sender: Any?) {
-        let cathTVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathTVC")
-        slideMenuController()?.changeMainViewController(cathTVC, close: true)
-    }
-    
     @IBAction func save(_ sender: Any) {
         guard let coordinator = coordinator else {
             AppDelegate.getAppDelegate().showAlert("Error", "Unable to access application data, logout and log back in.")
@@ -52,7 +46,7 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
             coordinator.coreDataManager.saveContext()
         }
         
-        cancel(nil)
+        dismissAddEntity()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

@@ -18,7 +18,6 @@ class CathTVC: HealthTVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarItem()
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCath))
         navigationItem.rightBarButtonItem = addButton
     }
@@ -28,16 +27,22 @@ class CathTVC: HealthTVC {
     }
     
     @objc func addCath() {
-        let addCathNVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCathNVC") as! UINavigationController
-        slideMenuController()?.changeMainViewController(addCathNVC, close: true)
+        let addCathVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCathVC") as! AddCathVC
+        let nvc = UINavigationController(rootViewController: addCathVC)
+        slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+        slideMenuController()?.changeRightViewWidth(view.bounds.width)
+        slideMenuController()?.openRight()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathDetailNVC") as! UINavigationController
-        let cathDetailVC = nvc.viewControllers.first as! CathDetailVC
+        let cathDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CathDetailVC") as! CathDetailVC
         let cath = fetchedResultsController?.object(at: indexPath) as! Cath
         cathDetailVC.selectedObject = cath
-        slideMenuController()?.changeMainViewController(nvc, close: true)
+        let nvc = UINavigationController(rootViewController: cathDetailVC)
+        slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+        slideMenuController()?.changeRightViewWidth(view.bounds.width)
+        slideMenuController()?.openRight()
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }
