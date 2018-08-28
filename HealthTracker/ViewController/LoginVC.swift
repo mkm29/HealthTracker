@@ -31,25 +31,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         //login(tapGestureRecognizer: nil)
     }
     
-//    @objc func login(tapGestureRecognizer: UITapGestureRecognizer?) {
-//        let coordinator = Coordinator()
-//        setupSliderMenu()
-//
-//
-//        coordinator.login { (status) in
-//            if status {
-//                self.setupSliderMenu()
-////                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-////                    self.email.text = "mitch.murphy@gmail.com"
-////                    self.password.text = "123456789"
-////                    self.setupSliderMenu()
-////                })
-//            } else {
-//                AppDelegate.getAppDelegate().showAlert("Error", "There was an error logging in.")
-//            }
-//        }
-//    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.text == "password" {
             textField.isSecureTextEntry = true
@@ -146,35 +127,5 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-//    func fadeInNewImage(newImage: UIImage?) {
-//        if newImage == nil {
-//            return
-//        }
-//
-//
-//        let tmpImageView = UIImageView(image: newImage)
-//        tmpImageView.contentMode = .scaleAspectFit
-//        tmpImageView.frame = imageView.bounds
-//        tmpImageView.alpha = 0.0
-//        imageView.addSubview(tmpImageView)
-//
-//        UIView.animate(withDuration: 1.75, animations: {
-//            tmpImageView.alpha = 1.0
-//            //self.view.backgroundColor = UIColor.white
-//        }, completion: {
-//            finished in
-//            self.imageView.image = newImage
-//            tmpImageView.removeFromSuperview()
-//            // request permissions here? or when needed?
-//            self.performSegue(withIdentifier: "ShowProtected", sender: nil)
-//        })
-//    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowProtected" {
-//
-//        }
-//    }
 }
 

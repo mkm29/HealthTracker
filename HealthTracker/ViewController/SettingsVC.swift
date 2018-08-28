@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsVC: UIViewController {
     
-    var coordinator: Coordinator?
+    var coordinator: Coordinator!
     
     var presentingVC: UIViewController!
 
@@ -44,12 +44,25 @@ class SettingsVC: UIViewController {
     }
 
     @IBAction func importFromFirebase(_ sender: Any) {
+        
         // prompt the user what he/she wants to import
         let actionSheet = UIAlertController(title: "Import", message: "What data would you like to import from Firebase?", preferredStyle: .actionSheet)
         let importCathAction = UIAlertAction(title: "Cath Schedule", style: .default) { (action) in
-            print("Import Cath")
+            self.coordinator.importFromFirebase(entity: .Cath)
+        }
+        let importMedication = UIAlertAction(title: "Medication", style: .default) { (action) in
+            self.coordinator.importFromFirebase(entity: .Medication)
+        }
+        let importBowel = UIAlertAction(title: "Bowel Movements", style: .default) { (action) in
+            self.coordinator.importFromFirebase(entity: .Bowel)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
         }
         actionSheet.addAction(importCathAction)
+        actionSheet.addAction(importBowel)
+        actionSheet.addAction(importMedication)
+        actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)
     }
     

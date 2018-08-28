@@ -8,9 +8,8 @@
 
 import CoreData
 import Firebase
-import LocalAuthentication
-import UIKit
-import Contacts
+//import UIKit
+//import Contacts
 
 class Coordinator {
     
@@ -94,13 +93,15 @@ class Coordinator {
                 for snapshot in result {
                     // need to convert dictionary to one suitable for creating Core Data objects
                     _ = self.coreDataManager.createNewObject(ofType: entity, objectDictionary: self.convertDict(snapshot: snapshot))
+                    
                 }
+                self.coreDataManager.saveContext()
             }
-            self.coreDataManager.saveContext()
+            
         }
     }
     
-    private func convertDict(snapshot: [String:Any]) -> [String:Any] {
+    func convertDict(snapshot: [String:Any]) -> [String:Any] {
         var dict = [String:Any]()
         
         if let timestamp = snapshot["timestamp"] as? Timestamp {

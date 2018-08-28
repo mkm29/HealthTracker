@@ -724,10 +724,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -747,10 +744,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CDLR95E4T8;
 				INFOPLIST_FILE = HealthTracker/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = smigula.HealthTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
