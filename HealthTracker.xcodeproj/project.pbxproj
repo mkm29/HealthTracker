@@ -44,7 +44,6 @@
 		AF65BACC2107FF8300B5555C /* HealthTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACB2107FF8300B5555C /* HealthTVC.swift */; };
 		AF65BACE21081AD700B5555C /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACD21081AD700B5555C /* OrdersTVC.swift */; };
 		AF65BAD021081D4600B5555C /* SuppliesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BACF21081D4600B5555C /* SuppliesTVC.swift */; };
-		AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65BAD12108320600B5555C /* ImportHealth.swift */; };
 		AF68D3F62124E3C7005E02FF /* SetDateTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */; };
 		AF68D3F82124F2A3005E02FF /* AlwaysShowPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */; };
 		AF7271A221346E08006131D6 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7271A121346E08006131D6 /* SettingsVC.swift */; };
@@ -118,7 +117,6 @@
 		AF65BACB2107FF8300B5555C /* HealthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTVC.swift; sourceTree = "<group>"; };
 		AF65BACD21081AD700B5555C /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		AF65BACF21081D4600B5555C /* SuppliesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesTVC.swift; sourceTree = "<group>"; };
-		AF65BAD12108320600B5555C /* ImportHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportHealth.swift; sourceTree = "<group>"; };
 		AF68D3F52124E3C7005E02FF /* SetDateTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDateTimeVC.swift; sourceTree = "<group>"; };
 		AF68D3F72124F2A3005E02FF /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
 		AF7271A121346E08006131D6 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				AF8E879120FC161D00C2CC4F /* Constants.swift */,
 				AF61D9CD20FE4BE4000761AF /* CoreDateManager.swift */,
 				AF94AC8C20F6DA0500F06A61 /* HealthTracker.xcdatamodeld */,
-				AF65BAD12108320600B5555C /* ImportHealth.swift */,
 				AFF186732116002D002726DF /* Client */,
 			);
 			path = Model;
@@ -556,7 +553,6 @@
 				AF030C25212C4CCF00484F40 /* String.swift in Sources */,
 				AFCEBF3121095C65004E6186 /* AddEntityVC.swift in Sources */,
 				AFB545AC210BDEFE00F3B8DA /* OrderDetailVC.swift in Sources */,
-				AF65BAD22108320600B5555C /* ImportHealth.swift in Sources */,
 				AF4ED82E212C60FC00D5342F /* LeftMenuVC.swift in Sources */,
 				AF4B974E20FA8E7200D89D94 /* Optional.swift in Sources */,
 				AF030C2D212C50CC00484F40 /* UIImage.swift in Sources */,

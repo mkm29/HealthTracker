@@ -15,6 +15,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        slideMenuController()?.openLeft()
     }
     
     

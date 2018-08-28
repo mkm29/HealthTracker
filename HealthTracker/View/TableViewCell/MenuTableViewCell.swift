@@ -24,7 +24,7 @@ class MenuTableViewCell : BaseTableViewCell {
     @IBOutlet weak var dataText: UILabel!
     
     override func awakeFromNib() {
-        self.dataText?.font = UIFont(name: "Avenir Book", size: 20)
+        self.dataText?.font = UIFont(name: "Avenir Book", size: 16)
         self.dataText?.textColor = Constants.Colors.blue //UIColor(hex: "9E9E9E")
     }
  

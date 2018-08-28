@@ -20,6 +20,20 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var mirrorOnFirebase: UISwitch!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setNavigationBarItem()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        navigationItem.title = "Settings"
+        
+        imageView.layoutIfNeeded()
+        imageView.layer.cornerRadius = imageView.bounds.size.height / 2
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         guard let sliderMenu = slideMenuController() as? ExSlideMenuController else {
             self.goToInitialViewController()
@@ -27,12 +41,16 @@ class SettingsVC: UIViewController {
         }
         coordinator = sliderMenu.coordinator
         checkAuth(coordinator: coordinator)
-        setNavigationBarItem()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
     }
 
     @IBAction func importFromFirebase(_ sender: Any) {
         // prompt the user what he/she wants to import
+        let actionSheet = UIAlertController(title: "Import", message: "What data would you like to import from Firebase?", preferredStyle: .actionSheet)
+        let importCathAction = UIAlertAction(title: "Cath Schedule", style: .default) { (action) in
+            print("Import Cath")
+        }
+        actionSheet.addAction(importCathAction)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     
@@ -55,8 +73,6 @@ class SettingsVC: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        print("Save settings and dismiss")
-        
         slideMenuController()?.changeMainViewController(presentingVC, close: true)
     }
 }
