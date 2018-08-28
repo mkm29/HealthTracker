@@ -14,14 +14,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="crj-Qs-Xeq">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="crj-Qs-Xeq">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-S4-hhE">
-                    <rect key="frame" x="8" y="72" width="80" height="80"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-S4-hhE">
+                    <rect key="frame" x="8" y="52" width="100" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="THq-40-VhC"/>
-                        <constraint firstAttribute="width" constant="80" id="Vdp-yI-A0R"/>
+                        <constraint firstAttribute="height" constant="100" id="THq-40-VhC"/>
+                        <constraint firstAttribute="width" constant="100" id="Vdp-yI-A0R"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -38,7 +38,11 @@
                 <outlet property="backgroundImage" destination="crj-Qs-Xeq" id="s6z-e0-bbb"/>
                 <outlet property="profileImage" destination="KsU-S4-hhE" id="C8u-Fp-ZfO"/>
             </connections>
-            <point key="canvasLocation" x="255" y="192"/>
+            <point key="canvasLocation" x="254.40000000000001" y="191.6041979010495"/>
         </view>
     </objects>
+    <resources>
+        <image name="Profile Picture" width="747" height="747"/>
+        <image name="bg" width="320" height="160"/>
+    </resources>
 </document>

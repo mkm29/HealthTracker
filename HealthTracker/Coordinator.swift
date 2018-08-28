@@ -19,10 +19,8 @@ class Coordinator {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
     }
     
-//    static let shared = Coordinator()
-    
     var isAuthenticated = false
-    
+    var mirrorOnFirebase: Bool = true
     var coreDataManager: CoreDataManager!
     var firebase: FirebaseClient!
     
@@ -113,20 +111,29 @@ class Coordinator {
         switch type {
         case .Cath:
             let newCath = coreDataManager.createNewObject(ofType: .Cath, objectDictionary: data) as! Cath
-            let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Cath.rawValue.lowercased(), data: data)
-            newCath.documentID = newFirebase?.documentID
+            if mirrorOnFirebase {
+                let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Cath.rawValue.lowercased(), data: data)
+                newCath.documentID = newFirebase?.documentID
+            }
         case .Bowel:
             let newBowel = coreDataManager.createNewObject(ofType: .Bowel, objectDictionary: data) as! Bowel
-            let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Bowel.rawValue.lowercased(), data: data)
-            newBowel.documentID = newFirebase?.documentID
+            if mirrorOnFirebase {
+                let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Bowel.rawValue.lowercased(), data: data)
+                newBowel.documentID = newFirebase?.documentID
+            }
+            
         case .Medication:
             let newMedication = coreDataManager.createNewObject(ofType: .Medication, objectDictionary: data) as! Medication
-            let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Medication.rawValue.lowercased(), data: data)
-            newMedication.documentID = newFirebase?.documentID
+            if mirrorOnFirebase {
+                let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Medication.rawValue.lowercased(), data: data)
+                newMedication.documentID = newFirebase?.documentID
+            }
         case .Physician:
             let newPhysician = coreDataManager.createNewObject(ofType: .Physician, objectDictionary: data) as! Physician
-            let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Physician.rawValue.lowercased(), data: data)
-            newPhysician.documentID = newFirebase?.documentID
+            if mirrorOnFirebase {
+                let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Physician.rawValue.lowercased(), data: data)
+                newPhysician.documentID = newFirebase?.documentID
+            }
         default:
             break
         }

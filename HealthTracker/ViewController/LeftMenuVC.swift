@@ -45,6 +45,7 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.registerCellNib(MenuTableViewCell.self)
         
         //view.backgroundColor = UIColor.lightGray
         tableView.backgroundColor = UIColor.white
@@ -87,7 +88,12 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
         let suppliesVC = storyboard.instantiateViewController(withIdentifier: "SuppliesTVC") as! SuppliesTVC
         suppliesViewController = UINavigationController(rootViewController: suppliesVC)
         
+        // set account image header
         imageHeaderView = ImageHeaderView.loadNib()
+        
+        // add tap gesture for account
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showAccount))
+        imageHeaderView.addGestureRecognizer(tapGesture)
         self.view.addSubview(self.imageHeaderView)
     }
     
@@ -99,6 +105,13 @@ class LeftMenuVC: UIViewController, LeftMenuProtocol {
         super.viewDidLayoutSubviews()
         imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160)
         view.layoutIfNeeded()
+    }
+    
+    @objc func showAccount() {
+        let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        settingsVC.presentingVC = slideMenuController()?.mainViewController
+        let nvc = UINavigationController(rootViewController: settingsVC)
+        slideMenuController()?.changeMainViewController(nvc, close: true)
     }
     
     func changeViewController(_ menu: LeftMenu) {
@@ -142,9 +155,13 @@ extension LeftMenuVC: UITableViewDelegate {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
             case .main, .cath, .bowel, .medications, .appointments, .logout, .notes, .physicians, .supplies:
-                return BaseTableViewCell.height()
+                return MenuTableViewCell.height()
             }
         }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
@@ -173,12 +190,40 @@ extension LeftMenuVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
+            var data: MenuTableViewCellData!
+
             switch menu {
-            case .main, .bowel, .cath, .medications, .appointments, .logout, .notes, .physicians, .supplies:
-                let cell = BaseTableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
-                cell.setData(menus[indexPath.row])
-                return cell
+            case .main:
+                data = MenuTableViewCellData(img: UIImage(named: "main")!, text: "home")
+                break
+            case .bowel:
+                data = MenuTableViewCellData(img: UIImage(named: "bowel")!, text: "bowel movements")
+                break
+            case .cath:
+                data = MenuTableViewCellData(img: UIImage(named: "cath")!, text: "cath schedule")
+                break
+            case .appointments:
+                data = MenuTableViewCellData(img: UIImage(named: "appointment")!, text: "appointments")
+                break
+            case .logout:
+                data = MenuTableViewCellData(img: UIImage(named: "logout")!, text: "logout")
+                break
+            case .medications:
+                data = MenuTableViewCellData(img: UIImage(named: "medication")!, text: "medications")
+                break
+            case .notes:
+                data = MenuTableViewCellData(img: UIImage(named: "note")!, text: "notes")
+                break
+            case .physicians:
+                data = MenuTableViewCellData(img: UIImage(named: "physician")!, text: "physicians")
+                break
+            case .supplies:
+                data = MenuTableViewCellData(img: UIImage(named: "supply")!, text: "supplies")
+                break
             }
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.identifier) as! MenuTableViewCell
+            cell.setData(data)
+            return cell
         }
         return UITableViewCell()
     }
