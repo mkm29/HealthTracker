@@ -12,6 +12,13 @@ import SlideMenuControllerSwift
 class ExSlideMenuController : SlideMenuController {
     
     var coordinator: Coordinator?
+    
+    func logout() {
+        if let coordinator = coordinator {
+            coordinator.isAuthenticated = false
+            self.present(UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!, animated: true, completion: nil)
+        }
+    }
 
     override func isTagetViewController() -> Bool {
         if let vc = UIApplication.topViewController() {

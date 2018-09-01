@@ -35,7 +35,7 @@ extension String {
         return formatter.date(from: self)
     }
     
-    func convertDate(f_ format1: String = "MM-dd-yyyy", _ format2: String = "EEEE MMM d") -> String {
+    func convertDate(f_ format1: String = "MM-dd-yyyy", _ format2: String = "EEEE, MMM d, yyyy") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format1
         let date = dateFormatter.date(from: self)

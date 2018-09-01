@@ -13,6 +13,7 @@ class NotesTVC: HealthTVC {
     
     // MARK: - Variables to overide
     override var cellIdentifier: String { return Constants.CellIdentifiers.Note.rawValue }
+    override var addViewControllerIdentifier: String { return "AddNoteVC" }
     override var entityType: Constants.EntityType { return .Note }
     override var sectionNameKeyPath: String? { return "date" }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false)] }

@@ -10,10 +10,24 @@ import CoreData
 
 class CoreDataManager {
     
-    var applicationsDocumentDirectory: String {
+    class func entityToJSON(_ entity: NSManagedObject) -> [String : Any] {
+        var dict: [String: Any] = [:]
+        for attribute in entity.entity.attributesByName {
+            //check if value is present, then add key to dictionary so as to avoid the nil value crash
+            
+            if let value = entity.value(forKey: attribute.key) {
+                if attribute.key != "documentID" || attribute.key != "imagePath" {
+                    dict[attribute.key] = value
+                }
+            }
+        }
+        return dict
+    }
+    
+    class func applicationsDocumentDirectory() -> URL {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        return documentsURL.absoluteString.replacingOccurrences(of: "%20", with: "\\ ")
+        return documentsURL //.replacingOccurrences(of: "%20", with: "\\ ")
     }
     
     // MARK: - Core Data stack
@@ -122,7 +136,7 @@ class CoreDataManager {
             }
             // 3 - Get amount, need to create object
             if let amount = dict["amount"] as? Int16  {
-                print("Need to create Cath object with amount of \(amount)")
+                //print("Need to create Cath object with amount of \(amount)")
                 let newCath = Cath(context: context)
                 newCath.timestamp = timestamp as Date
                 newCath.date = (timestamp as Date).string(withFormat: Constants.DateFormat.Normal)
@@ -226,6 +240,7 @@ class CoreDataManager {
         newPhysician.specialty = dict["specialty"] as? String
         newPhysician.medicalEducation = dict["medicalEducation"] as? String
         newPhysician.contactIdentifier = dict["contactIdentifier"] as? String
+        newPhysician.hospital = dict["hospital"] as? String
 
         return newPhysician
     }

@@ -13,6 +13,7 @@ class AppointmentsTVC: HealthTVC {
     
     // MARK: - Variables to overide
     override var cellIdentifier: String { return Constants.CellIdentifiers.Appointment.rawValue }
+    override var addViewControllerIdentifier: String { return "AddAppointmentVC" }
     override var entityType: Constants.EntityType { return Constants.EntityType.Appointment }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"timestampt", ascending: false)] }
     

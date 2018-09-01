@@ -44,9 +44,10 @@ class CathDetailVC: DetailVC, UITextFieldDelegate {
                 cath.amount = Int16(amountString.intValue)
             }
             coordinator.coreDataManager.saveContext()
+            update()
         }
         
-        dismissAddEntity()
+        dismissEntityDetail()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

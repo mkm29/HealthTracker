@@ -7,17 +7,16 @@
 //
 import UIKit
 
-class AddBowelVC: AddEntityVC, SetDateProtocol {
+class AddBowelVC: EntityViewController, SetDateProtocol {
     
     override var entityType: Constants.EntityType { return Constants.EntityType.Bowel }
+    override var isNewEntity: Bool { return true }
 
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var manualTime: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var smallLabel: UILabel!
     @IBOutlet weak var largeLabel: UILabel!
-    @IBOutlet var setDateTimeView: UIView!
     var setTime = false
     var setDate: Date?
     let types: [String] = ["small", "normal", "large"]
@@ -69,7 +68,7 @@ class AddBowelVC: AddEntityVC, SetDateProtocol {
                                   "intensity" : Int16(slider.value)]
         _ = addEntity(fromDict: dict)
 
-        dismissAddEntity()
+        dismissEntity()
     }
     
 }

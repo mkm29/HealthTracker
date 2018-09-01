@@ -68,7 +68,19 @@ class SettingsVC: UIViewController {
     
     
     @IBAction func linkWithFacebook(_ sender: Any) {
-        
+        // test out Firebase update
+        // lets update Dr. Hanna
+//        let physician: [String:String] = ["familyName" : "Hanna",
+//                                          "givenName" : "Karim2",
+//                                          "medicalEducation" : "USF",
+//                                          "specialty" : "Internal Medicine"]
+//        coordinator.firebase.updateDocument(ofType: .Physician, documentID: "EduTrG4LzSIhHTVoADra", newData: physician) { error in
+//            guard error == nil else {
+//                AppDelegate.getAppDelegate().showAlert("Error", error!.localizedDescription)
+//                return
+//            }
+//            print("Successfully updated record!")
+//        }
     }
     
     @IBAction func linkWithGoogle(_ sender: Any) {

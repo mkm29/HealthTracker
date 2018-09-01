@@ -1,19 +1,20 @@
 //
-//  NewUrinateViewController.swift
+//  AddCathViewController.swift
 //  HealthTracker
 //
-//  Created by Mitchell Murphy on 7/11/18.
+//  Created by Mitchell Murphy on 8/29/18.
 //  Copyright © 2018 Mitchell Murphy. All rights reserved.
 //
 
 import UIKit
 
-class AddCathVC: AddEntityVC, SetDateProtocol {
+class AddCathViewController: EntityViewController, SetDateProtocol {
     
     override var entityType: Constants.EntityType { return Constants.EntityType.Cath }
+    override var isNewEntity: Bool { return true }
+    var setDate: Date?
 
     @IBOutlet weak var amountTextField: UITextField!
-    var setDate: Date?
     @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
@@ -32,7 +33,7 @@ class AddCathVC: AddEntityVC, SetDateProtocol {
         controller.view.layer.cornerRadius = 10
         controller.view.layer.borderColor = UIColor(red: 0.969, green: 0.969, blue: 0.969, alpha: 1.0).cgColor
         controller.view.layer.borderWidth = 1.5
-        showPopup(controller, sourceView: addButton)
+        self.showPopup(controller, sourceView: addButton)
     }
     
     private func showPopup(_ controller: UIViewController, sourceView: UIView) {
@@ -40,9 +41,12 @@ class AddCathVC: AddEntityVC, SetDateProtocol {
         presentationController.sourceView = sourceView
         presentationController.sourceRect = sourceView.bounds
         presentationController.permittedArrowDirections = [.down, .up]
-        self.present(controller, animated: true)
+        present(controller, animated: true)
     }
     
+    func setDate(date: Date) {
+        setDate = date
+    }
     
     @IBAction func save(_ sender: Any) {
         // validate
@@ -65,12 +69,8 @@ class AddCathVC: AddEntityVC, SetDateProtocol {
         cathDict["amount"] = Int16((amountString as NSString).integerValue)
         
         _ = addEntity(fromDict: cathDict)
-        dismissAddEntity()
+        dismissEntity()
         
-    }
-    
-    func setDate(date: Date) {
-        setDate = date
     }
 
 }

@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             coordinator.importAllFromFirebase()
             // need to import date
         }
-        
+        print(CoreDataManager.applicationsDocumentDirectory())
         return true
     }
 

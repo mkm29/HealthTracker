@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 extension UIViewController {
     
@@ -31,9 +32,8 @@ extension UIViewController {
             
         } else {
             // go to rootViewController, need to login
-            let initialVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
             dismiss(animated: false) {
-                self.present(initialVC, animated: true, completion: nil)
+                self.goToInitialViewController()
             }
         }
     }

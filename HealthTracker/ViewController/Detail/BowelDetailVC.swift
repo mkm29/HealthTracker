@@ -33,7 +33,8 @@ class BowelDetailVC: DetailVC {
             bowel.timestamp = datePicker.date
             bowel.date = datePicker.date.string(withFormat: Constants.DateFormat.Normal)
             bowel.intensity = Int16(slider.value)
+            update()
         }
-        dismissAddEntity()
+        dismissEntityDetail()
     }
 }

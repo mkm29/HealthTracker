@@ -44,22 +44,23 @@ class FirebaseClient {
         return ref
     }
     
-    func getDocument(ofType type: Constants.EntityType, documentID: String) {
+    func getDocument(ofType type: Constants.EntityType, documentID: String, completion: @escaping (_ snapshot: DocumentSnapshot?) -> Void) {
         let docRef = db.collection(type.rawValue.lowercased()).document(documentID)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                
-                print("Document data: \(dataDescription)")
+                completion(document)
             } else {
                 print("Document does not exist")
+                completion(nil)
             }
         }
         
     }
     
-    func updateDocument(docRef: DocumentReference, newData: [String:Any]) {
+    func updateDocument(_ type: String, documentID: String, newData: [String:Any], completion: @escaping (_ error: NSError?) -> Void) {
+        let docRef = db.collection(type.lowercased()).document(documentID)
+        
         db.runTransaction({ (transaction, errorPointer) -> Any? in
             
             let document: DocumentSnapshot
@@ -68,16 +69,16 @@ class FirebaseClient {
                 print(document)
             } catch let fetchError as NSError {
                 errorPointer?.pointee = fetchError
-                return nil
+                completion(fetchError)
             }
             
             transaction.updateData(newData, forDocument: docRef)
             return nil
         }) { (object, error) in
             if let error = error {
-                print("Transaction failed: \(error)")
+                completion(error as NSError)
             } else {
-                print("Transaction successfully committed!")
+                completion(nil)
             }
         }
     }

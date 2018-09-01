@@ -8,7 +8,7 @@
 
 import CoreData
 import Firebase
-//import UIKit
+import UIKit
 //import Contacts
 
 class Coordinator {
@@ -17,8 +17,8 @@ class Coordinator {
         let fileManager = FileManager.default
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
     }
-    
-    var isAuthenticated = false
+
+    var isAuthenticated: Bool = false
     var mirrorOnFirebase: Bool = true
     var coreDataManager: CoreDataManager!
     var firebase: FirebaseClient!
@@ -26,6 +26,20 @@ class Coordinator {
     init() {
         coreDataManager = CoreDataManager()
         firebase = FirebaseClient()
+        subscribeToNotifications()
+    }
+    
+    private func subscribeToNotifications() {
+        //NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplication.didEnterBackgroundNotification, object: nil)
+        // Define identifier
+        let notificationName = Notification.Name("UIApplicationDidEnterBackgroundNotification")
+        
+        // Register to receive notification
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: notificationName, object: nil)
+    }
+    
+    @objc func didEnterBackground() {
+        isAuthenticated = false
     }
     
     func showLoginVC(fromVC: UIViewController) {
@@ -39,42 +53,51 @@ class Coordinator {
     }
     
     
-    func addObject(_ type: Constants.EntityType, data: [String:Any]) {
+    func addObject(_ type: Constants.EntityType, data: [String:Any]) -> NSManagedObject? {
         // 1 - Create in Core Data
+        var entity: NSManagedObject?
+        
         // 2. Mirror on Firebase Firestore
+        // for some reason the mirrorOnFirebase flag keeps getting set to false somewhere
         switch type {
         case .Cath:
             let newCath = coreDataManager.createNewObject(ofType: .Cath, objectDictionary: data) as! Cath
             if mirrorOnFirebase {
+                print("Adding Cath to Firebase")
                 let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Cath.rawValue.lowercased(), data: data)
                 newCath.documentID = newFirebase?.documentID
+            } else {
+                print("Not adding Cath to Firebase")
             }
+            entity = newCath
         case .Bowel:
             let newBowel = coreDataManager.createNewObject(ofType: .Bowel, objectDictionary: data) as! Bowel
             if mirrorOnFirebase {
                 let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Bowel.rawValue.lowercased(), data: data)
                 newBowel.documentID = newFirebase?.documentID
             }
-            
+            entity = newBowel
         case .Medication:
             let newMedication = coreDataManager.createNewObject(ofType: .Medication, objectDictionary: data) as! Medication
             if mirrorOnFirebase {
                 let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Medication.rawValue.lowercased(), data: data)
                 newMedication.documentID = newFirebase?.documentID
             }
+            entity = newMedication
         case .Physician:
             let newPhysician = coreDataManager.createNewObject(ofType: .Physician, objectDictionary: data) as! Physician
             if mirrorOnFirebase {
                 let newFirebase = firebase.addDocument(ofType: Constants.EntityType.Physician.rawValue.lowercased(), data: data)
                 newPhysician.documentID = newFirebase?.documentID
             }
+            entity = newPhysician
         default:
             break
         }
         
         // 3. Save Context
         coreDataManager.saveContext()
-        
+        return entity
     }
     
     func importAllFromFirebase() {
@@ -145,8 +168,7 @@ class Coordinator {
         }
         
         return dict
-    }
-    
+    }    
 
     
 }

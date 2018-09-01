@@ -29,7 +29,6 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setImagePickerSource(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
-
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
         nameTextField.becomeFirstResponder()
@@ -92,48 +91,12 @@ class AddMedicationVC: AddEntityVC, UIImagePickerControllerDelegate, UINavigatio
                                             "purpose" : purpose,
                                             "prescription" : isPrescription.isOn,
                                             "active" : isActive.isOn]
-        if let medImage = imageView.image,
-            let imagePath = medImage.saveImage(withPrefix: "medication_\(name)") {
+        if let imagePath = imageView.image?.store(name: name) {
             medicationDict["imagePath"] = imagePath
         }
         
         _ = addEntity(fromDict: medicationDict)
         dismissAddEntity()
-    }
-    
-    private func saveImage(_ image: UIImage, tag: String) -> String? {
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let documentsPath = documentsURL.path
-        let filePath = documentsURL.appendingPathComponent("\(String(tag)).png", isDirectory: false)
-
-        var path: String? = nil
-        
-        // Check for existing image data
-        do {
-            // Look through array of files in documentDirectory
-            let files = try FileManager.default.contentsOfDirectory(atPath: documentsPath)
-            
-            for file in files {
-                // If we find existing image delete it to make room for the new once
-                if "\(documentsPath)/\(file)" == filePath.path {
-                    try fileManager.removeItem(atPath: filePath.path)
-                }
-            }
-        } catch {
-            print("Could not add image from document directory: \(error)")
-        }
-        
-        
-        do {
-            if let pngImageData = image.pngData() {
-                try pngImageData.write(to: filePath, options: .atomic)
-                path = filePath.path
-            }
-        } catch {
-            print("Could not write image data: \(error)")
-        }
-        return path
     }
 
 }

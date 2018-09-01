@@ -12,6 +12,10 @@ import SlideMenuControllerSwift
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
+    let appDelegate = AppDelegate.getAppDelegate()
+    
+    let laContext = LAContext()
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var faceID: UIImageView!
@@ -28,7 +32,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //login(tapGestureRecognizer: nil)
+        if canUseFaceId() {
+            login(tapGestureRecognizer: nil)
+        }
+    }
+    
+    private func canUseFaceId() -> Bool {
+        let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
+        
+        if (laContext.canEvaluatePolicy(biometricsPolicy, error: nil)) {
+            
+            if #available(iOS 11.0, *) {
+                if (laContext.biometryType == LABiometryType.faceID) {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -39,67 +59,43 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func login(tapGestureRecognizer: UITapGestureRecognizer?) {
-        let laContext = LAContext()
-        var error: NSError?
-        let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        
-        if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
-            
-            if let laError = error {
-                AppDelegate.getAppDelegate().showAlert("Auth Error", laError.localizedDescription)
-                return
-            }
-            
-            var localizedReason = "Unlock device"
-            if #available(iOS 11.0, *) {
-                if (laContext.biometryType == LABiometryType.faceID) {
-                    localizedReason = "Unlock using Face ID"
-                    //print("FaceId support")
-                } else if (laContext.biometryType == LABiometryType.touchID) {
-                    localizedReason = "Unlock using Touch ID"
-                    //print("TouchId support")
-                } else {
-                    print("No Biometric support")
-                    AppDelegate.getAppDelegate().showAlert("Auth Error", "FaceId not supported")
-                }
-            } else {
-                // Fallback on earlier versions
-                AppDelegate.getAppDelegate().showAlert("Error", "Unhandled error")
-            }
-            
-            
-            laContext.evaluatePolicy(biometricsPolicy, localizedReason: localizedReason, reply: { (isSuccess, error) in
+        if canUseFaceId() {
+            let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
+            laContext.evaluatePolicy(biometricsPolicy, localizedReason: "Unlock using Face ID", reply: { (isSuccess, error) in
                 
-                DispatchQueue.main.async(execute: {
-                    
-                    if let laError = error {
-                        print("laError - \(laError)")
-                    } else {
-                        if isSuccess {
-                            // need to add a delay
-                            // 1. Fade out Anonymous image
-                            DispatchQueue.main.async {
-                                self.setupSliderMenu()
-                            }
-                        } else {
-                            AppDelegate.getAppDelegate().showAlert("Error", "Unhandled error")
+                if let laError = error {
+                    self.appDelegate.showAlert("Error", laError.localizedDescription)
+                } else {
+                    if isSuccess {
+                        // need to add a delay
+                        // 1. Fade out Anonymous image
+                        //self.email.text = "mitch.murphy@gmail.com"
+                        //self.password.text = "363502"
+                        DispatchQueue.main.async {
+                            self.setupSliderMenu()
                         }
+                    } else {
+                        self.appDelegate.showAlert("Error", "Unhandled error")
                     }
-                    
-                })
+                }
             })
-        } else {
-            var errMessage = ""
-            if error != nil {
-                errMessage = error!.localizedDescription
-            }
-            if let err = error?.localizedDescription {
-                AppDelegate.getAppDelegate().showAlert("Auth Error", "Can't evaluate policy: \(err)")
-            } else {
-                errMessage = "Can't evaluate policy"
-            }
-            AppDelegate.getAppDelegate().showAlert("FaceId Error", errMessage)
         }
+    }
+    
+    
+    @IBAction func loginTapped(_ sender: Any) {
+        // just going to hardcode the credentials for now
+        guard let email = email.text.nilIfEmpty, let password = password.text.nilIfEmpty else {
+            return
+        }
+        if email == "mitch.murphy@gmail.com" && password == "363502" {
+            DispatchQueue.main.async {
+                self.setupSliderMenu()
+            }
+        } else {
+            appDelegate.showAlert("Oops", "Make sure you entered your credentials properly and try again.")
+        }
+        
     }
     
     func setupSliderMenu() {
@@ -120,6 +116,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         slideMenuController.coordinator = Coordinator()
         slideMenuController.coordinator?.isAuthenticated = true
 
+        //print(slideMenuController.coordinator?.coreDataManager.applicationsDocumentDirectory)
         if let window = UIApplication.shared.delegate?.window {
             window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
             window?.rootViewController = slideMenuController

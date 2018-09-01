@@ -12,6 +12,7 @@ class SuppliesTVC: HealthTVC {
     
     // MARK: - Variables to overide
     override var cellIdentifier: String { return Constants.CellIdentifiers.Supply.rawValue }
+    override var addViewControllerIdentifier: String { return "AddSupplyVC" }
     override var entityType: Constants.EntityType { return .Supply }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"name", ascending: true)] }    
     

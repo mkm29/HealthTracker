@@ -25,6 +25,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 //    }
     
     var cellIdentifier: String { fatalError("cellIdentifier must be overridden") }
+    var addViewControllerIdentifier: String? { return nil }
     var entityType: Constants.EntityType { fatalError("entity must be overridden") }
     var entity : String { return entityType.rawValue }
     var sortDescriptors : [NSSortDescriptor]? { return nil }
@@ -80,14 +81,40 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        guard let sliderMenu = slideMenuController() as? ExSlideMenuController else {
+    override func viewDidLoad() {
+        guard let coord = (slideMenuController() as? ExSlideMenuController)?.coordinator else {
             self.goToInitialViewController()
             return
         }
-        coordinator = sliderMenu.coordinator
+        coordinator = coord
         checkAuth(coordinator: coordinator)
         setNavigationBarItem()
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let coord = (slideMenuController() as? ExSlideMenuController)?.coordinator else {
+            // Go to LoginVC
+            self.goToInitialViewController()
+            return
+        }
+        coordinator = coord
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    @objc func add() {
+        if let addVC = addViewControllerIdentifier {
+            let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: addVC)
+            let nvc = UINavigationController(rootViewController: addVC)
+            slideMenuController()?.changeRightViewController(nvc, closeRight: false)
+            slideMenuController()?.changeRightViewWidth(view.bounds.width)
+            slideMenuController()?.openRight()
+        } else {
+            AppDelegate.getAppDelegate().showAlert("Oops", "I do not know what to add...")
+        }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -130,13 +157,15 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         return UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    private func headerText(forSection section: Int) -> String {
         var sectionHeader: String = ""
         if sectionNameKeyPath != nil {
             if let sections = fetchedResultsController?.sections {
                 switch entityType {
                 case .Cath, .Bowel, .Note, .Appointment, .Order:
                     sectionHeader = sections[section].name.convertDate()
+                case .Medication:
+                    sectionHeader = sections[section].name.capitalized.capitalized
                 default:
                     sectionHeader = sections[section].name
                 }
@@ -146,9 +175,20 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         }
         return sectionHeader
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("HeaderViewTableViewCell", owner: self, options: nil)?.first as! HeaderViewTableViewCell
+        headerView.headerLabel.text = headerText(forSection: section)
+        
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -208,7 +248,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
             case .Order:
                 configureOrderCell(cell, order: frc.object(at: indexPath) as! Order)
             case .Physician:
-                configurePhysicianCell(cell, physician: frc.object(at: indexPath) as! Physician)
+                configurePhysicianCell(cell as! PhysicianTableViewCell, physician: frc.object(at: indexPath) as! Physician)
             case .Supply:
                 configureSupplyCell(cell, supply: frc.object(at: indexPath) as! Supply)
         }
@@ -217,6 +257,7 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     private func configureCathCell(_ cell: CathCell, cath: Cath) {
         cell.amountLabel.text = "\(cath.amount)"
         cell.timeLabel.text = cath.timestamp?.string(withFormat: Constants.DateFormat.Time)
+        
     }
     
     private func configureBowelCell(_ cell: UITableViewCell, bowel: Bowel) {
@@ -231,7 +272,13 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         // 300mg, 3 times daily
         cell.dosageLabel.text = "\(medication.dosage)mg, \(medication.frequency) times daily"
         //cell.remainingLabel.text = "\(medication.remaining) left"
-        cell.imageView1.image = UIImage(named: medication.name!)
+        if let imageURL = medication.pillboxImageURL, let url = URL(string: imageURL) {
+            cell.imageView?.downloadImage(fromURL: url, completion: { (error) in
+                if let error = error {
+                    AppDelegate.getAppDelegate().showAlert("Error", error.localizedDescription)
+                }
+            })
+        }
     }
     
     private func configreNoteCell(_ cell: UITableViewCell, note: Note) {
@@ -254,13 +301,14 @@ class HealthTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     
-    private func configurePhysicianCell(_ cell: UITableViewCell, physician: Physician) {
+    private func configurePhysicianCell(_ cell: PhysicianTableViewCell, physician: Physician) {
         if let fname = physician.givenName, let lname = physician.familyName {
-            cell.textLabel?.text = "\(fname) \(lname)"
+            cell.nameLabel?.text = "\(fname) \(lname)"
         } else {
-            cell.textLabel?.text = ""
+            cell.nameLabel?.text = ""
         }
-        cell.detailTextLabel?.text = physician.specialty
+        cell.specialtyLabel?.text = physician.specialty
+        cell.hospitalLabel.text = physician.hospital
     }
     
     

@@ -12,6 +12,7 @@ import CoreData
 class BowelTVC: HealthTVC {
     
     override var cellIdentifier: String { return Constants.CellIdentifiers.Bowel.rawValue }
+    override var addViewControllerIdentifier: String { return "AddBowelVC" }
     override var entityType: Constants.EntityType { return .Bowel }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false), NSSortDescriptor(key: "timestamp", ascending: false)] }
     override var sectionNameKeyPath: String? { return "date" }
@@ -20,7 +21,7 @@ class BowelTVC: HealthTVC {
         return 60.0
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 45.0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

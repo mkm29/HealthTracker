@@ -9,7 +9,7 @@
 import UIKit
 import ContactsUI
 
-class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CNContactPickerDelegate {
+class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     override var entityType: Constants.EntityType { return Constants.EntityType.Physician }
     
@@ -20,11 +20,16 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         }
     }
 
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var specialty: UITextField!
     @IBOutlet weak var education: UITextField!
+    @IBOutlet weak var hospital: UITextField!
     @IBOutlet weak var addPhysicianButton: UIButton!
+    
+    let imagePicker = UIImagePickerController()
+    var imagePickerSource: UIImagePickerController.SourceType = .photoLibrary
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +39,57 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
         lastName.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         specialty.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         education.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
-        
+        hospital.addBorder(type: .Bottom, color: UIColor.lightGray, withWidth: 1.0)
         addPhysicianButton.roundBottom(withRadius: 20)
         //AppDelegate.getAppDelegate().contactsStore
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setImagePickerSource(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imagePicker.delegate = self
         
+        imageView.layoutIfNeeded()
+        imageView.layer.cornerRadius = imageView.bounds.size.height / 2
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    @objc func pickImage() {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = imagePickerSource
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func setImagePickerSource(tapGestureRecognizer: UITapGestureRecognizer?) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let alertController = UIAlertController(title: "Pick Image", message: "How do you want to choose the image?", preferredStyle: .alert)
+            
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                self.imagePickerSource = .camera
+            }
+            
+            let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+                self.imagePickerSource = .photoLibrary
+            }
+            
+            alertController.addAction(cameraAction)
+            alertController.addAction(libraryAction)
+            present(alertController, animated: true) {
+                self.pickImage()
+            }
+        } else {
+            // the camera is not available
+            pickImage()
+        }
     }
 
     @IBAction func pickContact(_ sender: Any) {
@@ -67,9 +119,14 @@ class AddPhysicianVC: AddEntityVC, UITextFieldDelegate, UIPickerViewDelegate, CN
 
         dict["specialty"] = specialty.text.nilIfEmpty
         dict["medicalEducation"] = education.text.nilIfEmpty
+        dict["hospital"] = hospital.text.nilIfEmpty
         
         if let selectedContact = selectedContact {
             dict["contactIdentifier"] = selectedContact.identifier
+        }
+        
+        if let imagePath = imageView.image?.store(name: "\(givenName)_\(familyName).png") {
+            dict["imagePath"] = imagePath
         }
         
         _ = addEntity(fromDict: dict)

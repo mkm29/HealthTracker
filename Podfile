@@ -10,8 +10,6 @@ target 'HealthTracker' do
   pod 'FirebaseCore'
   pod 'FirebaseFirestore'
   pod 'SlideMenuControllerSwift'
-#  pod 'HUD'
-#  pod 'MenuSlider'
+  pod 'MBProgressHUD'
 #  pod 'FirebaseDatabase'
-#  pod 'Hakawai'
 end

@@ -10,21 +10,42 @@ import CoreData
 
 class DetailVC: UIViewController {
 
-    var coordinator: Coordinator?
-    var selectedObject: NSManagedObject?
+    var coordinator: Coordinator!
+    var selectedObject: NSManagedObject? {
+        didSet {
+            documentID = selectedObject?.value(forKey: "documentID") as? String
+        }
+    }
+    var documentID: String? = nil
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let sliderMenu = slideMenuController() as? ExSlideMenuController, let coord = sliderMenu.coordinator else {
+        guard let coord = (slideMenuController() as? ExSlideMenuController)?.coordinator else {
             // Go to LoginVC
             self.goToInitialViewController()
             return
         }
         coordinator = coord
         checkAuth(coordinator: coordinator)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissAddEntity))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissEntityDetail))
+    }
+    
+    func update() {
+        guard coordinator.mirrorOnFirebase,
+            let object = selectedObject,
+            let type = object.entity.managedObjectClassName,
+            let documentID = documentID else {
+                AppDelegate.getAppDelegate().showAlert("Oops", "Unable to update on Firebase. ")
+                return
+        }
+        
+        coordinator.firebase.updateDocument(type, documentID: documentID, newData: CoreDataManager.entityToJSON(object)) { (error) in
+            if let error = error {
+                print(error.localizedDescription as Any)
+            }
+        }
     }
 
-    @objc func dismissAddEntity() {
+    @objc func dismissEntityDetail() {
         selectedObject = nil
         slideMenuController()?.closeRight()
     }

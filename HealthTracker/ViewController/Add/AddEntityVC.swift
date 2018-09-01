@@ -10,7 +10,6 @@ import UIKit
 
 class AddEntityVC: UIViewController {
 
-    var coordinator: Coordinator?
     var entityType: Constants.EntityType { fatalError("entity must be overridden") }
 
     func addEntity(fromDict dict: [String:Any]) -> Any? {

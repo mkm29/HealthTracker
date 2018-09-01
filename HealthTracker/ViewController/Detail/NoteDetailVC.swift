@@ -38,7 +38,7 @@ class NoteDetailVC: DetailVC, UITextFieldDelegate, UITextViewDelegate {
             note.body = bodyTextArea.text
             coordinator.coreDataManager.saveContext()
         }
-        dismissAddEntity()
+        dismissEntityDetail()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

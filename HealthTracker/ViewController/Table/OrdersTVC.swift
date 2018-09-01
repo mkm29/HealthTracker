@@ -12,6 +12,7 @@ class OrdersTVC: HealthTVC {
     
     // MARK: - Variables to overide
     override var cellIdentifier: String { return Constants.CellIdentifiers.Order.rawValue }
+    //override var addViewControllerIdentifier: String { return "AddOrderVC" }
     override var entityType: Constants.EntityType { return .Order }
     override var sortDescriptors : [NSSortDescriptor]? { return [NSSortDescriptor(key:"date", ascending: false)] }
     
